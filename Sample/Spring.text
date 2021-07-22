@@ -1,0 +1,2793 @@
+
+Interview Question
+==================
+	Default Question
+		about your self
+		role and responsibility in Project
+		Architechture of Project
+	opps.
+	what is autoboxing
+	clashpath and path
+	what is load fector in MashMap.
+	what diff b/w conrurrentHasMap and HashTable.
+	how ristrict class from outside client->declarad as private constructor.
+	overloading nd overriding.
+	abstract and interface diff.
+	what is poly marpism.
+	what is encaps.
+	what java platform. 
+	Object class method.
+		toString()
+		hashCode() 
+		equals(Object obj) 
+		getClass()
+		finalize() method : This method is called just before an object is garbage collected. 
+		clone() : It returns a new object that is exactly the same as this object.
+		wait()
+		notify() 
+		notifyAll()
+	type of joins.
+	how get all primary available in db
+	delete and truncate
+	ddl and dml
+	default cap of LL
+	war--
+		contains web app(jsp,html,javascrpt) nd .class files of java
+		deployed on servlet/Jsp container
+	jar-	Containig libraries and resources.
+	ExceptionHandling
+		diff throw thows
+		what custom exception
+		checkted and unchecked
+	String Handling
+		diff String nd String buffer 
+		Why String immutable
+		how make String at mmutable
+		diff equals() nd hashCode().
+	Collection:-
+		what colls having interface.
+		what is list?
+		Diff ArrayList and LinkedList
+		Diff b/w HashSet and TreeSet.
+		Diff Set nd List
+		HashMap internal flow
+		can we multiple null as key insert with in HashMap
+		can insert one null key in HashMap
+		How do obj type sorting.
+		remove dublicats of list
+		if obj having 1000 element but you want 100th element without checking from first index,direct checked 100th element.
+		what acheving generics.
+		how make list as muatble.
+		if be insert duplicats value in Set , what the output?
+	Spring:-
+		what is spring
+		what is boot.
+		What are SpringBoot Annotation.
+		what does mean of @SoringBootapplication.
+		Actuator
+		Swagger
+		how test Rest web services.
+		war file
+		maven.
+		how deploy the project on external server.
+		jdbc conn.
+		Design pattern.
+		what returning jpa method
+		how configure custom properties.
+		configuration DB in Boot
+		Diff b/w GET and POST.
+		@RequestBody
+		@PathVariable
+		@RequestParam
+		@Produes
+		@Consume
+		@RequestMapping
+		what is ues of maven
+		JPQL
+		
+	Jenkins
+
+		https://www.youtube.com/watch?v=8_D49wo6XKI
+
+	Sonar
+
+		https://www.youtube.com/watch?v=QhSPAmo3j0A
+
+		https://www.youtube.com/watch?v=oK3LFTjQhzw
+
+		https://www.youtube.com/watch?v=a0CuchlzPoM
+
+		
+
+
+
+MVC Execution Flow:-
+-------------------
+	Step 1: First request will be received by DispatcherServlet from client.
+	Step 2: DispatcherServlet will take the help of HandlerMapping and get to know the Controller class name associated with the given request.
+	Step 3: So request transfer to the Controller, and then controller will process the request by executing appropriate
+			methods and returns ModelAndView object (contains Model data and View name) back to the DispatcherServlet.
+	Step 4: Now DispatcherServlet send the model object to the ViewResolver to get the actual view page.
+	Step 5: Finally DispatcherServlet will pass the Model object to the View page to display the result.
+	
+
+why should here you:-
+		for required this possition skills and expreience are matched with my profile. 
+		I am not saying that I am the best fit for the job, but I can prove it by my hard work.
+		If you gave me this opportunity,there I can explore myself and use my skills to the best.
+		
+		I have the ability to learn new things.
+		I can do hard work for your organization and I will put all my efforts for achieving the goals and objectives of the organization. 
+		And it's a great opportunity for working with you and for your organization.
+		
+	
+
+Diff b/w spring and spring boot:-
+-------------------------------
+	Benefits of the Spring Framework
+		The Spring framework can be used for all layers of implementation in the development of an application.
+		Considering its POJO model, it is a very lightweight framework.
+		It allows loose coupling and easy testability and maintanaincebility.
+		It supports declarative programming.
+		eliminating the formation of singleton and factory classes.
+		It supports  XML , java code and annotation configurations.
+		It provides middleware services.
+		The developer writes a lot of code (boilerplate code) to do the minimal task.
+		To test the Spring project, we need to set up the sever explicitly.
+		It does not provide support for an in-memory database.
+		Developers manually define dependencies for the Spring project in pom.xml.
+		
+		
+	Benefits of Spring Boot:-
+		The primary feature of Spring Boot is Autoconfiguration. 
+		quickly create sample project using spring initializer
+		You don’t have to worry about version mismatch.
+		Spring Boot is a microservice-based methodlogy and making a production-ready application in very less time. 
+		Spring Boot is very useful with developing REST API.
+		bcoz of default configurations which helps in bootstrapping spring application faster.
+		It comes with embedded tomcat or jetty server.
+		It comes with in-memory database such as H2.
+		It reduces development time by avoiding a lot of boilerplate code.
+		It having default building tool like maven and gradle.
+		It doesn’t require XML configuration.
+		It aims to shorten the code length and provide the easiest way to develop Web Applications.
+		It automatically configures the classes based on the requirement.
+		It helps to create a stand-alone application with less configuration.
+		It offers production ready features.
+		It is easier to launch.
+		Easier customization and management.
+		Spring Boot doesn’t require you to deploy WAR files.
+		Spring Boot mostly helps in monitoring several components and configures them externally.
+
+		Therefore, Spring Boot is a Spring-based production-ready project initializer. 
+		With features like auto-configuration, it saves you from writing lengthy code and helps you avoid unnecessary configuration.
+
+		While the Spring Framework offers you feature s like dependency injection or IOC and handles transactions,
+		it also acts as a foundation for other Spring frameworks. The best example for this is Spring boot. 
+		Spring Boot uses the Spring Framework as a foundation and improvises on it. 
+		It simplifies Spring dependencies and runs applications straight from a command line. 
+		It also doesn’t require an application container. 
+	
+	Fectory Method:-
+	---------------
+		capable for creating either same class obj or diff class obj.
+		
+		method:-
+			Instance factory method.
+			static factory method.
+		
+	Singleton Design pattern:-
+	-------------------------
+		The java class that allow to create only one obj per jvm.
+		Initiate of creating multiple obj with same data or no data create one obj or access multiple time.
+		situations:
+			if class not having any states.
+			if class having only shareable readable state.
+			
+		
+	Strategy Design pattren:-
+	-------------------------
+		while developing multiple class having dependency recommended to fallow design pattren.
+		that design pattern is not spring design pattern, it can we use any where,that spring manages
+		dependency b/w class.
+			*prefer compossion (has-a)
+			*always code with the interface never with implement with class.
+			*code should we open with extention.
+		
+	Bean Factory:-
+	------------------
+		*The class that is capable of creating & returning obj is called factory cls.
+		*Spring bean factory is selfless bean,they does not give the own obj they give always resultent obj.
+		
+		Method():-
+			1) getObject()       -create and return resultent obj.
+			2) getObjectType     -return java.lang.Class obj holding resultent obj.
+			3) isSingleton()	 - Specifies resultent obj should be taken as singleton obj or prototype.
+
+	Proxy Design pattern:-
+	-----------------------
+		
+	How many ways create Spring IOC container obj?		
+		
+What is Spring
+	is a framework
+	in-built design patterns and technologies provided
+	supports for faster application development
+
+2. What are the benefits of Spring?
+	a) It provides pre-defined Template for code reducing,
+	b) Loosely coupled Design Pattern,
+	c) Lightweight container (IoC),
+	d) Rapid Application development
+	e) Supports XML, Java and Annotations configuration
+	f) Life Cycle methods configuration
+	g) Easy ways of Scope definitions
+
+
+3. What are different modules/chapters in Spring
+	A) Spring Core, JDBC, ORM, WEB MVC, EMAIL, JMS(Java Message Service),restful,
+	Scheduling, JAAS, AOP.
+
+4. What is the difference between DI and IoC?
+	A) DI= Dependency Injection : 
+		@if underlying server or container dynamic assign the dependent value to our resources class obj using has-a relation.
+		@Give dependent obj to target class with the help of setter and constructor injection by using has-a relation.
+		@It is a process of injecting child object into its parent object at
+			runtime using configuration file (ex: XML,Java..)
+			
+			
+	B)IoC = Inversion of Control is a processing creating objects with data from parent to child
+	   using DI.
+	In simple, DI is theory and IoC means Program. 
+	Creating Objects, Providing data, linking one object with another object, 
+	calling life cycle methods finally destroy the objects.
+	It is used to achieve loosely coupling between classes(specially in Project Layers).
+	its minimize the amt of code in your apps.
+	
+
+5. What are different types of Container (or) IoCs in Spring?
+	BeanFactory (I) : 
+		Only supports XML Configuration has one Impl class XmlBeanfactory.
+		is an implementation of the factory design pattern.
+		not support internationlization.
+		not support event handling.
+		only support xml configuration.
+	ApplicationContext(I): 
+		it is extension to BeanFactory, it is also called as new Container.
+		It supports XML, java with Annotation Configuration. 
+		It is faster and light weight compared to BeanFactory.
+		pre-instantiation of singleton spring beans.
+		availity to work with properties.
+		support for internationlization.
+		support event handling.
+		automatic registration of BeanPostProcessor class.
+		automatic registration of BeanFactoryProcessor class.
+
+
+6. What is the work of Spring container or IoC?
+	A) Creating Objects, Providing data, linking one object with another object, 
+	calling life cycle methods finally destroy the objects.
+
+7. What are different lifecycle methods supports by Spring ? Explain them?
+	A) These are two optional life cycle methods provided by Spring container.
+	Those are init() and destroy(). init() called after creating object with data and destroy()
+	gets called by container before destroying the object.
+	a) XML Configuration : <bean .. Init-method="__" destroy-method="__"
+	b) Java Configuration: InitializingBean(C)-afterPropertiesSet(),DisposableBean(C)-destroy()
+	c) Annotations : @PostConstruct and @PreDestroy
+	
+8. What are different scopes provided by Spring container and explain LMI?
+	a) singleton: one Object per one <bean>(default scope).
+	b) prototype: based on the requested Every time new object.
+	c) request: New object for every HTTP request.
+	d) session: One object for one HTTP session.
+	e) global session: works for portlet only
+	LMI = When Parent is singleton and child is prototype then container will not look for new child object to inject with parent.
+
+9. What are different types of Injection ?
+	A) 4 types. Those are:
+	a) Setter Injection = Provide data using set method (generally uses default constructor)
+	b) Constructor Injection = Provide data using Parameter constructor
+	c) Lookup Method Injection = only used Parent bean is singleton and child bean is prototype
+	d) Interface Injection = Not supported by Spring container.
+
+10. What is the difference between constructor injection and setter injection?
+	Setter															Constructor
+	First target obj created and then dependent obj.    			First dependent obj created and then target obj.   
+	bit slow performance.											more then setter.
+	its support cyclic injection.									not.
+	if properties are configure for setter injection then Container if properties are configure for Constructor injection then Container
+	creats bean class obj using o-param constructor.				creats bean class obj using param constructor.
+	Encap variables and properties.									not.
+	We set pass few values(Parital injection).						All values must be passed.
+	Provides data using set method.									Provide data using param constructor.
+	Order not required.												Order is followed.
+	Use <property> tag												Use <constructor-arg> tag.
+	It will create a new instance if any modification is done.		It will not create new instance if any modification is done.
+	
+	Constructor injection:
+	class Car {
+	    Engine engine;
+	 
+	    @Autowired
+	    Car(Engine engine) {
+		this.engine = engine;
+	    }
+	}
+	Setter injection:
+	class Car {
+	    Engine engine;
+	 
+	    @Autowired
+	    void setEngine(Engine engine) {
+		this.engine = engine;
+	    }
+	}
+	
+	@Autowired:-
+	-------------
+		Marks a constructor, field, setter method or config method as to be autowired by Spring's dependency injection facilities. 
+
+11. Explain Java Configuration Steps with Example?
+	A) We need to define one public class which gets annotated with @Configuration.
+	Define Methods inside class , that one method behaves as one object in it.
+	@Bean annotation must be applied over method. By default method name behaves as object name.
+
+12. What is Bean Externalization ?
+	A) To remove hard coding values in Configuration , data is loaded from Properties file
+	using either XML or Java Configuration, this process is called as Bean Externalization.
+	To load properties file using XML : <context:property-placeholder location="__.properties"/>
+	Java : @PropertySource("__.properties").
+
+13. What are stereotype Annotation in Spring?
+	A) An annotation which detect the class and create the object is called as sterotype Annotation.
+	These are 5 types :
+	a) @Component : Create bean object to any non-abstract class
+	b) @Repository : Creating Object + Supports JDBC/ORM Operations setup
+	c) @Service : Creating Object + Transaction Management + Logics, calculations
+	d) @Controller : Creating Object + Web Application Setup.
+	e) @RestController : Creating Object + restful webservices support (@ResposenBody support)
+		
+
+14. What are Stand Alone Collections ? What are different ways of creating them?
+	A) An independent and Re-usable collection is called as Stand Alone Collection (SAC).
+	Using XML with util schema: <util:collectionname ..> </util:collectionname>
+	Using Java : @Bean over method returns Any Collection Type.
+
+15. Explain @Value annotation usage in Configuration?
+	a) It is used to provide static data to any primitive variable,
+	e) Supports Linking Parent with child object (#{childobject})
+
+16. What are different Types of dependencies in Spring?
+	A) 3 Types. Those are Primitive Types(8+1), Collection Types(4) and Reference types(HAS-A)
+
+17. How to inject null value using XML Configuration file?
+	A) using <null/> or <null></null> tag
+
+18. What are different ways of providing primitive data using XML?
+	A) value as tag ( <value>_</value>),
+	Value as attribute (<property name="" value=""/>)
+	P-schema/p-namespace (<bean .. P:variablename="data"..)
+
+19. What are different ways of writing reference type (link) using XML?
+	A) ref as tag (<ref bean="childbeanname"/>)
+	Ref as attribute (<property name=" " ref="childobjname"/>)
+	P-schema/p-namespace (<bean .. P:variablename-ref="childobjname"..)
+	Inner Bean (Child bean inside Parent Bean)
+
+20. What are different ways of providing entry for a map using XML?
+	A) 4 ways.
+	a) Key and Values as Tag , (<entry> <key>..</key> <value>..</value> </entry>)
+	b) Key and value as attributes(<entry key="" value="" />)
+	c) Key as tag and value as attribute(<entry value=""> <key>..</key> </entry>),
+	d) Key as attribute and value as tag (<entry key=""> <value>..</value> </entry>)
+
+21. What happens if same key is repeated in Map Configuration?
+	A) Value is overridden with last combination. Even for Properties also same.
+
+22. What are default implementation used by container for Collections?
+	A) List - ArrayList, Set-LinkedHashSet, Map-LinkedHashMap.
+
+23. When <list> or <set> tags are optional in XML Configuration?
+	A) If List or Set contains only one value.
+
+24. What is dependency check?
+	A)Making one dependency (variable) mandatory (@Required over its set method)
+
+25. What is wiring and auto-wiring ? Explain types of Autowiring?
+	A) Wiring is a process of linking parent bean and child bean by writing <ref/> tag manually.
+	Autowiring process creates links between them using container rules.
+	Note:-
+	@When autowring are enable any spring beansthe ioc container internally use refflection api to scan 
+	and get verious type of property constructors and setter method that are in same bean class.
+	Types of Autowiring:
+	a) no(none) No Autowiring (default value)
+	b) byName: based on HAS-A variable name and child <bean name="") (setter injection)
+				
+	c) byType: based on child classname name and child <bean class="") (setter injection)
+	d) constructor: It injects the child using Param constructor.
+	@Autowired : This annotation behaves by default like bytype, if multiple found then by name.
+	It follows internally required=true.
+
+
+27. What are few Common Exceptions found in Spring Application?
+	A) NoSuchBeanDefinitionException, NoUniqueBeanDefinitionException, TypeMismatchException,..etc
+
+28. Write XML, Java and Annotation Configuration using all types of Dependencies.
+29. Write Example for lifecycle methods
+30. Write Example for Inner Bean using XML Configuration
+31. Write Example for sacs using XML and Java Configs.
+32. Write Example for Loading and Reading Properties file in 3 configurations.
+33. Writer Example for Scopes and LMI Solution
+34. Explain Circular Dependency using XML with steps.
+35. Write Example for Map configuration in XML using different <entry> styles.
+36. What are the rules to write Spring Bean?
+37. Is Spring Bean Thread Safe?
+	A)No by default, because scope is singleton. To make it thread safe make it is prototype or session.
+
+38. Can we define multiple configuration file? How to handle them ?
+	A) Yes. But Import one into another finally.
+	Using XML <import resource="__.xml"/>
+	Using Java @Import(___.class)
+
+39. What are in-built design Patterns used by Spring?
+	A) Few are given below
+	a) Singleton Pattern: Singleton-scoped beans
+	b) Factory Pattern: Bean Factory classes
+	c) Prototype Pattern: Prototype-scoped beans
+	d) Adapter Pattern: Spring Web and Spring MVC
+	e) Proxy Pattern: Spring Aspect Oriented Programming support
+	f) Template Method Pattern: jdbctemplate, hibernatetemplate, etc.
+	g) Front Controller: Spring MVC dispatcherservlet
+	h) Data Access Object: Spring DAO support
+	i) Model View Controller: Spring MVC
+
+40. Which Layers Spring f/w supports coding (or implementation)?
+	A) Spring supports 4 layers. Those are Presentation Layer, Service Layer, Data Access Layer and Integration Layer.
+
+
+Annotations:-
+	@Required- 
+		This annotation is applied on bean setter methods(when need dependency check).
+		it means any property should not be null for that put @Required.
+		
+	@Component:-
+		to configured any java class as spring beans.
+		Indicates that an annotated class is a “component”.Such classes are considered as candidates 
+		for auto-detection when using annotation-based configuration and classpath scanning.
+	Property
+		@PropertySource and @Value annotations, Spring will use these at runtime to inject and 
+		set these variable values from specified property file.
+		for setting data values in propetires file and these values access through the @Value anno with $key.
+		properties
+			jdbc.user=system
+		@Value("${jdbc.user}")
+
+	@Value:-
+		This annotation is used at the field, constructor parameter, and method parameter level. 
+		Useful to inject the values allocated from the properties file.
+		Supports SpEL (Spring Expression Language).
+		Supports Reading Data from properties file (${key}).
+		Supports reading SAC into Collection Type Dependencies #{key}.
+		properties
+		jdbc.user=system
+		@Value("${jdbc.user}")
+	
+	@Lazy
+		The @Lazy annotation is used on component classes. 
+		By default, Spring boot initializes all the autowired dependencies and configure the project at startup. 
+		This annotation allows us to initialize the project components lazily, which means, 
+		the bean will be created and initialized when it is requested.
+	
+	@Autowired- 
+		This annotation is applied on fields, setter methods, and constructors. 
+		The @Autowired annotation injects object dependency implicitly.
+		OTE: As of Spring 4.3, @Autowired became optional on classes with a single constructor. 
+		In the above example, Spring would still inject an instance of the Person class if you omitted the @Autowired annotation.
+		
+	@Injact
+		it is a JEE java configuration anno.
+		Support byType,byName and Constructor.
+		so non-invansive spring app can be developed.
+		applied at field method(setter orbitry) method constructor.
+		@Named/@Qualifier to resolve the ambiguty problem.
+
+	@Qualifier:
+		This anno is used to choose one bean object in case of multiple child beans found to inject with target class.
+		while perforing byType mode of autowing there is possibility of getting ambigutiy problems to overcome this.
+		It is useful for reducing the duplicity while creating more bean files.
+		It provides more control over the dependency injection process.
+		we used @Qualifier which is make IOC container to perform "byName".
+
+	@Named
+		java config anno.
+		to resolve ambiguty problem that raised while performing byType mode of autowing.
+		it is (alternate to @Qualifier) can be used along with @Injact/@resource/@Autowired.
+		to configure/marks java class as spring beans and its alternate specific ann is @Component.
+		
+	@Resource
+		support byType/byName mode of autowing.
+		JDK java config ann.
+		make class as non-invansive.
+		can be applied on flied.
+		we can use name param to resolve ambiguty problem.
+
+	@Configuration:- 
+		the class wich is specify with @Configuration is called as configuration class.
+		in that class we add @Bean on the method that produce bean class obj.
+		these method executed automatically once IOC container is started.
+		if need to ceetian delay method execution util ctx.getBean() called put @Lazy anno. 
+		it is configuration using Java class.
+		
+	@Bean
+		The @Bean annotation is an alternative of XML <bean> tag. 
+		@Bean annotation acts as bean ID and it creates and returns the actual bean.
+		call inside Configuration class on the method to configure like Data Source.
+		This annotation is used at the method level so by default method name behaves as object name.
+		@Bean annotation works with @Configuration.
+		produce bean class obj.
+		if need to certian delay method execution util ctx.getBean() called put @Lazy anno. 
+
+	@ComponentScan
+		This annotation is used with @Configuration annotation to allow Spring to know --->
+		"packages to scan" for annotated components. linking configuration class.
+	
+	@EnableAutoConfiguration
+		The @EnableAutoConfiguration annotation is------->used to implicitly defines a base “search package”. 
+		Usually, it is placed on the main application class. 
+		It will automatically configure the projects by adding beans based on classpath settings, beans, and other property settings.
+
+		
+	@Controller:-
+		specilization of @Component,but usefull to configure class as Controller of Spring web/mvc app to process req given by cleint.
+		This annotation is used on Java classes that play the role of controller in a application.
+		The Java class annotated with @Controller is capable of handling multiple request mappings.
+		Creating Object + Web Application Setup.
+		
+	@Repository
+		specilization of @Component,but useful to config DAO class or Repository as the spring bean.
+		Capable of translating one form of exception to another form of exceptions 
+		and translate persistent technology exception to another exception.
+		Creating bean Object + Supports JDBC/ORM Operations setup
+		
+	@Service:-
+		specilization of @Component, but use to configure the java classes of service layer.
+		as of now special behavior so its same as @Component.
+		servie impl including business logic, calculations, call external APIs, etc. 
+		Generally, it holds the business logic of the application.
+		Creating Object + Transaction Management + Logics, calculations
+
+	@CokieValue:-
+		This annotation is used at method parameter level.
+		
+	@CrossOrigin---
+		This annotation is used both at class and method level to enable cross origin requests.
+		Annotation for permitting cross-origin requests on specific handler classes and/or handler methods.
+		Processed if an appropriate HandlerMappingis configured. 
+		Both Spring Web MVC and Spring WebFlux support this annotation through the RequestMappingHandlerMapping in their respective modules.
+
+	@ExceptionHandler:-
+		This annotation is used at method levels to handle exception at the controller level.
+		annotation is used to define the class of exception it will catch. 
+	
+	@RequestAttribute
+		This annotation is used to bind the request attribute to a handler method parameter.
+		Spring retrieves the named attributes value to populate the parameter annotated with @RequestAttribute.
+		While the @RequestParam annotation is used bind the parameter values from query string,
+		the @RequestAttribute is used to access the objects which have been populated on the server side.
+
+Spring Boot Annotion.
+	@SpringBootApplication used in the main class or bootstrap class of application.
+		bootstrap:-
+			bootstrap checking type of application(like standalone,web and reactive) based on the dependency present in pom.xml
+		class while setting up a Spring Boot project.
+		The class that is annotated with the @SpringBootApplication must be kept in the base package.
+		@Configuration             it is configuration using Java class as spring bean(It is a class-level annotation).
+		@EnableAutoConfiguration   @EnableAutoConfiguration annotation implicitly defines a base “search package”
+		@ComponentScan	           packages to scan for annotated components
+		these 3 annotation auto comes inside  SpringBootApplication
+		
+Spring Boot:-
+---------------
+	1) What is Spring Boot?
+		It is a Spring methodlogy and approach which provides RAD (Rapid Application Development) feature for the developing java app with Spring framework.
+		which eliminated the boilerplate configurations required for setting up a Spring application.
+		It is used to create stand alone spring based application which you can just run because it needs very little/or no spring configuration.
+		its aims to RAD.
+		Spring Boot automatically configures required classes depending on the libraries on its class path.
+		
+	spring boot come with	
+		Auto-Dependency resolution
+		Embadded Http Server
+		Auto configuration
+		managment endspoints
+		spring boot CLI
+		
+	Advantages	
+		it decreases the efort of developer.
+		default automatically configured.
+		It having default building tool like maven and gradle.
+		It doesn’t require XML configuration.		
+		Scan the classpath and find the dependency it will automatically configure things.
+		Automatically configure spring and 3rd party libs whenever possible.
+		Provide production-ready features such as matrix,health check and externalized configuration.
+		
+	why should go with Spring boot?
+		Spring Boot makes it easy to quickly bootstrap and start developing a Spring-based application. 
+		It avoids a lot of boilerplate code. 
+		It hides a lot of complexity behind the scene 
+		so that the developer can quickly get started and develop Spring-based applications easily.
+		stability
+		connectivity
+		native cloud
+		flexibility
+		open source.
+		
+	Features:-
+		Spring boot Cli
+		Actuator
+		spring initializer
+		starter dependency
+		auto configuration
+		logging and security
+		
+	Possible source of external configuration:-
+		Application propagates
+		CL properties
+		profile specific properties.
+		
+	
+	Spring boot starter:-
+		are set convenient dependency mgmt providers which can be used in the application to enable dependency.
+		these starts make development easy and RAPID.
+		all the available starters comes under the org.springframwork.boot group.
+		ex:- spring-boot-starter-data-jpa.
+		
+	Actuator and Advantages:-
+		with the help of you can se what happening inside a running application.
+		actuator provide a vry easy way to access the production-ready REST points and fatch all kinds of info from the web.
+		
+	spring boot dependency:-
+		used to mange dependency an configuration automatically without you specifies the version for any dependencies.
+	
+	Thymeleaf and how to used:-
+		is a server side java template engine used for web applications.
+		aim to brings natural templates for your web application and can integrate well with spring framework and html5 java web applications
+		add thymeleaf dependency.
+		
+		
+	Expose custom application properties:-
+		one way is by using @Value ann,
+		but only problm with this anno is that all configuration values will be distributed throughout the application.
+		
+		instead this use centeralized approch.
+		that you can define a configuration component using the @ConfigurationPropeties
+		
+	Advantages of YML file	and diff ways to load:-
+		that the data is stored in a hierarchical format.
+		vry easy for the developer to debug the issue.
+		
+		use YamlMapFactoryBean as a map
+		use YamlPropertiesBean to load YAML as properties.
+		
+		when need tomcat embaded jasper?
+			when programer want to work with jsp---9.x
+		what is application.yml
+			this is like application.properties, that is use for configuration.
+		
+		what is context path?
+			give application name with http url
+			http://localhost/2020/webapp
+			
+
+	2) What are Advantages of Spring Boot ?
+		X Create stand-alone Spring applications that can be started using java -jar.
+		X No requirement for XML configuration in Spring Boot Projects.
+		X Spring Boot uses application.properties file.
+		X Spring Boot supports Embed Tomcat Server, Jetty And it supports Embed Data Base like H2 DataBase, HSQL DB and Derbyetc¡K¡K¡K.
+		X Spring Boot supports Dev tools. This Service is given Spring Boot which perform post development operations automatically
+			when code changes are done in project.
+		X Dev tool will perform following tasks like
+		X Compile„³Packing„³Build„³Deploy„³.java to .class „³ .jar „³ .war „³ place in Server and Run.
+		X Spring Boot Actuator Provides production read endpoints
+
+	6)What is the configuration file name used by Spring Boot?
+		The configuration file used in spring boot projects is application.properties.
+		This file is very important where we would over write all the default configurations.
+		Normally we have to keep this file under the resources folder of the project.
+
+	7) What is application.properties?
+		This file is input to Spring Container. Here Spring Boot Provides default Configuration for all concepts
+		i.e <bean/> tags so Programmer is not required to write any <bean/> tags for Common Concepts like Email,
+		DataBase Connection, JMS, Log4J, ViewResolver etc…
+		“application.properties” must be created under “src/main/resources”.
+		It Stores Data in Key=Value format. Here all Keys are pre-defined.
+		Symbol “#” indicates Comment in “.properties” file.
+
+	8) How to configure External Databases in Spring Boot?
+		We can configure Database details using “DataSource” & “JPA” properties.
+		Here Programmer not required to write code for ”DataSource” & “SessionFactory” implemented class Objects these will be auto configured by Spring Boot.
+		We should only provide input details using (key=value) application.properties file.
+		Spring Boot provides by default “Connection-Pool” using Apache Tomcat server.
+		Ex: application.properties
+## DataSource
+		spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+		spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+		spring.datasource.username=username
+		spring.datasource.password=pwd
+## HibernateJpaAutoConfiguration(SessionFactory)
+		spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+		spring.jpa.show-sql=true
+		spring.jpa.hibernate.ddl-auto=update
+		spring.jpa.properties.hibernate.format_sql=true
+## Connection Pooling- ref PoolProperties
+		spring.datasource.tomcat.initial-size=5
+		spring.datasource.tomcat.max-active=20
+		spring.datasource.tomcat.max-idle=10
+		spring.datasource.tomcat.min-idle=5
+	
+	mail configuration
+		# add these new properties
+		spring.mail.transport.protocol=smtp
+		spring.mail.from.email=<your-email-goes-here>
+
+		# modify these properties with your credentials
+		spring.mail.username=<your-email-goes-here>
+		spring.mail.password=<password-goes-here>
+
+	9) What is “Swagger”?
+		It is a third party tool provided by “Spring-fox” to generate UI in HTML format for all Rest-Services in our application.
+		It provides complete API in simple HTML screen that contains Urls, Operation Names, Input & Output of Operations 
+		,sample input/output formats ,provider details & Contact information etc…
+		This Ui is called as “Docket”.
+		To Create this we must provide :
+		API base-package.
+		Common path for all RestControllers in application
+		API information & contact details also called as “MetaData”.
+
+	11) What is Profile in Spring Boot?
+		application.properties provides complete Environment details.
+		Instead of deleting all details for new Environment just we link to new application.properties file.
+		Ex: cloud.properties
+		
+
+			The development process of an application has different stages; the typical ones are development, testing, and production.
+			Spring Boot profiles group parts of the application configuration and make it be available only in certain environments.
+
+			Spring Boot allows to define profile specific property files in the form of application-{profile}.properties.
+			It automatically loads the properties in an application.properties file for all profiles,
+			and the ones in profile-specific property files only for the specified profile. 
+			The keys in the profile-specific property override the ones in the master property file.
+
+			There are plenty of ways of defining active profiles in Spring Boot,
+			including command line arguments,
+			Maven settings, JVM system parameters,
+			environment variables,
+			spring.profiles.active property, and SpringApplication methods.
+		
+		problem:-
+			whenever deploy any application on the deff environments i have to manually change properties for the specific environments like:- dev,QA,UAT,PILOT..etc.
+			properties may be:- DB,logging,smtp,apache,kafaka
+			lots of time will be west.
+			might be possible to configure wrong value.
+			every time hard-coded these properties.
+			development and productivity become slow.
+		solution:-
+			come in pichure.
+			profile to do environments specific configuration
+			spring fw and boot provide support for the profile.
+			with help of profle deploy any application on the deff environments without manually configuration.
+			need not to change any configuration or hard by the programmer or developer again nd again.
+			application.properties provides complete Environment details.
+		properties file:-
+			application.properties-----spring.profiles.activate=dev---configuring the dev profiles.
+			application-dev.properties
+			application-qa.properties
+			application-uat.properties
+			application-pilot.properties
+			application-prod.properties
+			
+		same as application.yml
+			spring:
+				profiles:
+					active: dev
+			
+			-------
+			spring:
+				profiles:dev
+				datasoruce:
+					username:sysout
+					password:root
+					url:jdbc:racle:thin:@localhost:1521/xe
+					driver-class-name:oracle.jdbc.driver.OracleDriver
+			-------------
+			spring:
+				profiles:prod
+				datasoruce:
+					username:manager
+					password:admin
+					url:jdbc:racle:thin:@localhost:1521/xe
+					driver-class-name:oracle.jdbc.driver.OracleDriver
+					
+					
+		Eamples:-
+		============================
+		@Component
+		@Profile(value="dev")
+		class MyRunner2 implements CommandLineRunner {
+
+			@Override
+			public void run(String... args) throws Exception {
+
+				System.out.println("In development");
+			}
+		}
+
+		@Component
+		@Profile(value="prod & !dev")
+		class MyRunner3 implements CommandLineRunner {
+
+			@Override
+			public void run(String... args) throws Exception {
+
+				System.out.println("In production");
+			}
+		}
+
+	12) Write a code for RestController?
+		is used to provide the routing info and tells to spring that any Http request must be mapped to the respectiive method.
+		RestController anno was introdused in 4.0 and its return the obj and obj data is directly written into http response as JSON or XML.
+		used to develop ReST Webservices application in Spring Boot.
+		@ResponseBody ann is active by default.
+		used for Integration layer.
+		can be integrated with any client (http client).
+		It also supports all HTTP operations like GET, POST, PUT, DELETE etc.. 
+		It supports auto conversion for JSON with @ResponseBody
+	
+	Controller--
+		This annotation is used on Java classes that play the role of controller in your application.
+		allows autodetection of component classes in the classpath and auto-registering bean definitions for them.
+		The Java class annotated with @Controller is capable of handling multiple request mappings.
+
+	
+	13) What is Spring Boot Auto Configuration?
+		Spring Boot looks at 
+		a) Frameworks available on the CLASSPATH 
+		b) Existing configuration for the application. 
+		Based on these, Spring Boot provides basic configuration needed to configure the application with these frameworks.
+		This is called Auto Configuration.
+
+	14) How spring boot handles error in application?
+		Spring Boot provides an “/error” mapping by default that handles all errors in a sensible way, and it is registered 
+		as a ‘global’ error page in the servlet container.
+
+	15) How to write custom log configuration in spring boot?
+		You can force Spring Boot to use a particular logging system using the “org.springframework.boot.logging.LoggingSystem” system property.
+		The value should be the fully-qualified class name of a LoggingSystem implementation. 
+		You can also disable Spring Boot’s logging configuration entirely by using a value of none.
+
+	16)What is the default Multipart File Uploads size in spring boot?
+		By default Spring Boot configures 
+		1MB per file to a maximum of 10MB of file data in a single request.
+
+	17)What is Hot swapping in spring boot?
+		Reloading the changes without restarting the server is called hot swapping, Modern IDEs (Eclipse, IDEA, etc.)
+		all support hot swapping of bytecode, so if you make a change that doesn’t affect class or method signatures 
+		it should reload cleanly with no side effects. It can be done using DevTools here
+
+	18)How do you Switch off the Spring Boot security configuration?
+		If you define a @Configuration with @EnableWebSecurity anywhere in your application it will switch off
+		the default webapp security settings in Spring Boot.
+
+	19) What is caching? Have you used any caching framework with Spring Boot ?
+		A cache is an area of local memory that holds a copy of frequently accessed data that is otherwise expensive to get or compute.
+	
+	Dev-Tools:-
+	------------
+		stands for Devs tool.
+		emprove development time while working with spring boot application.
+		Dev tool pickup the changes when code changes are done in project and restart the server.
+		
+		Features:-
+				Defult property.
+				Automatic start.
+				Live Reload.
+				Remote application.
+		Work:-		
+			Compile„³Packing„³Build„³Deploy„³.java to .class „³ .jar „³ .war „³ place in Server and Run.
+		
+		Dependecny:-
+		------------
+			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<version>2.0.4.RELEASE</version>
+			</dependency>
+			
+		RestController:-	
+			Annotation for mapping web requests onto methods in request-handling classeswith flexible method signatures. 
+
+		Both Spring MVC and Spring WebFlux support this annotation through a RequestMappingHandlerMapping and RequestMappingHandlerAdapterin 
+		their respective modules and package structure.
+
+	
+				1. Application.properties file
+				spring.cache.type=none
+			2. Application.yml file
+				spring:
+				cache:
+				type: "none"
+			3. SpringBootApplication main method
+			package com.yawintutor.cache;
+
+			import java.util.Properties;
+
+			import org.springframework.boot.SpringApplication;
+			import org.springframework.boot.autoconfigure.SpringBootApplication;
+			import org.springframework.cache.annotation.EnableCaching;
+
+			@SpringBootApplication
+			@EnableCaching
+			public class SpringBootEnableDisableCacheApplication {
+
+				public static void main(String[] args) {
+					SpringApplication application = new SpringApplication(SpringBootEnableDisableCacheApplication.class);
+					Properties properties = new Properties();
+					properties.setProperty("spring.cache.type", "none");
+					application.setDefaultProperties(properties);
+					application.run(args);
+				}
+
+			}
+Steps to Disable cache in Spring Boot
+	Caching improving performance of the application.
+	Cache will force the application to restart when the developer changes the code or debug issue.
+	Most of the time, it is necessary to disable cache temporarily to fix problems quickly.
+	Normally, we need to comment the code manually in all references.
+	Spring boot support to disable the cache globally by configuring it in one place.
+	Here, we’ll see different ways to disable spring boot cache.
+
+
+2) How to exclude any package without using the basePackages filter?
+	There are different ways you can filter any package.
+	But Spring Boot provides a trickier option for achieving this without touching the component scan. 
+	You can use the "exclude attribute" while using the annotation  @SpringBootApplication. See the following code snippet:
+
+
+@SpringBootApplication(exclude= {Employee.class})
+	public class FooAppConfiguration {}
+
+3) How to disable a specific auto-configuration class?
+	You can use the exclude attribute of @EnableAutoConfiguration, if you find any specific auto-configuration classes 
+	that you do not want are being applied.
+
+
+//By using "exclude"
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+	On the other foot, if the class is not on the classpath, you can use the excludeName attribute of the annotation and specify 
+	the fully qualified name instead.
+
+//By using "excludeName"
+	@EnableAutoConfiguration(excludeName={Foo.class})
+	Also, Spring Boot provides the facility to control the list of auto-configuration classes to exclude by using the spring.autoconfigure.
+	exclude property. You can add into the application.properties. And you can add multiple classes with comma separated.
+
+
+//By using property file
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+	Actuator:-
+	==========
+	1) What is Spring Boot Actuator?
+		This is a Pre-defined Web-services defined by Spring Boot ,which supports at “Production Environment”.
+		Spring Boot Actuator is a sub-project of Spring Boot. 
+		It includes a number of additional features that help us to monitor and manage the Spring Boot application. 
+		It contains the actuator endpoints (the place where the resources live). 
+		We can use HTTP and JMX endpoints to manage and monitor the Spring Boot application. 
+		If we want to get production-ready features in an application, we should use the Spring Boot actuator.
+		by Spring Boot Actuator such as application health, bean details, version details, configurations, logger details,
+					
+		Spring Boot Actuator Features
+			There are three main features of Spring Boot Actuator:
+
+						Endpoints
+							
+						Metrics-
+							Spring Boot Actuator provides dependency management and auto-configuration for Micrometer, 
+							an application metrics facade that supports numerous monitoring systems.
+						Audit
+							This feature can be very useful for reporting and for implementing a lock-out policy based on authentication failures.
+						Logger: It provides a feature to view and update the logs level.
+					
+				EndPoint:
+					The actuator endpoints allow us to monitor and interact with our Spring Boot application. 
+					Spring Boot includes number of built-in endpoints and we can also add custom endpoints in Spring Boot application.	
+					By default, all endpoints except for shutdown are enabled. 
+					management.endpoint.shutdown.enabled=true
+					
+					management.endpoints.enabled-by-default=false
+					management.endpoint.info.enabled=true
+					
+					Here Endpoint means URL path to one (Web) Services which is developed & added to one Application also running in server.
+				Example of Actuator Endpoints:
+					url/beans= To see Object Created in Spring Container & their details like Name, Scope, Dependencies etc…
+					url/health=To know status of supporting services like: Db Status, Email Services Etc…
+					
+					
+				Health check: You can use a health endpoint to check the status of your running application.
+				
+				Expose Custom Endpoint
+					Any methods annotated with @ReadOperation, @WriteOperation, or @DeleteOperation are automatically exposed over JMX and HTTP. 
+					Even you can expose technology-specific endpoint by using @JmxEndpoint or @WebEndpoint.
+				
+		Different Actuator Endpoints:-
+		==============================
+			Once above maven dependency is included in the POM file, 16 different actuator REST endpoints, such as actuator,
+			beans, dump, info, loggers, and metrics are exposed.
+			For a complete list of actuator REST endpoints, with examples, you can take a look here.
+			If you are using Spring MVC on top of this, then four additional endpoints — docs, heapdump, jolokia, and logfile can be used.
+
+		Customizing Actuator Endpoints
+			Spring Boot allows customizing endpoints by using Spring properties. 
+			Simply mention the properties you want to customize in your application.properties. 
+			You can customize an endpoint in three ways.
+				You can enable or disable an endpoint, 
+				customize its sensitivity, 
+				and also its id.
+			The following is an example that changes the sensitivity and id of the metrics endpoint and also enables shutdown.
+				endpoints.metrics.id=springmetrics
+				endpoints.metrics.sensitive=false
+				endpoints.metrics.enabled=true
+					
+			The following example marks all endpoints as sensitive except info.
+				endpoints.sensitive=true
+				endpoints.info.sensitive=false
+				
+				In Spring Boot, including the above dependencies will by default provide inbuilt form-based 
+				authentication with the userid as the user and a randomly generated password.
+				The following entries are then required to enable basic security to your sensitive endpoints.
+
+				management.security.enabled=true
+				security.basic.enabled=true
+				security.user.name=admin
+				security.user.password=admin
+
+		5) How to enable/disable the Actuator?
+			Enabling/disabling the actuator is easy;
+			the simplest way is to enable features to add the dependency (Maven/Gradle) to the spring-boot-starter-actuator,
+			i.e. Starter. If you don't want the actuator to be enabled, then don't add the dependency.
+
+		7) What is a shutdown in the actuator?
+			Shutdown is an endpoint that allows the application to be gracefully shutdown. 
+			This feature is not enabled by default.
+			You can enable this by using management.endpoint.shutdown.enabled=true in your application.properties file.
+			But be careful about this if you are using this.	
+
+		8) Is this possible to change the port of Embedded Tomcat server in Spring boot?
+			Yes,  You can use the application.properties file to change the port.
+			But you need to mention "server.port" (i.e. server.port=8081).
+			Make sure you have application.properties in your project classpath; REST Spring framework will take care of the rest. 
+			If you mention server.port=0 , then it will automatically assign any available port.
+
+		9) Can we override or replace the Embedded Tomcat server in Spring Boot?
+			Yes, we can replace the Embedded Tomcat with any other servers by using the Starter dependencies.
+			You can use spring-boot-starter-jetty  or spring-boot-starter-undertow as a dependency for each project as you need.
+
+		10) Can we disable the default web server in the Spring Boot application?
+			Yes, we can use the application.properties to configure the  spring.main.web-application-type=none.
+
+		Q5. Explain how to create Spring Boot application using Maven 
+			ways to create a Spring Boot project/ application using maven:
+			Spring Boot CLI
+			Spring Starter Project Wizard
+			Spring Initializr
+			Spring Maven Project
+
+		Q10. What is Spring Boot dependency management?
+			basically used to manage dependencies and configuration automatically without you specifying
+			the version of dependencies.
+
+		Q11. Mention the minimum requirements for a Spring boot System
+			Spring Boot Logo - Spring Boot Interview Questions - EdurekaSpring Boot 2.1.7.RELEASE requires
+			Java 8 +
+			Spring Framework 5.1.9 +
+			Explicit build support
+
+			Maven 3.3+
+			Gradle 4.4+
+			Servlet Container Support
+
+			Tomcat 9.0 – Servlet Version 4.0
+			Jetty 9.4 –  Servlet Version 3.1
+			Undertow 2.0 – Servlet Version 4.0
+
+		Explain what is thymeleaf and how to use thymeleaf?
+			Thymeleaf is a server-side Java template engine used for web applications.
+			It aims to bring natural template for your web application and can integrate well with Spring Framework and HTML5 Java web applications. 
+			To use Thymeleaf, you need to add the following code in the pom.xml file:
+			<dependency>    
+			<groupId>org.springframework.boot</groupId>    
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>    
+			</dependency>    
+
+		Q15. Mention the steps to create a Spring Boot project using Spring  Initializr
+			Spring Initializr is a web tool provided by Spring. With the help of this tool,
+			you can create Spring Boot projects by just providing project details.
+
+			The following steps need to be followed to create a Spring Boot project using Spring Initializr:
+			Choose the maven project and the required dependencies.
+			Then, fill the other required details like Group, Artifact, and then click on Generate Project.
+			Once the project is downloaded, extract the project onto your system
+			Next, you have to import this project using the import option on the Spring Tool Suite IDE
+			While importing the project, remember that you have to choose the project type to be Maven and the source project should contain the pom.xml file.
+			Once, all the above steps are followed you will see that the Spring Boot project is created with all the required dependencies.
+			Next, you have to create a controller to handle the HTTP requests, by mentioning the following code:
+
+			package com.edureka;
+			import org.springframework.web.bind.annotation.RequestMapping;
+			import org.springframework.beans.factory.annotation.Autowired;
+			import org.springframework.jdbc.core.JdbcTemplate;
+			import org.springframework.web.bind.annotation.RestController;
+			@RestController
+			public class JdbcController {
+			@Autowired
+			JdbcTemplate jdbc;
+			@RequestMapping("/insert")
+			public String index(){
+			jdbc.execute("insert into customers(name)values('Aryya')");
+			return "Data Entry Successful";
+			}
+			}
+		Step 8: Finally, execute this project as a Java application.
+		Step 9: Next, open the URL (localhost:8080/insert), and you will see the output as Data Entry Successful.
+			You can also go forward and check if the data is entered into the table.
+
+		Q17. How to enable HTTP/2 support in Spring Boot
+			You can enable the HTTP/2 support in Spring Boot by: server.http2.enabled=true
+
+		Q18.What are the @RequestMapping  and @RestController annotation in Spring Boot used for?
+			@RequestMapping	                                                                  
+			Provide the routing information and tells to Spring that any HTTP request yes, then must be mapped to the respective method.
+			To use this annotation, you have to import org.springframework.web.
+			bind.annotation.RequestMapping;
+
+			@RestController
+			This annotation add the @ResponseBody and @Controller annotation to the class
+			To use this annotation, you have to import org.springframework.web.
+			bind.annotation.RestController;
+
+			package com.edureka; 
+			import org.springframework.web.bind.annotation.RequestMapping; 
+			import org.springframework.web.bind.annotation.RestController; 
+			@RestController 
+			public class SampleController { 
+			@RequestMapping("/example") 
+			public String example(){ 
+			return"Welcome To Edureka"; 
+				} 
+			} 
+		Q19. What is Spring Boot CLI and how to execute the Spring Boot project using boot CLI?
+			Spring Boot CLI is a tool supported by the official Spring Framework.
+			The steps to execute a Spring Boot project are as follows:
+			Download the CLI tool from the official site and extract the zip file.
+			The bin folder present in the Spring setup is used to execute the Spring Boot application.
+			Since Spring Boot CLI executes groovy files, you need to create a groovy file for Spring Boot application.
+			So, to do that, open terminal and change the current directory to the bin folder. Now, open a groovy file (for example Sample.groovy)
+			In this file create a controller as follows:
+			@RestController   
+			public class Sample {   
+			@RequestMapping("/example")   
+			String index(){   
+			<h1>"Welcome To Edureka"</h1>;  
+			}   }
+
+
+		Q20. Mention the differences between JPA and Hibernate
+			JPA										                                        Hibernate
+			JPA is a Data Access Abstraction used to reduce the amount of boilerplate code	Hibernate is an implementation of Java Persistence API and offers benefits of loose coupling
+
+
+		can we create a custom endpoint in Spring Boot Actuator?
+			To create a custom endpoint in Spring Boot 2.x, you can use the @Endpoint annotation.
+			Spring Boot also exposes endpoints using @WebEndpointor,
+			@WebEndpointExtension over HTTP with the help of Spring MVC, Jersey, etc.
+
+		What are the differences between @SpringBootApplication and @EnableAutoConfiguration annotation?
+			@SpringBootApplication								@EnableAutoConfiguration
+			Used in the main class or bootstrap class			Used to enable auto-configuration  and component scanning in your project
+			It is a combination of @Configuration, 				@ComponentScan and	It is a combination of @Configuration and @ComponentScan annotations
+			@EnableAutoConfiguration annotations.	
+
+		The packaging element in the pom.xml file must be set to jar to build a JAR file as below:
+			<packaging>jar</packaging>
+		Similarly, if you want to build a WAR file, then you will mention
+			<packaging>war</packaging>
+		Can you explain how to deploy to a different server with Spring Boot?
+		To deploy a different server with Spring Boot, follow the below steps:
+
+		Generate a WAR from the project
+			Then, deploy the WAR file onto your favorite server
+
+		What is the difference between RequestMapping and GetMapping?
+			The @GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+			Both these methods support the consumes. The consume options are :
+
+			consumes = “text/plain”
+			consumes = {“text/plain”, “application/*”}
+
+		Q44. What is the error you see if  H2 is not in the classpath?
+			If H2 is not present in the classpath, then you see the following error:
+			Cannot determine embedded database driver class for database type NONE
+			To resolve this error, add H2 to the pom.xml file, and restart your server.
+			The following code snippet can be added to add the dependency:
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<scope>runtime</scope>
+			</dependency>
+			
+			
+JPA:-
+=======
+	(doublt)The Java Persistence API (JPA) is the specification of Java that is "used to persist data" between Java object and relational database. 
+	JPA is a specification which means a set of guidelines be followed to represent Java objects in databases. 
+	JPA provides a set of concepts in the form of interfaces & annotations to configure Java objects.
+	JPA acts like as bridge between object-oriented domain models and relational database systems. 
+	As JPA is just a specification, it doesn't perform any operation by itself.
+	It requires an implementation.
+	
+	Reasons to use Spring Data JPA?
+		No-code Repositories
+		Reduced boilerplate code
+		Generated queries
+		
+		create a JPA-based repository layer that is mainly for CRUD operations, and you do not want to create abstract DAO, 
+		implementing interfaces, Spring Data JPA is a good choice.
+		
+	Spring data work with 3 ways:-
+		1-using custom method of CrudRepository/JPARepository
+		2-generate query using findBy method
+		3-using custom Quesy.
+	
+	Features:-
+		Simplifies Data Access Layer.
+		Intelligent Spring Repository Stereotyped Interfaces
+		Auditing, Paging, Handling Native SQL Queries
+		Extending and adding custom query with JPQL
+		Query Domain Specific Language(DSL)
+		Defining custom methods.
+	
+	CrudRepository and JPARepository pred-define interface provided by Spring data JPA.
+	in this interface we are having saveral method which is to perform crud operation.
+	
+	Repository----marker interface
+		extends
+			CrudPrepository---Prede-fine Interface
+				extends
+					UserRepository---Custom Interface
+		Note:-
+			1-if we create User define  Repository extends with CrudRepository, then implementation class will be created at the runtime
+			  for our user define repository interface.
+			2-for a using orm then two anno put must @Entity and @Id.
+			
+	Why @Repository is a opetional?
+		  1-whenever our application is start componentscan is happen hten its regoznige bean
+		  2-First they will scan data repository available in a classpath then Spring data jpa provde impl class for your interfce 
+		    and will representsnt as a spring bean in the runtime.this is the reason.
+		
+		Note:-  1-java cant create obj for interface and IOC also.
+				2-for the get obj using getBeans() of user define repository proxy design pattern comes in the pichture at run time,
+				  bcoz of that impl class is create at runtime.
+	
+	Foreign key:-
+		link table togather.
+		a field in one table that refers pk to another table. 
+	
+	Where to use JPA?
+		To reduce the burden of writing codes for relational object management, a programmer follows the ‘JPA Provider’ framework,
+		which allows easy interaction with database instance. 
+		Here the required framework is taken over by JPA.
+	
+	@Entity:- Specifies that the class is an entity. This annotation can be applied on Class, Interface of Enums.
+	@Table:-  It specifies the table name in the database with which this entity is mapped. 
+	@Column:  Specify the column mapping using @Column annotation.        -----@Table(name = "employee")
+	@Id:-  This annotation specifies the primary key of the entity class.
+	@GeneratedValue: This annotation specifies the generation strategies for the values of primary keys.
+					Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.sk.dto.ParentService
+					when your are not specified indedentifier---like @Id
+	Boolean property contain setter and is method.
+	
+	@Embedded	This annotation specifies the properties of class or an entity whose value instance of an embeddable class.
+	
+	@JoinColumn :-
+		annotation is used for one-to-one or many-to-one associations when "foreign key is held by one of the entities".
+		
+	@PrimaryKeyJoinColumn:- 
+		This annotation is used to associate entities sharing the same primary key.
+	
+	@AccessType
+		Annotation to define how Spring Data shall access values of persistent properties. 
+		Can either be Type.FIELDor Type.PROPERTY. Default is field access.	
+		
+	@Param:-
+		Annotation to bind as method parameters be bound to a query via a named parameter.
+	
+	@Eager Loading	
+		will load all dependent enitiy.
+		will be retrieving all dependent entities.
+		In eager loading, an entity is immediately loaded at the time of parent gets loaded. 
+	
+	@Lazy Loading
+		In lazy loading, an entity is only loaded when an actual getter generate for that the entity is called.
+		will be retrieving dependent entity based on the request.
+		will load first main entity class and then dependent enitiy class	
+		use-case:-
+			loading for 
+		
+		
+	Eager fetch
+		Fetching the whole record while finding the record using Primary Key.	
+		Loads ALL relationships
+	
+	lazy fetch
+		But lazy fetch is possible when you try to fetch the record for the first time. 
+		That way,Doesn’t load the relationships unless explicitly “asked for” via getter 
+		Performance wise, lazy fetch is preferable.
+			
+	Methods inherited from interface org.springframework.data.jpa.repository.JpaRepository
+		deleteAllInBatch, deleteInBatch, findAll,findAllById, flush, getOne, saveAll, saveAndFlush
+		
+	Methods inherited from interface org.springframework.data.repository.PagingAndSortingRepository
+		findAll
+	Methods inherited from interface org.springframework.data.repository.CrudRepository
+		count, delete, deleteAll, deleteAll, deleteById, existsById, findById, save
+		
+	Methods inherited from interface org.springframework.data.repository.query.QueryByExampleExecutor
+		count, exists, findAll, findOne
+		
+	Methods inherited from interface org.springframework.data.jpa.repository.JpaSpecificationExecutor
+		count, findAll, findAll, findAll, findOne
+	
+	
+	@Query---JPQL
+	@NativeQuery---SQL	
+	@Version
+	@Lob	
+	@Transient:-
+		Field will not be saved in database.
+	@NamedQuery
+	@NamedNativeQuery
+	
+	What Is Cascading?
+		Entity relationships often "depend on the existence" of another entity — for example, the Person–Address relationship. 
+		Without the Person, the Address entity doesn't have any meaning of its own. 
+		When we delete the Person entity, our Address entity should also get deleted.
+			Person{
+				private int id;
+				private String name;
+				@OneToOne(cascade = CascadeType.ALL) 
+				private Address address;
+			}
+		
+	OneToOne-----default type---FetchType.Eager
+	OneToMay-----default type---FetchType.Lazy
+	ManyToOne-----default type---FetchType.Eager
+	ManyToMany-----default type---FetchType.Lazy	
+			
+			
+	2.1. JPA Cascade Type
+		All JPA-specific cascade operations are represented by the javax.persistence.CascadeType enum containing entries:
+
+		ALL-Cascade.ALL propagates all operations — including Hibernate-specific ones — from a parent to a child entity.
+		PERSIST
+		MERGE
+		REMOVE
+		REFRESH
+		DETACH
+		
+		Persist:-
+		---------
+			The persist operation makes a transient instance persistent. 
+			CascadeType PERSIST propagates the persist operation from a parent to a child entity. 
+			When we save the person entity, the address entity will also get saved.
+		
+		CascadeType.MERGE
+			The merge operation copies the state of the given object onto the persistent object with the same identifier. 
+			CascadeType.MERGE propagates the merge operation from a parent to a child entity.
+			
+		CascadeType.Remove
+			CascadeType.REMOVE propagates the remove operation from parent to child entity. 
+			Similar to JPA's CascadeType.REMOVE, we have CascadeType.DELETE, which is specific to Hibernate.
+			
+		CascadeType.DETACH
+			The detach operation removes the entity from the persistent context. 
+			When we use CascaseType.DETACH, the child entity will also get removed from the persistent context.
+		
+		
+		CascadeType.Refresh
+			When we use this operation with CascadeType REFRESH, 
+			the child entity also gets reloaded from the database whenever the parent entity is refreshed.
+			
+		Both persist and merge have unique purposes.
+			Persist:
+			Persist takes an entity instance and adds it to the context making that instance managed.
+			Insert a new register to the database.
+			
+			Merge:
+			Merge creates a new instance of your entity, copies the state from the supplied entity and then makes the new copy managed.
+			Find an attached object with the same id and update it.
+		
+		
+	2.2. Hibernate Cascade Type
+		Hibernate supports three additional Cascade Types along with those specified by JPA. 
+		These Hibernate-specific Cascade Types are available in org.hibernate.annotations.CascadeType:
+
+		REPLICATE
+		SAVE_UPDATE
+		LOCK
+		
+		CascadeType.LOCK
+			Unintuitively, CascadeType.LOCK re-attaches the entity and its associated child entity with the persistent context again.
+			
+			
+		CascadeType.REPLICATE
+			The replicate operation is used when we have more than one data source, and we want the data in sync
+		
+	
+	for configuration of data:
+	--------------------------
+		datasoruce.name=
+		datasource.url=
+		datasource.diver-class-name=
+		datasource.username=
+		datasource.password=
+		
+		hibernate confuguration
+		spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+		spring.jpa.hibernate.ddl-auto=update/create
+		
+	Iterable multiple obj send to db-
+		-------------------------------
+		List<User> users=List.of(user1,user2);
+		Iterable(User) result=userRepo.saveAll(users);
+		result.forEach(name)->{
+		sysout(name)
+		});
+		
+		Iterable<User> users=userRepo.findAll();
+		users.forEach(name->sysout(name)) for single
+			users.forEach(name->{
+				sysout(name);
+				}); for multple
+	
+	If you add Spring Data dependency in pom.xml,then it will activate spring data and you should configure data source in properties file.
+		Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+		Reason: Failed to determine a suitable driver class.
+		
+	Orm:-
+		when be need to perform object type operation in db then go with orm/hibernate.
+		orm convert row into object.
+		get the data from db and return in object.
+		the object need to perform as a insert into db.
+		if you dont prefare orm then you have to manually write sql
+		
+	
+		EntityManager(I)
+			EntityManagerFactory(I) class
+				create
+				get
+				update
+				delete
+			
+	CRUDRepositry
+		provide specification.
+	
+	JPARepository--is a child repo of CRUDRepositry,that rovide extra functionality.
+		flush db directly.
+	
+	JPARepository(Entity,"indentity")
+			Entity- what type of data want handle.
+			indentity-what type of id entity class.
+			
+	Spring-boot-startar-data-jpa
+		orm dependency
+		hibernate core
+		and java persistance api 
+		
+	Jpa and Hibernate diff:-
+		Hibernate-
+			for crud operations have to write logic maually.
+
+		JPA:-
+			jpa proviide built-in template for perform crud operation.
+			
+
+	There are three basic types of JPA Queries:
+	-------------------------------------------
+	Query:-
+			Query, written in Java Persistence Query Language (JPQL) syntax
+			Query refers to JPQL/HQL query with syntax similar to SQL generally used to execute DML statements(CRUD operations).
+			In JPA, you can create a query using entityManager.createQuery().
+
+	NativeQuery:-
+			NativeQuery, written in plain SQL syntax
+			Native query refers to actual sql queries (referring to actual database objects). 
+			These queries are the sql statements which can be directly executed in database using a database client.
+
+	There are two additional Query sub-types:
+			TypedQuery
+			NamedQuery
+		
+	CustomUpdate Query:-
+    -------------------	
+	In fact, JPA defines two annotations, @Modifying and @Query, which allow us to write our update statement explicitly.
+	We can now tell our application how to behave during an update, without leaving the burden on the ORM.
+	Let's add our custom update method in the repository:
+
+			@Modifying
+			@Query("update Customer u set u.phone = :phone where u.id = :id")
+			void updatePhone(@Param(value = "id") long id, @Param(value = "phone") String phone);
+			Now, we can rewrite our update method:
+
+			public void updateCustomerContacts(long id, String phone) {
+				repo.updatePhone(id, phone);
+			}
+
+	@Query, written in Java Persistence Query Language (JPQL) syntax
+			Using named queries to declare queries for entities is a valid approach and works fine for a small number of queries.
+			
+			@Query("FROM Author WHERE firstName = ?1")
+			List<Author> findByFirstName(String firstName);
+			
+			@Query("SELECT a FROM Author a WHERE firstName = ?1 AND lastName = ?2")
+			List<Author> findByFirstNameAndLastName(String firstName, String lastName);
+			
+			@Query("SELECT u FROM User u WHERE UserName = ?1 AND Password = ?2")
+			List<Author> findByUserNameAndPassword(String UserName, String password);
+			
+			@Query("FROM Author WHERE firstName = ?1 ORDER BY lastName ASC")
+			List<Author> findByFirstNameOrderByLastname(String firstName);
+			
+			@Query("Select c From Company c")        //JPQL
+			List<Company> getDetailsParentService();
+			
+			@Query("select c From Company c where c.cname =:n")  //company Should be like Company
+			<List>Company getCompanyByName(@Param("n") String cname);  // JPQL
+			
+			@Query(value = "Select * from Company",nativeQuery = true)   //nativeQury--mean sql query
+			List<Company> getService();
+ 
+
+
+			
+		select u from User u where u.emailAddress = ?1 and u.lastname = ?2
+		@Entity
+		@NamedQuery(name = "User.findByEmailAddress",
+		query = "select u from User u where u.emailAddress = ?1")
+		public class User {
+
+		}
+		public interface UserRepository extends JpaRepository<User, Long> {
+			List<User> findByLastname(String lastname);
+			User findByEmailAddress(String emailAddress);
+		}
+		and
+		public interface UserRepository extends JpaRepository<User, Long> {
+		  @Query("select u from User u where u.emailAddress = ?1")
+		  User findByEmailAddress(String emailAddress);
+		}
+
+	@NativeQuery, written in plain SQL syntax
+		The @Query annotation allows for running native queries by setting the nativeQuery flag to true, as shown in the following example:
+		Example 63. Declare a native query at the query method using @Query
+		public interface UserRepository extends JpaRepository<User, Long> {
+
+		  @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
+		  User findByEmailAddress(String emailAddress);
+		}
+	Criteria API Query, constructed programmatically via different methods
+	
+	Method:-
+		save();
+		saveAll();
+		findAll();
+		findById();
+		findAllById();
+		delete()/deleteAll/deleteById();
+		
+		note:-
+			find----introducer
+			ByName---By(creteria) and Name is a property of Entity class 
+			
+		
+	Lazy:-	
+		DEFAULT (default) — Repositories are instantiated eagerly unless explicitly annotated with @Lazy.
+		The lazification only has effect if no client bean needs an instance of the repository as that will require
+		the initialization of the repository bean.	
+	Example:-
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		  
+		  @Id
+		  @Column(name = "id")
+		  @GeneratedValue(strategy=SEQUENCE, generator="ID_SEQ")
+		  private int id;
+		}
+	}
+	@OrderBy: Sort your data using @OrderBy annotation. 
+			  In example below, it will sort all employees_address by their id in ascending order.
+			@OrderBy("id asc")
+			private Set employee_address;
+	
+	@Transient: Every non static and non-transient property of an entity is considered persistent,
+			unless you annotate it as @Transient. 
+			@Transient
+			Private int employeePhone;
+	OneToOne:-
+	-----------
+		Employee and EmployeeDetail entities share the same primary key and we can associate them using @OneToOne and @PrimaryKeyJoinColumn.
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		   
+		  @Id
+		  @Column(name = "id")
+		  @GeneratedValue
+		  private int id;
+		   
+		  @OneToOne(cascade = CascadeType.MERGE)
+		  @PrimaryKeyJoinColumn                   //hould be used for associated entities sharing the same primary key.
+		  private EmployeeAddress employeeAddress;
+		}
+		 
+		@Entity
+		@Table(name = "employeeDetail")
+		public class EmployeeAddress implements Serializable {
+		 
+		  @Id
+		  @Column(name = "id")
+		  private int id;
+		}
+	@ManyToOne
+		Many employees can share the same status. 
+		So, employee to employeeStatus is a many to one relation.
+		@ManyToOne annotation can be used for the same.
+
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		 
+		  @ManyToOne
+		  @JoinColumn(name = "statusId")
+		  private EmployeeStatus status;
+		}
+		
+	Units	Description
+		EntityManagerFactory	This is a factory class of EntityManager. It creates and manages multiple EntityManager instances.
+		EntityManager			It is an Interface, it manages the persistence operations on objects. It works like factory for Query instance.
+		Entity					Entities are the persistence objects, stores as records in the database.
+		EntityTransaction		It has one-to-one relationship with EntityManager. For each EntityManager, operations are maintained by EntityTransaction class.
+		Persistence				This class contain static methods to obtain EntityManagerFactory instance.
+		Query					This interface is implemented by each JPA vendor to obtain relational objects that meet the criteria.
+		
+	@OneToMany( targetEntity=Employee.class )
+    private List employeelist;
+	
+	What type of collections can be used in JPA?
+		To store multivalued entity associations and a collection of objects, following types of Java collections is used: -
+
+		List
+		Set
+		Map
+	
+	What type of objects can be stored in the JPA collections mapping?
+		Following are the type of objects that JPA allows to store: -
+
+		Basic Types
+		Entities
+		Embeddable
+		
+	What are the constraints on an entity class?
+		An entity class must fulfill the following requirements:
+
+		The class must have a no-argument constructor.
+		The class can't be final.
+		The class must be annotated with @Entity annotation.
+		The class must implement a Serializable interface if value passes an empty instance as a detached object.
+		
+	What is the role of Entity Manager in JPA?
+		An entity manager is responsible for the following operations.
+
+		The entity manager implements the API and encapsulates all of them within a single interface.
+		The entity manager is used to read, delete and write an entity.
+		An object referenced by an entity is managed by entity manager.
+		
+	What are the different directions of entity mapping?
+		The direction of a mapping can be either unidirectional or bidirectional. 
+		In unidirectional mapping, only one entity can be mapped to another entity, 
+		whereas in bidirectional mapping each entity can be mapped or referred to another entity.
+		
+	What is the JPQL?
+		JPQL is the Java Persistence query language defined in JPA specification. It is used to construct the queries.
+		
+	What are the advantages of JPA?
+		The advantages of JPA are given below.
+		The burden of interacting with the database reduces significantly by using JPA.
+		The user programming becomes easy by concealing the O/R mapping and database access processing.
+		The cost of creating the definition file is reduced by using annotations.
+		We can merge the applications used with other JPA providers
+		Using different implementations can add the features to the standard Implementation which can later be the part of JPA specification.
+	
+	What is the object-relational mapping?
+		The object-relational mapping is a mechanism which is used to develop and maintain a relationship between an object and 
+		the relational database by mapping an object state into the database column. It converts attributes of programming code into columns of the table. 
+		It is capable of handling various database operations easily such as insertion, updation, deletion, etc.
+		
+	What are the different types of entity mapping ?
+		One-to-one mapping: 
+				This mapping represents a single-valued association where an instance of one entity is associated with an instance of another entity. 
+				This means that one instance of source entity can be mapped with at most one instance of the target entity.
+		One-To-Many mapping: 
+				This mapping collection-valued association,
+				where an entity is associated with a collection of other entities. 
+				instance of one entity can be mapped with any number of instances of another entity.
+		Many-to-one mapping: 
+				This mapping represents a single-valued association,
+				where a collection of entities can be associated with the similar entity. 
+				This means that more than one row of an entity can refer to the same row of another entity.
+		Many-to-many mapping: 
+				This mapping represents a collection-valued association where any number of entities can be associated with a collection of other entities. 
+				This means that more than one row of one entity can refer to more than one row of another entity.
+				
+		What is the role of Entity Manager in JPA?
+				An entity manager is responsible for the following roles in JPA.
+				The entity manager has the role to manage an object referenced by an entity.
+				It implements the API and encapsulates all of them within a single interface.
+				It is used for operations like read, delete and write an entity.
+
+	
+What is Spring ORM?
+===================
+	Spring ORM is covers many technologies like Hibernate, iBatis and JPA.  
+	Spring provides integration classes thanks to which, each of the technologies mentioned are able to be implemented following 
+	the Spring principles of confiugration.
+
+	The recommended integration style is to make DAOs against Hibernate, JPA and DDO.
+	Because everything is designed as a set of reusable JavaBeans, we can extract just as much functionality from ORM support as we would extract from a library.
+
+ Advantages of using ORM
+	Since we are mapping to a database table with a java object called “Entity”, 
+	we can interact with the environment using OOP concepts such as inheritance and encapsulation, and so on. 
+	This is a huge benefit because we are already familiar with OOP concepts and we won’t have to spend time learning new concepts, etc.
+	
+	why Spring orm-:
+		avoid write both common and application specific logics.
+		inject HibernateTemplat obj and perform persistent operation.
+
+	Easier testing
+	Common data access exceptions
+	General resource management
+	Integration transaction management
+	
+	Plain Hibernate Application:-
+		create configuration call configure().
+		create service registry using serviceRegistryBuilder.
+		create sessionFectory obj.
+		open session
+		begin txn.
+		
+		perform persistent operation.
+		cimmit/rollback
+		close session or sessionFectory.
+	
+	
+Rest API/Restful webservices:-
+==========
+	is a lightweight, maintainable, and scalable service that is built on the REST architecture. 
+	Restful Web Service, expose API from your application in a secure, uniform, stateless manner to the calling client.
+	The underlying protocol for REST is HTTP. REST stands for REpresentational State Transfer.
+	
+	Explain the architectural style for creating web API?
+		The architectural style for creating web api are
+		HTTP for client server communication
+		XML/JSON as formatting language
+		Simple URI as the address for the services
+		Stateless communication
+	
+	Why?
+		It enables web applications that are built on various programming languages to communicate with each other
+		
+	where is it?
+		it is set of rules that allow to programs to talk each other.
+		Developer create apis on server and allow the to talk with client and server.
+		User third party payment api on our website or server.
+		if anybody want perform some operation on my server simply i will provide api for him and get response from my server.
+		communication one apps with another apps using apis.
+		our apps want talk to youtube and have already created some apis there our apps use youtube apis.
+			our apps send request to youtube 
+			and youtube send back to response our apps.
+			
+	Advantage:-
+		communication one apps with another apps using apis.
+		independent(.Net want comm with java)
+		provide Http methods for a several operation.
+		
+		
+	Features:-
+		Architechtural design.
+		cached.
+		stateless.
+		client-server
+		layerd system
+		uniform contract.
+	
+	Cache	
+		The Cache concept is to help with the problem of stateless which was described in the last point. 
+		Since each server client request is independent in nature, sometimes the client might ask the server for the same request again.
+			
+			
+		Json:-
+			exchange the data with the help of json/xml. 
+			Data interchange standard.
+			our apps send data in the form of the json format.
+			and get back response in the form of json format.
+			for example youtub is based on the python and our apps is java so communication java and python with common platform json
+			json is a platform independent.
+			and i can say the jsan act like as mediater enabling comm with client and server(any language platform).
+			
+	Spring Fw 
+		standalone,webapp,distributed,reactive app,
+		manually:-
+			add web mvc dependencies
+			jasper servlet api dependencies,
+			data source dependencies
+			rest api jackson and jaxb dependencies.
+			
+	Spring boot
+		standalone,webapp,distributed,reactive app,
+		implicitly:-
+		add web mvc dependencies
+			data source dependencies
+			jasper servlet api dependencies,
+			
+	implementation of rest is:-
+		jesry
+		spring rest implementation.
+	web-starter---implecitily support jackson nd jaxb--this api
+	if apps developing with Spring Fw-add explicitly-
+	jackon-json
+	jaxb--xml
+	@Produces(MediaType.Application_XML)----form type conversion with xml format nd cunsumer
+	Client	and resource---rest api
+	
+	When need ResponseBody:
+		if you want to return string/obj of model class on web page or browser without jsp or html configuration
+		then use ResponseBody on top of controller class inside the @Controller Anno.
+		RestController---internally having with ResponseBody anno.
+
+	HTTP methods supported by REST are:
+
+		GET: It requests a resource at the request URL. It should not contain a request body as it will be discarded. Maybe it can be cached locally or on the server.
+		POST: It submits information to the service for processing; it should typically return the modified or new resource
+		PUT: At the request URL it update the resource
+		DELETE: At the request URL it removes the resource
+		OPTIONS: It indicates which techniques are supported
+		HEAD: About the request URL it returns meta information
+	
+	Note:- JSON and XML are the two markup language that can be used in restful web api
+	
+	Mention what is JAX-WS and JAX-RS?
+		Both JAX-WS and JAX-RS are libraries (APIs) for doing communication in various ways in Java. 
+		JAX-WS is a library that can be used to do SOAP communication in JAVA, 
+		and JAX-RS lets you do the REST communication in JAVA.
+	
+	List out the tools or API for developing or testing web api?
+	Testing tools for web services for REST APIs includes
+		Spring REST web service using MVC
+		Jersey API
+		CXF
+		Axis
+		Restlet,
+	
+	Mention what is the difference between SOAP and REST?
+	SOAP
+		SOAP is a protocol through which two computer communicates by sharing XML document
+		SOAP permits only XML
+		SOAP based reads cannot be cached
+		SOAP is like custom desktop application, closely connected to the server
+		SOAP is slower than REST
+	
+	REST
+		It runs on HTTP but envelopes the message
+		Rest is a service architecture and design for network-based software architectures
+		REST supports many different data formats
+		REST reads can be cached
+		A REST client is more like a browser; it knows how to standardized methods and an application has to fit inside it
+		REST is faster than SOAP
+		It uses the HTTP headers to hold meta information
+		
+	GET — return 200 (OK)
+	POST — return 201 (CREATED)
+	PUT — return 200 (OK)
+	DELETE — return 204 (NO CONTENT) If the operation fails, return the most
+
+	
+	The different integration styles include
+		Shared database
+		Batch file transfer
+		Invoking remote procedure (RPC)
+		Swapping asynchronous messages over a message oriented middle-ware (MOM)
+	
+	ResponseEntity:-
+		Extention of HttpEntity that add HttpCode and return it.
+		
+	RestController:-  it is combination of @Controller and @ResponseBody.
+	
+	
+	@RequesMapping:-
+			is used both at class and method level.
+			is used to map/routing web requests onto specific handler classes and handler methods.
+			is used on class level it creates a base URI and controller will be used.
+			is used on methods it will give you the URI on which the handler methods will be executed.
+	
+	@RequestParameter:-
+		annotation to accept query parameters in Controller's having handler methods.
+		is use to extract values from the query string,  http://localhost:8080/foos?id=abc  
+		This annotation is used in handler method as a arguments. 
+		is more useful on a traditional web application where data is mostly passed in the query abatements
+		@RequestParam, we can also use the required attribute.
+		
+		
+		Sometimes you get the parameters in the request URL, mostly in GET requests.
+		In that case, along with the @RequestMapping annotation you can use the
+		@RequestParam annotation to retrieve the URL parameter and map it to the method argument.
+		The @RequestParam annotation is used to bind request parameters to a method parameter in your controller.
+		
+	@RequestHeader
+		The @RequestHeader annotation is used to get the details about the HTTP request headers. 
+		It can be used as a method parameter. 
+		
+	@RequestAttribute
+		The @RequestAttribute annotation is used to wrap a method parameter to the request attribute. 
+		It gives convenient access to the request attributes from a controller method. 
+		Using this annotation, we can access objects that are populated on the server-side.
+	
+	@PathVariable:-
+		The @PathVariable annotation is used to extract the values/data from the URI.http://localhost:8080/foos/abc
+		is more suitable for RESTful web services where URL contains values
+		@PathVariable optional, to avoid conflicts in paths.
+		parameter should be bound to a URI template variable.
+		The multiple @PathVariable can be defined in a method.
+		
+		service.java
+		public void deleteById(int pid){
+			list=list.stream.filter(name->name.getId()!=pid).
+			collect(Collectores.toList));
+		
+		}
+		
+		Service.java
+		public Employee updateEmployee(Employee employee , int eid){		
+			list=list.stream.map(name->{
+			if(name.getId()==eid){
+				name.setFirstName();
+				name.setLastName();
+				}
+				return name;
+			)}.collect(Collectors.toList());
+		
+		}
+		
+
+	@RequestBody : 
+		Data Comming with json/xml convert into Employee employee obj.
+		public Employee create(@RequestBody Employee employee){  
+			Employee emp=empService.createEmp(employee);
+			return employee;
+			}
+		
+		
+		The @RequestBody annotations is used to bind HTTP request with an object in a method parameter.
+		Internally it uses HTTP MessageConverters to convert the request’s body.
+		return it as a String or deserialize it into a Plain Old Java Object (POJO).
+		allows us to retrieve the request's body.
+		Spring has built-in mechanisms for deserializing JSON and XML objects into POJOs, 
+		
+	@ResponseBody : 
+		spring automatically convert the return value and written into http response body.
+		return the object of model data on web page without configuration of jsp and html.
+		annotation can be put on a method and indicates that the return type should be written straight to the 
+		HTTP response body (and not placed in a Model, or interpreted as a view name).
+
+	RequestMapping varient
+	@GetMapping---used for mapping, HTTP GET requests, on specific handler methods.
+		     @GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET)
+
+	@PutMapping
+			used for mapping HTTP PUT requests on specific handler methods.
+			@PutMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PUT)
+
+	@PostMapping	used for mapping HTTP POST requests on specific handler methods.
+			@PostMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST)
+
+	@PatchMapping	used for mapping HTTP PATCH requests on specific handler methods.
+			@PatchMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PATCH)
+
+	@DeleteMapping	used for mapping HTTP DELETE requests on specific handler methods.
+			@DeleteMapping is a composed annotation that acts as a shortcut for @RequestMapping(met
+			hod = RequestMethod.DELETE)
+	@Test rest api methods on some tools like postmain.
+	
+	Example on Post:-
+	---------------
+	
+	post one employee 
+		-use save(Object obj) when post one obj at a time
+		{
+        "sid": 102,------if sid use as primary key then ingnore sid details.  
+        "serviceMame": "AddDetails"
+		}
+		
+	when post Multiple
+		use saveAll(List<Object> obj)---when post multiple obj at a time.
+		[
+			{
+				"serviceMame": "AddDetails"
+			},
+			{
+				"serviceMame": "subDetails"
+			}
+		]
+		
+		Error of rest:-
+			200- success
+			201- create
+			400-UnAthorized
+			404-Resource not found
+			500- Server Error.
+
+EJB:-
+========
+	What is EJB in Java?
+		encaps business ligic and full fill business logic.
+		use for DIstributed application.
+		EJB is server-side software that helps to business logic of a certain application.
+		EJB was provided by sun micro-systems in order to develop robust, secure applications.
+		its support multi layer like
+			persention layer business layer and data layer.
+		Tx 
+		security
+		Banking
+		Multiple Business
+		messeging process
+
+	What are the types of EJB?
+			There are several types of enterprise Java beans. The list can be seen below:
+			Session beans(non-persistent enterprise beans)
+			Entity beans
+			Message-driven beans
+		Session beans: these are non-persistent enterprise beans. There are two kinds of session beans:
+		Stateful: a stateful session Bean maintains client-specific session information across several transactions.
+			It exists for a single client/server session.
+
+		Stateless:  they can easily handle several requests from clients.
+
+		Entity beans: These beans contain persistent data and it can be saved in the data source. There are two types:
+		Container managed persistence:
+			these entity beans assign their persistence to the EJB container
+		Bean managed persistence: 
+			these entity beans manage their own persistence.
+			Message-driven beans: Message-driven beans are enterprise beans that receive and process Java message service messages.
+			They can be accessed only through messaging. They do not have interfaces.
+			Asynchronous communication between the queue and the listener takes place.
+		
+		When to use EJB?
+		There are certain cases when you can use enterprise Java beans. Have a look:
+		When your application needs remote access.
+		When your application is business logic.
+		When your application needs to be scalable.
+		Moving forward, let’s study the advantages of EJB.
+
+	Advantages of EJB
+		I have mentioned a few advantages of EJB which are as follows:
+		EJB is an API, hence the application’s build on EJB can run on Java EE web application server.
+		The EJB developer focuses on solving business problems and business logic.
+		Java beans are portable components that help the JAVA application assembler to formulate new applications for the already existing JavaBeans.
+		EJB container helps in providing system-level services to enterprise Java beans.
+		EJB contains business logic hence the front end developer can focus on the presentation of the client interface.
+		It provides simplified development of large scale enterprise level application.
+
+
+
+
+Pom.xml
+=======
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>com.mkyong</groupId>
+    <artifactId>spring-boot-jpa-oracle-example</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+    </parent>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Spring data JPA, default tomcat pool, exclude it -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Oracle JDBC driver -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0</version>
+        </dependency>
+
+        <!-- HikariCP connection pool -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Package as an executable jar/war -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+application.properties for mySql
+==================================
+## Spring DATASOURCE DataSourceAutoConfiguration
+spring.datasource.url = jdbc:mysql://localhost:3306/Sample
+spring.datasource.username = root
+spring.datasource.password = root
+
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = update
+
+
+Maven:-
+=======
+What is Maven?
+	Maven is an automation and management tool developed by Apache Software Foundation.
+	
+What are the key features of Maven?
+		Simple project setup that follows best practices
+		Consistent usage across all projects
+		Easy way to build projects in which unnecessary details are hidden
+		Uniform build system, where a standard strategy is followed
+		Dependency management including automatic updating
+		Quality project information, such as dependency lists, cross referenced sources and unit test reports
+		Dependency management, including automatic updating and dependency closures
+		The ability to handle multiple projects simultaneously
+		Dynamic downloading of necessary Java libraries and plug-ins from Maven repositories
+		
+		
+Life cycle of Maven:-
+---------------------		
+	
+	validate:- Validates if the project is correct and if all necessary information is available.
+	compile:-  Source code compilation is done in this phase.
+	test:-     Tests the compiled source code suitable for testing framework.
+	package:-  This phase creates the JAR/WAR package as mentioned in the packaging in POM.xml.
+	verify:-
+	install:-  This phase installs the package in local/remote maven repository.
+	deploy:-   Copies the final package to the remote repository.
+
+Model-based builds - 
+	Maven is able to build any number of projects into predefined output types such as jar, war, metadata
+	
+Coherent site of project information - 
+	Using the same metadata as per the build process, maven is able to generate a website and a PDF including complete documentation
+	
+Backward Compatibility – 
+	You can easily port the multiple modules of a project into Maven 3 from older versions of Maven. 
+	It can support the older versions also
+	
+Parallel builds - 
+	It analyses the project dependency graph and enables you to build schedule modules in parallel. 
+	Using this, you can achieve the performance improvements of 20-50%.
+	
+POM Files: 
+		Project Object Model (POM) Files are XML file that contains information related to the project and configuration information 
+		such as dependencies, source directory, plugin, and goals etc. used by Maven to build the project. 
+		When you should execute a maven command you give maven a POM file to execute the commands. 
+		Maven reads pom.xml file to accomplish its configuration and operations.
+		
+What maven does?
+Below are the task performed by Maven:
+		We can easily build a project using maven.
+		We can add jars and other dependencies of the project easily using the help of maven.
+		Maven provides project information (log document, dependency list, unit test reports etc.)
+		Maven is very helpful for a project while updating central repository of JAR’s and other dependencies.
+		With the help of Maven we can build any number of projects into output types like the JAR, WAR etc without doing any scripting.
+		Using maven we can easily integrate our project with source control system (such as Subversion or Git).
+		
+Advantages of using Maven:
+		Maven can add all the dependencies required for the project automatically by reading pom file.
+		One can easily build their project to jar,war etc. as per their requirements using Maven.
+		Maven makes easy to start project in different environments and one doesn’t needs to handle 
+		the dependencies injection, builds, processing, etc.
+		Adding a new dependency is very easy. One has to just write the dependency code in pom file.
+		
+Disadvantages of using Maven:
+		Maven needs the maven installation in the system for working and maven plugin for the ide.
+		If the maven code for an existing dependency is not available, then one cannot add that dependency using maven.
+		
+4. Maven Dependencies
+		First of all, let's look at the minimum dependencies required to create a web application using Spring:
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.2.9.RELEASE</version>
+		</dependency>
+		
+Unlike Spring, Spring Boot requires only one dependency to get a web application up and running:
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.3.4.RELEASE</version>
+		</dependency>
+		All other dependencies are added automatically to the final archive during build time.
+		Another good example is testing libraries. 
+		We usually use the set of Spring Test, JUnit, Hamcrest, and Mockito libraries. 
+		In a Spring project, we should add all these libraries as dependencies.
+		But in Spring Boot, we only need the starter dependency for testing to automatically include these libraries.
+		
+Spring Boot provides a number of starter dependencies for different Spring modules. Some of the most commonly used ones are:
+		spring-boot-starter-data-jpa
+		spring-boot-starter-security
+		spring-boot-starter-test
+		spring-boot-starter-web
+		spring-boot-starter-thymeleaf
+		
+		
+Deply Apps on Tomcat Server:-
+=============================
+First, we need to package a WAR application instead of a JAR. For this, we change pom.xml with the following content:
+
+	"<packaging>war</packaging>"
+	Now, let's modify the final WAR file name to avoid including version numbers:
+
+		<build>
+			<finalName>${artifactId}</finalName>
+			... 
+		</build>
+		Then, we're going to add the Tomcat dependency:
+
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-tomcat</artifactId>
+		   <scope>provided</scope>
+		</dependency>
+		Finally, we initialize the Servlet context required by Tomcat by implementing the SpringBootServletInitializer interface:
+		@SpringBootApplication
+		public class SpringBootTomcatApplication extends SpringBootServletInitializer {
+			public static void main(String[] args) {
+				SpringApplication.run(DemoApplication.class, args);
+			}
+			@Override
+		   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+			  return application.sources(SpringBootTomcatApplication.class);
+					}
+				}
+		To build our Tomcat-deployable WAR application, we execute the "mvn clean package". 
+		After that, our WAR file is generated at target/spring-boot-tomcat.war (assuming the Maven artifactId is “spring-boot-tomcat”).
+		
+		
+4. Deploying the WAR to Tomcat
+	To have our WAR file deployed and running in Tomcat, we need to complete the following steps:
+	Download Apache Tomcat and unpackage it into a tomcat folder.
+	Copy our WAR file from target/spring-boot-tomcat.war to the tomcat/webapps/ folder.
+	From a terminal navigate to tomcat/bin folder and execute.
+	catalina.bat run (on Windows).
+	catalina.sh run (on Unix-based systems).
+	Go to http://localhost:8080/spring-boot-tomcat/hello
+
+Sonarquab:-
+==========
+		
+		checking code quality inside the project
+		checking duplication of variable logic
+		checking efficiency and complexcity 
+		checking bugs like critical minor major
+		checking coverage 
+		
+Spring DAO:-
+===========
+		5methodlogy:
+			JDBC Template
+			NamedPrarameter JDBC Template
+			Simple JDBC Template(remove from 4.x)
+			SimpleJDBCInsert, SimpleJdbcCall
+		
+		1)JdbcTemplate:-
+			this central class of Spring jdbc provide abstraction layer on plain JDBC and 
+			simplify persistance logic to develop.
+		
+		two approch work with JdbcTemplate
+			1-using direct method(no need to jdbc code)
+			2-using Callback interface(no need to write plain java object)
+		
+		method:-
+			queryForInt---give single numeric val as result
+			queryForLong---
+			queryForMap()--give single record
+			QueryForObject()--
+			queryForList()
+			queryForRowSet()
+			
+		ResultSetExtractor:-
+			state less
+			extractor data having return type <T>
+			
+		RowCallBack:-
+			it is state full
+			return type is void.
+			
+	
+	OneToOne
+	{
+	"id":101,
+	"title":"java"
+		"auther":{
+			"aid":10,
+			"name":"name"
+		}
+	}	
+
+
+	OneToMany:-
+		{
+		 id : 1,
+		 name : "Peter",
+		 endpoint: "123.456.778",
+		 policies: [
+						{
+						   id : 1,
+						   name: "policy 01"
+						},
+						{
+						   id : 2,
+						   name: "policy 02"
+						}
+				 ]
+	}
+	
+	Unit Testing:-
+	==============
+	
+	@org.junit.Test
+	? @org.junit.BeforeClass
+	? @org.junit.Before
+	? @org.junit.AfterClass
+	? @org.junit.After
+	
+	
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <version>2.2.6.RELEASE</version>
+	</dependency>
+	
+	Integration Testing With @DataJpaTest
+	------------------------------------
+		@RunWith(SpringRunner.class)
+		@DataJpaTest
+		public class EmployeeRepositoryIntegrationTest {
+
+			@Autowired
+			private TestEntityManager entityManager;
+
+			@Autowired
+			private EmployeeRepository employeeRepository;
+			
+			@RunWith(SpringRunner.class) provides a bridge between Spring Boot test features and JUnit.
+			Whenever we are using any Spring Boot testing features in our JUnit tests, t
+			his annotation will be required.
+
+			@DataJpaTest provides some standard setup needed for testing the persistence layer:
+			configuring H2, an in-memory database
+			setting Hibernate, Spring Data, and the DataSource
+			performing an @EntityScan
+			turning on SQL logging
+			
+			To carry out DB operations, we need some records already in our database. 
+			To setup this data, we can use TestEntityManager.
+			The Spring Boot TestEntityManager is an alternative to the standard JPA EntityManager that provides methods commonly used when 
+			writing tests.
+ 
+		
+		
+		EmployeeRepository is the component that we are going to test.
+		--------------------------------------------------------------
+			Now let's write our first test case:
+			@Test
+			public void whenFindByName_thenReturnEmployee() {
+				// given
+				Employee alex = new Employee("alex");
+				entityManager.persist(alex);
+				entityManager.flush();
+				// when
+				Employee found = employeeRepository.findByName(alex.getName());
+				// then
+				assertThat(found.getName())
+				  .isEqualTo(alex.getName());
+			}
+			In the above test, we're using the TestEntityManager to insert an Employee in the DB and reading it via the find by name API.
+			The assertThat(…) part comes from the Assertj library, which comes bundled with Spring Boot.
+		
+		Mocking With @MockBean:-
+		---------------------------
+			Our Service layer code is dependent on our Repository.
+			However, to test the Service layer, we don't need to know or care about how the persistence layer is implemented:
+
+			@Service
+			public class EmployeeServiceImpl implements EmployeeService {
+				@Autowired
+				private EmployeeRepository employeeRepository;
+				@Override
+				public Employee getEmployeeByName(String name) {
+					return employeeRepository.findByName(name);
+				}
+			}
+		Ideally, we should be able to write and test our Service layer code without wiring in our full persistence layer.
+		To achieve this, we can use the mocking support provided by Spring Boot Test.
+
+		Let's have a look at the test class skeleton first:
+		---------------------------------------------------
+			@RunWith(SpringRunner.class)
+			public class EmployeeServiceImplIntegrationTest {
+
+				@TestConfiguration
+				static class EmployeeServiceImplTestContextConfiguration {
+			 
+					@Bean
+					public EmployeeService employeeService() {
+						return new EmployeeServiceImpl();
+					}
+				}
+
+				@Autowired
+				private EmployeeService employeeService;
+
+				@MockBean
+				private EmployeeRepository employeeRepository;
+
+				// write test cases here
+			}
+			To check the Service class, we need to have an instance of the Service class created and available as a 
+			@Bean so that we can @Autowire it in our test class.
+			We can achieve this configuration using the @TestConfiguration annotation.
+			During component scanning, we might find that components or configurations created only for specific tests accidentally get picked up everywhere.
+			 To help prevent this, Spring Boot provides the @TestConfiguration annotation that we can add on classes in src/test/java to indicate that they should not be picked up by scanning.
+
+
+			Another interesting thing here is the use of @MockBean. 
+			It creates a Mock for the EmployeeRepository, which can be used to bypass the call to the actual 
+		EmployeeRepository:
+		-------------------
+			@Before
+			public void setUp() {
+				Employee alex = new Employee("alex");
+
+				Mockito.when(employeeRepository.findByName(alex.getName()))
+				  .thenReturn(alex);
+			}
+			Since the setup is done, the test case will be simpler:
+
+			@Test
+			public void whenValidName_thenEmployeeShouldBeFound() {
+				String name = "alex";
+				Employee found = employeeService.getEmployeeByName(name);
+			 
+				 assertThat(found.getName())
+				  .isEqualTo(name);
+			 }
+			  
+		Unit Testing With @WebMvcTest
+		------------------------------
+			Our Controller depends on the Service layer; let's only include a single method for simplicity:
+
+			@RestController
+			@RequestMapping("/api")
+			public class EmployeeRestController {
+
+				@Autowired
+				private EmployeeService employeeService;
+
+				@GetMapping("/employees")
+				public List<Employee> getAllEmployees() {
+					return employeeService.getAllEmployees();
+				}
+			}
+			
+		Since we're only focused on the Controller code, it's natural to mock the Service layer code for our unit tests:
+			@RunWith(SpringRunner.class)
+			@WebMvcTest(EmployeeRestController.class)
+			public class EmployeeRestControllerIntegrationTest {
+				@Autowired
+				private MockMvc mvc;
+
+				@MockBean
+				private EmployeeService service;
+				// write test cases here
+			}
+			To test the Controllers, we can use @WebMvcTest. 
+			It will auto-configure the Spring MVC infrastructure for our unit tests.
+
+			In most cases, @WebMvcTest will be limited to bootstrap a single controller. 
+			We can also use it along with @MockBean to provide mock implementations for any required dependencies.
+
+
+		@WebMvcTest also auto-configures MockMvc, which offers a powerful way of easy testing MVC controllers 
+		without starting a full HTTP server.
+		Having said that, let's write our test case:
+		--------------------------------------------
+		@Test
+		public void givenEmployees_whenGetEmployees_thenReturnJsonArray()
+		  throws Exception {
+			Employee alex = new Employee("alex");
+			List<Employee> allEmployees = Arrays.asList(alex);
+			given(service.getAllEmployees()).willReturn(allEmployees);
+			mvc.perform(get("/api/employees")
+			  .contentType(MediaType.APPLICATION_JSON))
+			  .andExpect(status().isOk())
+			  .andExpect(jsonPath("$", hasSize(1)))
+			  .andExpect(jsonPath("$[0].name", is(alex.getName())));
+		}
+		The get(…) method call can be replaced by other methods corresponding to HTTP verbs like put(), post(), etc. 
+		Please note that we are also setting the content type in the request.
+		MockMvc is flexible, and we can create any request using it.
+		
+		Integration Testing With @SpringBootTest
+		----------------------------------------
+			As the name suggests, integration tests focus on integrating different layers of the application. 
+			That also means no mocking is involved.
+
+			Ideally, we should keep the integration tests separated from the unit tests and should not run along with the unit tests. 
+			We can do this by using a different profile to only run the integration tests. 
+			A couple of reasons for doing this could be that the integration tests are time-consuming and might need an actual database to execute.
+
+			However in this article, we won't focus on that, and we'll instead make use of the in-memory H2 persistence storage.
+
+			The integration tests need to start up a container to execute the test cases. 
+			Hence, some additional setup is required for this — all of this is easy in Spring Boot:
+			---------------------------------------------------------------------------------------
+			@RunWith(SpringRunner.class)
+			@SpringBootTest(
+			  SpringBootTest.WebEnvironment.MOCK,
+			  classes = Application.class)
+			@AutoConfigureMockMvc
+			@TestPropertySource(
+			  locations = "classpath:application-integrationtest.properties")
+			public class EmployeeRestControllerIntegrationTest {
+				@Autowired
+				private MockMvc mvc;
+				@Autowired
+				private EmployeeRepository repository;
+				// write test cases here
+			}
+		The @SpringBootTest annotation is useful when we need to bootstrap the entire container.
+		The annotation works by creating the ApplicationContext that will be utilized in our tests.
+
+		We can use the webEnvironment attribute of @SpringBootTest to configure our runtime environment; we're using WebEnvironment.
+		MOCK here so that the container will operate in a mock servlet environment.
+
+		Next, the @TestPropertySource annotation helps configure the locations of properties files specific to our tests. 
+		Note that the property file loaded with @TestPropertySource will override the existing application.properties file.
+
+		The application-integrationtest.properties contains the details to configure the persistence storage:
+		spring.datasource.url = jdbc:h2:mem:test
+		spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.H2Dialect
+		If we want to run our integration tests against MySQL, we can change the above values in the properties file.
+
+		The test cases for the integration tests might look similar to the Controller layer unit tests:
+		-----------------------------------------------------------------------------------------------
+		@Test
+		public void givenEmployees_whenGetEmployees_thenStatus200()
+		  throws Exception {
+			createTestEmployee("bob");
+			mvc.perform(get("/api/employees")
+			  .contentType(MediaType.APPLICATION_JSON))
+			  .andExpect(status().isOk())
+			  .andExpect(content()
+			  .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			  .andExpect(jsonPath("$[0].name", is("bob")));
+		}
+		The difference from the Controller layer unit tests is that here nothing is mocked and end-to-end scenarios will be executed.
+		
+		Auto-Configured Tests
+		---------------------
+			One of the amazing features of Spring Boot's auto-configured annotations is that it helps to load parts of 
+			the complete application and test-specific layers of the codebase.
+
+		In addition to the above-mentioned annotations, here's a list of a few widely used annotations:
+		----------------------------------------------------------------------------------------------
+			@WebFluxTest: We can use the @WebFluxTest annotation to test Spring WebFlux controllers. 
+			It's often used along with @MockBean to provide mock implementations for required dependencies.
+			@JdbcTest: We can use the @JdbcTest annotation to test JPA applications, but it's for tests that only require a DataSource. 
+			The annotation configures an in-memory embedded database and a JdbcTemplate.
+			@JooqTest: To test jOOQ-related tests, we can use @JooqTest annotation, which configures a DSLContext.
+			@DataMongoTest: To test MongoDB applications, @DataMongoTest is a useful annotation. 
+			By default, it configures an in-memory embedded MongoDB if the driver is available through dependencies, 
+			configures a MongoTemplate, scans for @Document classes, and configures Spring Data MongoDB repositories.
+			@DataRedisTestmakes it easier to test Redis applications. 
+			It scans for @RedisHash classes and configures Spring Data Redis repositories by default.
+			@DataLdapTest configures an in-memory embedded LDAP (if available), configures a LdapTemplate, scans for @Entry classes, 
+			and configures Spring Data LDAP repositories by default.
+			@RestClientTest: We generally use the @RestClientTest annotation to test REST clients. 
+			It auto-configures different dependencies such as Jackson, GSON, and Jsonb support; configures a RestTemplateBuilder; 
+			and adds support for MockRestServiceServer by default.
+			
+			
+		@RunWith(SpringRunner.class)
+		@JsonTest
+		public class MyJsonTests {
+			@Autowired
+			private JacksonTester<VehicleDetails> json;
+			@Test
+			public void testSerialize() throws Exception {
+				VehicleDetails details = new VehicleDetails("Honda", "Civic");
+				// Assert against a `.json` file in the same package as the test
+				assertThat(this.json.write(details)).isEqualToJson("expected.json");
+				// Or use JSON path based assertions
+				assertThat(this.json.write(details)).hasJsonPathStringValue("@.make");
+				assertThat(this.json.write(details)).extractingJsonPathStringValue("@.make")
+						.isEqualTo("Honda");
+			}
+			@Test
+			public void testDeserialize() throws Exception {
+				String content = "{\"make\":\"Ford\",\"model\":\"Focus\"}";
+				assertThat(this.json.parse(content))
+						.isEqualTo(new VehicleDetails("Ford", "Focus"));
+				assertThat(this.json.parseObject(content).getMake()).isEqualTo("Ford");
+			}
+		}
+		
+		
+		Auto-configured Spring MVC tests:
+		---------------------------------
+		@RunWith(SpringRunner.class)
+		@WebMvcTest(UserVehicleController.class)
+		public class MyControllerTests {
+
+			@Autowired
+			private MockMvc mvc;
+
+			@MockBean
+			private UserVehicleService userVehicleService;
+
+			@Test
+			public void testExample() throws Exception {
+				given(this.userVehicleService.getVehicleDetails("sboot"))
+						.willReturn(new VehicleDetails("Honda", "Civic"));
+				this.mvc.perform(get("/sboot/vehicle").accept(MediaType.TEXT_PLAIN))
+						.andExpect(status().isOk()).andExpect(content().string("Honda Civic"));
+			}
+
+		}
+		
+		3.8 Auto-configured Data JPA tests:-
+		-----------------------------------
+			@RunWith(SpringRunner.class)
+			@DataJpaTest
+			public class ExampleRepositoryTests {
+
+				@Autowired
+				private TestEntityManager entityManager;
+
+				@Autowired
+				private UserRepository repository;
+
+				@Test
+				public void testExample() throws Exception {
+					this.entityManager.persist(new User("sboot", "1234"));
+					User user = this.repository.findByUsername("sboot");
+					assertThat(user.getUsername()).isEqualTo("sboot");
+					assertThat(user.getVin()).isEqualTo("1234");
+				}
+
+			}
+			In-memory embedded databases generally work well for tests since they are fast and don’t require any developer installation. 
+			If, however, you prefer to run tests against a real database you can use the @AutoConfigureTestDatabase annotation:
+
+			@RunWith(SpringRunner.class)
+			@DataJpaTest
+			@AutoConfigureTestDatabase(replace=Replace.NONE)
+			public class ExampleRepositoryTests {
+
+				// ...
+
+			}
+		
+		11 Auto-configured REST clients
+		-------------------------------
+			The @RestClientTest annotation can be used if you want to test REST clients. 
+			By default it will auto-configure Jackson and GSON support, configure a RestTemplateBuilder and add support for MockRestServiceServer. 
+			The specific beans that you want to test should be specified using value or components attribute of @RestClientTest:
+
+			@RunWith(SpringRunner.class)
+			@RestClientTest(RemoteVehicleDetailsService.class)
+			public class ExampleRestClientTest {
+
+				@Autowired
+				private RemoteVehicleDetailsService service;
+
+				@Autowired
+				private MockRestServiceServer server;
+
+				@Test
+				public void getVehicleDetailsWhenResultIsSuccessShouldReturnDetails()
+						throws Exception {
+					this.server.expect(requestTo("/greet/details"))
+							.andRespond(withSuccess("hello", MediaType.TEXT_PLAIN));
+					String greeting = this.service.callRestService();
+					assertThat(greeting).isEqualTo("hello");
+				}
+			}
+			
+		TestRestTemplate:-
+		------------------
+			@RunWith(SpringRunner.class)
+			@SpringBootTest
+			public class MyTest {
+
+				@Autowired
+				private TestRestTemplate template;
+
+				@Test
+				public void testRequest() throws Exception {
+					HttpHeaders headers = template.getForEntity("http://myhost.com", String.class).getHeaders();
+					assertThat(headers.getLocation().toString(), containsString("myotherhost"));
+				}
+				@TestConfiguration
+				static class Config {
+					@Bean
+					public RestTemplateBuilder restTemplateBuilder() {
+						return new RestTemplateBuilder()
+							.additionalMessageConverters(...)
+							.customizers(...);
+					}
+				}
+			}
+
+		

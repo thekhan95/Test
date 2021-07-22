@@ -1,0 +1,1018 @@
+package com.test;
+
+import java.util.Arrays;
+
+public class Logical {
+	int i;
+	char[] arr;
+	String s1;
+
+	public void resverseString() {
+		s1 = "Java";
+		String temp = "";
+		arr = s1.toCharArray(); // convert into arr
+		
+		for (i = s1.length() - 1; i >= 0; i--) { // taking loop top to down for 
+		decreasing i val order--i>=0  and increase i val order i<0
+			temp = temp + s1.charAt(i);
+		}
+		System.out.print(temp);
+	}
+
+	public void toggleString() {
+
+		String name = "MohSd AakHHib KhEUEan";
+		String temp = "";
+		for (int i = 0; i < name.length(); i++) {
+			if (name.charAt(i) >= 'A' && name.charAt(i) <= 'Z') {// A -65 and Z=90
+				char c = (char) (name.charAt(i) + 32);
+				temp = temp + c;
+			} else if (name.charAt(i) >= 'a' && name.charAt(i) <= 'z') {// a-97 and z-122
+				char c = (char) (name.charAt(i) - 32); // for converting A need to substarct 32 from a bcs 97-32=65
+														// which is A
+				temp = temp + c;
+			} else {
+				temp = temp + name.charAt(i);
+			}
+		}
+		System.out.println(temp);
+	}
+
+	public void pattern() {
+		int n = 5;
+		int count = 0;
+		for (int i = 1; i <= n; i++) {
+			if (i <= n / 2 + 1)
+				count++;
+			else {
+				count--;
+			}
+			for (int j = 1; j <= n; j++) {
+				if (j == count || j == count) {
+					System.out.print("*");
+				} else {
+					System.out.print(" ");
+				}
+			}
+			System.out.println();
+		}
+	}
+
+	void largestNum() {
+		int[] arr = { 5, 6, 7, 34, 12 };
+		Arrays.sort(arr);
+		System.out.println("Largest num:" + arr[arr.length - 1] + "," + arr[arr.length - 2]);
+		int sum = arr[arr.length - 1] + arr[arr.length - 2];
+		System.out.println("two larget sum number:" + sum);
+	}
+
+	void test() {
+		String s = "khaaaan";
+		int count = 0;
+		String temp = "";
+//		char [] aa=s.toCharArray();
+//		int len = s.length();
+//		String rev = "";
+//		for (int i = 0; i >=aa.length; i++) {
+//			//rev = rev + s.charAt(i);
+//			if(aa[i]=='a'){
+//				rev=rev+aa[i];
+//				System.out.println("yes");
+//			}
+//			else {
+//				System.out.println("No");
+//			}
+//		}
+		boolean flag = false;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == 'a') {
+				count++;
+				temp = temp + s.charAt(i);
+				flag = true;
+			} else {
+				temp = temp + s.charAt(i);
+			}
+		}
+		if (flag) {
+			System.out.println(" Yes it is : " + count + " " + temp);
+		} else {
+			System.out.println("No: " + temp);
+		}
+
+	}
+
+	void remCharInStirng() {
+		String s = "khffn";
+		int count1 = 0;
+		int count2 = 0;
+		boolean flag = false;
+		String temp = "";
+		// String news=s.replace("f", "S");
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) != 'f') {
+				"f" removing
+				temp = temp + s.charAt(i);
+				flag = true;
+			}
+		} // loop
+		if (flag) {
+			System.out.println(temp);
+		}
+		// System.out.println(temp);
+	}// method
+
+	void searchElement() {
+		int[] arr = { 2, 5, 7, 8, 3 };
+		int len = arr.length;
+		boolean flag = false;
+		// using for loop
+//		for (int i = 0; i < len; i++) {
+//			// System.out.println(arr[i]);
+//			if (arr[i] == 7) {
+//				flag = true;
+//			}
+//		}
+		// using forEach
+		for (int a : arr) {
+			if (a == 3) {
+				flag = true;
+			}
+		}
+		if (flag)
+			System.out.println("Yes");
+		else
+			System.out.println("No");
+	}
+
+	public void countDuplicateString() {
+		String name = "ssssuleeemaaann";
+		String temp = "";
+		int flag;
+		String duplicate = "";
+		char[] arr = name.toCharArray();
+		int len = arr.length;
+		int i;
+		int j;
+		for (i = 0; i < len; i++) {
+			flag = 0;
+			if (arr[i] != ' ')
+				for (j = i + 1; j < len; j++) {
+					if (arr[i] == arr[j]) {
+						arr[j] = ' ';
+						//checking duplicats condetion
+						flag = 1;
+					} // inner if
+				} // inner for
+			if (arr[i] != ' ')
+				temp = temp + arr[i];
+			if (flag == 1) {
+				duplicate = duplicate + arr[i] + ",";
+			}1wfg
+		} // outer for
+
+		System.out.println(temp);
+		System.out.println(name.length() - temp.length());
+		System.out.println("Duplicates are :" + duplicate.substring(0, duplicate.length() - 1));
+		System.out.println("Total lenght            :" + duplicate.length() + "\naftetremove last lenght :" + (duplicate.length() - 1));
+	}
+
+	public void arstrong() {
+		int num = 121;
+		int temp = num;
+		int result = 0;
+		int rem;
+		while (temp > 0) {
+			rem = temp % 10;
+			result = result + (rem * rem * rem);
+			temp = temp / 10;
+		}
+		if (result == num)
+			System.out.println("\nYes");
+		else
+			System.out.println("\nno");
+	}
+
+	public void fibnocci() {
+		int n = 10, t1 = 0, t2 = 1;
+		int result = 0;
+		for (int i = 0; i < n; i++) {
+			System.out.print(t1 + "+");
+			result = t1 + t2;
+			t1 = t2;
+			t2 = result;
+		}
+	}
+
+	public void stringPallentrome() {
+		{
+			String str = "abaa"; // Objects of String class
+			String temp = "";
+			// int length = str.length(); //get the length of String obj
+			for (int i = str.length() - 1; i >= 0; i--)
+				temp = temp + str.charAt(i);
+			if (str.equals(temp))
+				System.out.println("Entered string/number is a palindrome.");
+			else
+				System.out.println("Entered string/number isn't a palindrome.");
+		}
+	}
+
+	public void numberPallendrome() {
+		int r, sum = 0, temp;
+		int number = 454;// It is the number variable to be checked for palindrome
+		temp = number;
+		while (number > 0) {
+			r = number % 10; // getting remainder
+			sum = (sum * 10) + r; // logic
+			number = number / 10; // quicent
+		}
+		if (temp == sum)
+			System.out.println("palindrome number ");
+		else
+			System.out.println("not palindrome");
+	}
+
+	public void reverseNumber() {
+		int number = 1234;
+		int reverse = 0, r;
+		while (number > 0) {
+			r = number % 10;
+			reverse = (reverse * 10) + r;
+			number = number / 10;
+		}
+		System.out.println(reverse);
+	}
+
+	public void withoutLengthM() {
+		String name = "Sulemaan";
+		int i = 0;
+		for (char ch : name.toCharArray()) {
+			i++;
+		}
+		System.out.println(i);
+	}
+
+	public void factorial() {
+		int input = 3;
+		int fact = 1;
+		for (int i = 1; i <= input; i++) { // i comparing with input
+			fact = fact * i; // 1*1,1*2,2*3=6
+		}
+		System.out.println(fact);
+	}
+
+	public void replaceVowels() {
+		String name = "Sulemaan";
+		String removeVew = name.replaceAll("[AEIOUaeio]", "");
+		System.out.println(removeVew);
+	}
+
+	public void primeNumber() {
+		int number = 5;
+		int flag = 0;
+		int i, j;
+		int sum = 0;
+		for (i = 2; i <= number; i++) {
+			for (j = 2; j < i; j++) {
+				if (i % j == 0)
+					// System.out.println("break");
+					break;
+				// System.out.print(i+" ");
+			}
+			if (i == j)
+				System.out.print(i + " ");
+		}
+//	if(flag==0)
+//		System.out.println("prime");
+//	else 
+//		System.out.println("No");
+	}
+
+	void remove_Pchar() {
+		String name = "People";
+		String temp = "";
+		int i;
+		for (i = 0; i < name.length(); i++) {
+			if (name.charAt(i) != 'p' && name.charAt(i) != 'P')
+				temp = temp + name.charAt(i);
+		}
+		System.out.println(temp);
+	}
+
+	void removeDup() {
+		String name = "ssssuleeemaaann";
+		String temp = "";
+		char[] arr = name.toCharArray();
+		int length = arr.length;
+		int i;
+		int j;
+		for (i = 0; i < length; i++) {
+			if (arr[i] != ' ')
+				for (j = i + 1; j < length; j++) {
+					if (arr[i] == arr[j]) {
+						arr[j] = ' ';
+					} // inner if
+				} // inner for
+			if (arr[i] != ' ')
+				temp = temp + arr[i];
+		} // outer for
+		System.out.println(temp);
+	}
+
+	// Function to check the Vowel
+	static boolean isVowel(char ch) {
+		// ch="";
+		ch = Character.toUpperCase(ch);
+		return (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
+	}
+
+	// Returns count of vowels in str
+	static int countVowels(String str) {
+		int count = 0;
+		for (int i = 0; i < str.length(); i++)
+			if (isVowel(str.charAt(i))) // Check for vowel
+				++count;
+		return count;
+	}
+
+	public void revEvenSentance() {
+		String str = "aakib khan quadri handsome", res = "";
+		String[] st = str.split(" ");
+		int l = st.length;
+		int flag = 0;
+		for (int i = 0; i < l; i++) {
+			if (flag == 1) { // 1=2,0,1 if found even index then reverse sentence
+				String ss = st[i];
+				for (int j = ss.length() - 1; j >= 0; j--) {
+					res = res + ss.charAt(j); // add with reverse
+					flag = 0;
+				}
+			} else {
+				res = res + st[i]; // add without reverse
+				flag = 1;
+			}
+			res = res + " "; // after one santance give space
+		}
+		System.out.println(res);
+	}
+ 
+	public void revStentance() {
+		String str = "aakib khan quadri handsome", res = "";
+		String[] st = str.split(" ");
+		int l = st.length;
+		String store;
+		for (int i = 0; i < l; i++) {
+			store = st[i]; // copy st[i] data into store till i<l, st len=4 bcoz split string
+			for (int j = store.length() - 1; j >= 0; j--) {
+				// res=reverse and store in var
+				res = res + store.charAt(j);
+			}
+			// after done first index aakib give space
+			res = res + " "; //
+		}
+		System.out.println(res);
+	}
+
+	public void goodbadDeffNo() {
+		int[] a = { 0, 4, 0, 0, 1, 3, 4, 1, 0, 2 };
+		int n = 10;
+		int temp[] = new int[n];
+		for (int i = 0; i < n; i++) {
+			temp[i] = a[i];
+		}
+		for (int i = 0; i < n; i++) {
+			int flag = 0;
+			for (int j = 0; j < n - 1 - i; j++) {
+				if (a[j] > a[j + 1]) {
+					int t = a[j];
+					a[j] = a[j + 1];
+					a[j + 1] = t;
+					flag = 1;
+				}
+			}
+			if (flag == 0)
+				break;
+		}
+		int bad = 0, good = 0;
+		for (int i = 0; i < n; i++) {
+			if (a[i] == temp[i])
+				good = good + a[i];
+			else
+				bad = bad + temp[i];
+		}
+		System.out.println(good - bad);
+	}
+
+	public static void main(String[] args) {
+
+		Logical l = new Logical();
+		// l.factorial();
+		l.countString();
+		// l.primeNumber();
+		// l.largestNum();
+		// l.toggleString();
+		// l.searchElement();
+		// l.resverseString();
+		// l.test();
+		// l.remCharInStirng();
+	}
+}
+
+
+
+	
+		lamdaExpression
+		defaultMethod/static
+		Functional inteface
+		Predefined Funtional Interface
+			Predicate
+			Function
+			Consumer
+			Suppliyer
+				public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
+				if (value != null) {
+					return value;
+				} else {
+					throw exceptionSupplier.get();
+					}
+				 }
+
+		Double Collon Operator
+		========================
+			Method reff
+			------------
+				
+
+		Cunstructor reff:-
+		------------------
+			
+			
+Stream Api
+Data Nd TIme API
+Optional class
+
+
+forEach():-
+	List<Integer> l=new ArrayList<>();
+	l.add(10);
+	l.add(20);
+	l.add(30);
+	l.forEach((s)->System.out.println("using foreach="+s));
+
+	
+DefaultMethod
+
+	 Whenever you want to add additional functionality in an existing interface,you can use default methods
+	 without breaking any existing implementing classes
+	 #If you do not override them, they are the methods which will be invoked by caller classes.
+	 #When c class want implement with A and B but there no childs relation b/w A and B.
+	 #It is a method with default keyword and class can override this method
+	 #if you want invoke lmda exp then must be functional interface.
+	 #Default method (Defender methods) should be used for backward compatibility.
+	 #Default methods in interfaces were introduced to the Java language in order to evolve the collections library for the Streams API.
+	 #with backward compatability in mind, default methods are introduced.
+	
+	public interface A {
+	default void m1() {}
+	}
+	public interface B {
+	default void m2() {
+	}
+	public class C implements A, B {
+		public void m1() {
+			System.out.println("C class method.....m1()");}
+		public void m2() {
+			System.out.println("C class method.....m2()");}}
+	public class Test {
+	public static void main(String[] args) {
+		//we can also take same method both interfaces
+		B b = new C();//---m2() define in A(I)
+		b.m2();
+		A a=new C(); //m1() define in B(I)
+		a.m1();}}
+		
+		
+	public interface Java8 {
+		default void m2() {
+		 System.out.println("default interface");
+	         }
+          }
+	public class Test implements Java8 {
+		default void m2() {
+			System.out.println("child static"); will get error
+	     }
+	public static void main(String[] args) {
+		Java8 j=new Test();
+		j.m2();     //possible
+		// Java8.m2(); // not possible will get error
+	}
+}
+		
+		
+static method in interface:-
+	We can write implementation of this method in interface itself
+	Static method can invoke with only on Interface class not on class.
+	It can be used as a utility method
+	
+	public interface Java8 {
+		static void m1() {
+				System.out.println("static interface");
+			}
+
+		default void m2() {
+			System.out.println("default interface");
+			}
+	}
+	public class Test implements Java8 {
+		static void m1() {
+			System.out.println("child static");
+			}
+
+	public static void main(String[] args) {
+			Java8 j=new Test();
+		//	j.m1();      //not possible 	will get error
+			Java8.m1();  // possible
+			//	Java8.m2();  //not possible will get error
+	}
+
+			result is:static interface
+
+		
+
+Functional interface
+---------------------
+	 #an interface which contains Single ABstract Mehtod(SAM)
+	 
+	 eg-
+		Runnable==run()
+		Comparable==compareTO()
+		comparator==compare()
+		ActionListener==ActionPerformed()
+		Callable==call().
+
+Stream Operations
+	https://www.youtube.com/watch?v=DvQVdJB4Va0&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&index=2
+Intermediate Operations
+	filter().-------taking predicate argument
+	map().
+	flatMap().
+	distinct().
+	sorted().
+	peek().
+	limit().
+	skip().
+Terminal Operations
+	forEach()-----consume the value.
+	forEachOrdered()
+	toArray()
+	reduce()
+	collect()
+	min()
+	max()
+	count()
+	anyMatch()
+	allMatch()
+	noneMatch()
+	findFirst()
+	findAny()
+	
+	String result = "";
+	 //Map -> Stream -> Filter -> String
+        result = HOSTING.entrySet().stream()
+                .filter(map -> "aws.amazon.com".equals(map.getValue()))
+                .map(map -> map.getValue())
+                .collect(Collectors.joining());
+
+        System.out.println("With Java 8 : " + result);
+        // filter more values
+        result = HOSTING.entrySet().stream()
+                .filter(x -> {
+                    if (!x.getValue().contains("amazon") && !x.getValue().contains("digital")) {
+                        return true;
+                    }
+                    return false;
+                })
+                .map(map -> map.getValue())
+                .collect(Collectors.joining(","));
+				System.out.println("With Java 8 : " + result);
+
+	=================================================
+	Map<String, Integer> result = unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+
+        // Not Recommend, but it works.
+        //Alternative way to sort a Map by keys, and put it into the "result" map
+        Map<String, Integer> result2 = new LinkedHashMap<>();
+        unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+	
+2.1. Stream.of()
+	In the given example, we are creating a stream of a fixed number of integers.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9);
+		 stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+	
+2.2. Stream.of(array)
+		In the given example, we are creating a stream from the array. The elements in the stream are taken from the array.	
+			public class StreamBuilders 
+		{
+			 public static void main(String[] args)
+			 {
+				 Stream<Integer> stream = Stream.of( new Integer[]{1,2,3,4,5,6,7,8,9} );
+				 stream.forEach(p -> System.out.println(p));
+			 }
+		}
+		
+2.3. List.stream()
+	In the given example, we are creating a stream from the List. The elements in the stream are taken from the List.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>();
+	 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+	
+2.4. Stream.generate() or Stream.iterate()
+	In the given example, we are creating a stream from generated elements. 
+	This will produce a stream of 20 random numbers. We have restricted the elements count using limit() function.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 Stream<Integer> randomNumbers = Stream
+			 .generate(() -> (new Random()).nextInt(100));
+			 randomNumbers.limit(20)
+			 .forEach(System.out::println);
+		 }
+	}
+	
+2.5. Stream of String chars or tokens
+	In the given example, first, we are creating a stream from the characters of a given string. 
+	In the second part, we are creating the stream of tokens received from splitting from a string.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+		IntStream stream = "12345_abcdefg".chars();
+		stream.forEach(p -> System.out.println(p)); 
+		//OR			 
+		Stream<String> stream = Stream.of("A$B$C".split("\\$"));
+		stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+3. Stream Collectors
+	After performing the intermediate operations on elements in the stream, 
+	we can collect the processed elements again into a Collection using the stream Collector methods.
+
+3.1. Collect Stream elements to a List
+	In the given example, first, we are creating a stream on integers 1 to 10.
+	Then we are processing the stream elements to find all even numbers.
+
+At last, we are collecting all even numbers into a List.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>(); 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 List<Integer> evenNumbersList = stream.filter(i -> i%2 == 0)    // inside the filter used boolean value function is predicate return T/F
+										.collect(Collectors.toList());
+			 System.out.print(evenNumbersList);
+		 }
+	}
+3.2.Collect Stream elements to an Array
+	The given example is similar to the first example shown above. 
+	The only difference is that we are collecting the even numbers in an Array.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>();
+	 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 Integer[] evenNumbersArr = stream.filter(i -> i%2 == 0).toArray(Integer[]::new);
+			 System.out.print(evenNumbersArr);
+		 }
+	}
+	There are plenty of other ways also to collect stream into a Set, Map or into multiple ways.
+	Just go through Collectors class and try to keep them in mind.
+
+
+4.1. Intermediate Operations
+Intermediate operations return the stream itself so you can chain multiple methods calls in a row. Let’s learn important ones.
+
+4.1.1. Stream.filter()
+	The filter() method accepts a Predicate to filter all elements of the stream. 
+	This operation is intermediate which enables us to call another stream operation (e.g. forEach()) on the result.
+		memberNames.stream().filter((s) -> s.startsWith("A"))
+							.forEach(System.out::println);
+		Program Output:
+		Amitabh
+		Aman
+		
+4.1.2. Stream.map()
+		The map() intermediate operation converts each element in the stream into another object via the given function.
+		The following example converts each string into an UPPERCASE string.
+		But we can use map() to transform an object into another type as well.
+
+		memberNames.stream().filter((s) -> s.startsWith("A"))
+							.map(String::toUpperCase)
+							.forEach(System.out::println);                 
+		Program Output:
+		AMITABH
+		AMAN
+
+4.1.2. Stream.sorted()
+		The sorted() method is an intermediate operation that returns a sorted view of the stream.
+		The elements in the stream are sorted in natural order unless we pass a custom Comparator.
+
+		memberNames.stream().sorted()
+							.map(String::toUpperCase)
+							.forEach(System.out::println);
+		Program Output:
+		AMAN
+		AMITABH
+		LOKESH
+		RAHUL
+		SALMAN
+		SHAHRUKH
+		SHEKHAR
+		YANA
+		
+	Please note that the sorted() method only creates a sorted view of the stream without manipulating the ordering of the source Collection. 
+	In this example, the ordering of string in the memberNames is untouched.
+	
+4.2. Terminal operations
+Terminal operations return a result of a certain type after processing all the stream elements.
+
+	Once the terminal operation is invoked on a Stream, the iteration of the Stream and any of the chained streams will get started.
+	Once the iteration is done, the result of the terminal operation is returned.
+
+4.2.1. Stream.forEach()
+	The forEach() method helps in iterating over all elements of a stream and perform some operation on each of them. 
+	The operation to be performed is passed as the lambda expression.
+		memberNames.forEach(System.out::println);
+		
+4.2.2. Stream.collect()
+	The collect() method is used to receive elements from a steam and store them in a collection.
+	List<String> memNamesInUppercase = memberNames.stream().sorted()
+                            .map(String::toUpperCase)
+                            .collect(Collectors.toList());
+         
+		System.out.print(memNamesInUppercase);
+		Program Output:-
+		[AMAN, AMITABH, LOKESH, RAHUL, SALMAN, SHAHRUKH, SHEKHAR, YANA]
+		
+4.2.3. Stream.match()
+	Various matching operations can be used to check whether a given predicate matches the stream elements. 
+	All of these matching operations are terminal and return a boolean result.
+
+		boolean matchedResult = memberNames.stream()
+				.anyMatch((s) -> s.startsWith("A"));
+		System.out.println(matchedResult);
+		 
+		matchedResult = memberNames.stream()
+				.allMatch((s) -> s.startsWith("A"));
+		 
+		System.out.println(matchedResult);
+		 
+		matchedResult = memberNames.stream()
+				.noneMatch((s) -> s.startsWith("A"));
+		 
+		System.out.println(matchedResult);
+		Program Output:
+
+		true
+		false
+		false
+		
+4.2.4. Stream.count()
+	The count() is a terminal operation returning the number of elements in the stream as a long value.
+
+		long totalMatched = memberNames.stream()
+			.filter((s) -> s.startsWith("A"))
+			.count();
+		 
+		System.out.println(totalMatched);
+		Program Output:
+
+		2
+4.2.5. Stream.reduce()
+		The reduce() method performs a reduction on the elements of the stream with the given function. 
+		The result is an Optional holding the reduced value.
+
+		In the given example, we are reducing all the strings by concatenating them using a separator #.
+
+		Optional<String> reduced = memberNames.stream()
+				.reduce((s1,s2) -> s1 + "#" + s2);
+		 
+		reduced.ifPresent(System.out::println);
+		Program Output:
+
+
+
+
+List:-
+=======
+
+		//sort by last name
+		System.out.println("Sorting by Last name---Collections.sort");
+		Collections.sort(employees, new LastNameSort());
+		System.out.println(employees);
+
+		System.out.println("========using java8 =========");
+		//List<Employee> employees = getEmployeesFromDB();
+
+		//Sort all employees by first name
+		employees.sort(Comparator.comparing(e -> e.getFirstName()));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//OR you can use below
+		employees.sort(Comparator.comparing(Employee::getFirstName));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//Sort all employees by first name in reverse order
+		Comparator<Employee> comparator = Comparator.comparing(e -> e.getFirstName());
+		employees.sort(comparator.reversed());
+		
+		System.out.println("Sort all employees first name in 
+		List<String> copy = list.stream()
+		.filter(s -> s.length() > 10)
+		.collect(Collectors.toList());
+		
+Map:-
+=====
+		
+		map.forEach((k,v)-System.out.println(k+" ==value:    "+v));
+
+		System.out.println("\n fatch data using Map.Entry concept...");
+		for (Map.Entry<String, List<Company>> entry : map.entrySet()) {
+		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+		}
+		
+		// Map.Entry<String, List<Company>>
+		// Map -> Stream -> Filter -> MAP based on the key
+		System.out.println("\ngetDetails based on the Key");
+		Map<String, List<Company>> collect = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+				System.out.println(collect);
+		
+		// or like this
+		System.out.println("\n===get Details using based on Stream api====");
+		Map<String, List<Company>> collect1 = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+				System.out.println(collect1);
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result = map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, 
+				(oldValue, newValue) -> oldValue,LinkedHashMap::new));
+				System.out.println(result);
+			
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result2 = new LinkedHashMap<>();
+				map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+				System.out.println(result2);
+
+		// based get details of map
+		System.out.println("\n=======================");
+		Set set = map.entrySet();
+		Iterator iterator = set.iterator();
+		while (iterator.hasNext()) {
+			Map.Entry mp = (Map.Entry) iterator.next();
+			if (mp.getKey().equals("hyd")) {
+				System.out.print(mp.getKey() + "=>" + mp.getValue() + "\n");
+			}
+		}
+		
+		
+		
+		public Book getBookById(int id){
+				Book book=null;
+				book=list.stream.filter(e->e.getId==id).finFirst().get();
+				return book;
+					}
+	
+---------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+List<Employee> lowSalary = employees.stream()
+               .min(comparator)
+               .stream()
+               .collect(Collectors.toList());
+lowSalary.forEach(System.out::println);
+----------------------------------------------------------------------------------------------
+
+List<Employee> employees = new ArrayList<Employee>(){{
+    add(new Employee("bilbo baggins", 10));
+    add(new Employee("frodo baggins", 10));
+    add(new Employee("gandalf grey", 100));
+}};
+
+Map<Integer, List<Employee>> result = employees.stream().collect(groupingBy(Employee::getSalary));
+
+List<Employee> allMin = result.entrySet().stream()
+        .min(Comparator.comparing(Map.Entry::getKey))
+        .map(Map.Entry::getValue)
+        .orElse(Collections.emptyList());
+
+allMin.forEach(System.out::println);
+
+-----------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+        Optional<Employee> min = employees.stream()
+                .min(comparator);
+        List<Employee> lowSalary = employees.stream()
+                .filter(ele->ele.salary==min.get().salary)
+                .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+You can calculate the minimum salary first then use it in your Stream#filtercondition:
+
+int salary = 
+   employees.stream()
+            .min(Comparator.comparing(Employee::getSalary))
+            .map(e -> e.getSalary())
+            .orElse(-1);
+
+List<Employee> emps = 
+  employees.stream()
+           .filter(emp -> emp.getSalary() == salary)
+           .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+// find employees whose salaries are above 10000
+        List<Employee> filteredList = empList.stream()
+                                            .filter(emp->emp.getSalary() > 10000)
+                                            .collect(Collectors.toList());
+ 
+        filteredList.forEach(System.out::println);
+------------------------------------------------------------------------------------------------
+
+Java 8 Stream.map() example.
+
+Stream.map() method returns a stream consisting of the results of applying the given function to the elements of this stream. 
+We can use Stream.map() function for transforming the objects based on the input method. 
+The given below example, converts all string elements in upper case.
+package com.java2novice.streams;
+ 
+import java.util.Arrays;
+import java.util.List;
+ 
+public class StreamMapEx {
+ 
+    public static void main(String a[]) {
+ 
+        List<String> vehicles = Arrays.asList("bus", "car", "bicycle", "flight", "train");
+        vehicles.stream().map(String::toUpperCase).forEach(System.out::println);
+    }
+----------------------------------------------------------------------------------------------
+ Stream.of("bus", "car", "bycle", "flight", "train")
+                .filter(e -> e.length() > 3)
+                .peek(e -> System.out.println("Filtered value: " + e))
+                .map(String::toUpperCase)
+                .peek(e -> System.out.println("Mapped value: " + e))
+                .collect(Collectors.toList());
+    }
+----------------------------------------------------------------------------------------------
+Sort the List
+List<Employee> empList = new ArrayList<>();
+        empList.add(new Employee("Nataraja G", "Accounts", 8000));
+        empList.add(new Employee("Nagesh Y", "Admin", 15000));
+        empList.add(new Employee("Vasu V", "Security", 2500));
+        empList.add(new Employee("Amar", "Entertainment", 12500));
+ 
+        empList.stream()
+                .sorted((emp1, emp2)->emp1.getSalary().compareTo(emp2.getSalary()))
+                .forEach(System.out::println);
+---------------------------------------------------------------------------------------------
+

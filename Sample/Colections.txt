@@ -1,0 +1,685 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collections.
+------------
+	Collection:-
+		is a colls of obj that used to store hemo, hetro, duplicates and unique obj without size limitation.
+		carrying mul obj at a time.
+	Coll fw is a semi reusable apps which provide some common low level fw.
+	
+	
+	why?
+	no size limitations,
+	growable and reusable,
+	allow to store duplicates,unique.
+	esay to work with java8 and above features.
+	
+	where use?
+	
+
+Map:-
+	If we need to store data in the form of key and value than go with Map. 
+	You can choose from Hashtable,HashMap,LinkedHashMap,WeakHashMap,IdentityHashMap, and TreeMap based upon your subsequent need.
+	
+List:-
+	If we need to create a collection of duplicate elements by using the index than List, choosing any
+	Its List implementation e.g. ArrayList,LinkendList,Vector,Stack provides faster access if you know index. 
+Set:-
+	If we need to create a collection of unique elements and don't want any duplicate than, choosing any
+	Set implementation e.g. HashSet, LinkedHashSet or TreeSet. 
+
+Characteristics of a Map:
+	A Map cannot contain duplicate keys and each key can map to at most one value.
+	it allow only one null key and null value (HashMap and LinkedHashMap) but some does not (TreeMap).
+
+Why and When Use Maps:
+	Maps are perfectly for key-value association mapping such as dictionaries. 
+	Use Maps when you want to retrieve and update elements by keys, or perform lookups by keys. Some examples:
+	A map of error codes and their descriptions.
+	A map of city(name) as a key and company names(as a object value).
+	A map of Domain emp(java) as a key and employees(as a obj type val )
+	A map of managers and employees. Each manager (key) is associated with a list of employees (value) he manages.
+	A map of classes and students. Each class (key) is associated with a list of students (value).
+	
+HashMap: 
+	uses a hash table as the underlying data structure. 
+	It implements all of the Map operations and allows null values and one key as null.
+	This class is roughly equivalent to Hashtable - a legacy data structure before Java Collections Framework, 
+	but it is not synchronized and permits nulls. 
+	HashMap does not guarantee the order of its key-value elements.
+	Therefore, consider to use a HashMap when order does not matter and nulls are acceptable.  
+LinkedHashMap:
+	uses a hash table and a linkedList as the underlying data structures,
+	thus the order of a LinkedHashMap is predictable, with insertion-order as the default order.
+	This implementation also allows nulls like HashMap.
+	So consider using a LinkedHashMap when you want a Map with its key-value pairs are sorted by their insertion order.  
+TreeMap: 
+	uses a red-black tree as the underlying data structure. 
+	A TreeMap is sorted according to the natural ordering of its keys, or by a Comparator provided at creation time. 
+	This implementation does not allow nulls. So consider using a TreeMap when you want a Map sorts
+	its key-value pairs by the natural order of the keys (e.g. alphabetic order or numeric order), or by a custom order you specify.	
+		
+
+	Diff b/w Callections and Collection FrameWork
+	can we perform a group of obj as single entity.
+	Collection interface defines the most common mehtods.
+	Collection interface is considered as root interface of Collection FW
+
+	Collections:-is utility class present in java.util.package to define several utility methods like
+			sorting,searching,binarySearch.
+	Collection-:Collection is a interfaces which can we use to represent a group of obj as single entity.
+
+
+	Collection(I)(1.2)--List(I)(1.2)---insertion order preserved,duplicats
+				ArrayList(1.2)
+				LinkedList(1.2)
+				Vector(1.0)---Lagecy
+					Stack(1.0)Lagecy(Lifo)
+	Set(I)(1.2)(no duplicats,not insertion order preserved
+				HashSet(1.2)
+				LenkedHashSet(1.4)insertion order preserved
+	Collection(I)-Set(I)
+			SortedSet(I)---chilld interface of Set
+					where duplicats are not allowed but all obj should be inserted to sorting order.
+				NavigableSet(I)-is child Interface of SortedSet(1.6)
+					TreeSet(No duplicats,and default or natural sorting order
+	Collection(I)-Queue(I)(1.5)
+			PriorityQueue(1.5)
+			BlockingQueue(1.5) 
+				LinkedBlokingQueue(1.5)
+				PriorityBlockingQueue(1.5)
+	
+	Map(I)(1.2)
+		HashMap(1.2)
+			LinkedHashMap(1.4)
+		WeakHashMap(1.2)
+		IdentityHashMap(1.4)
+Dictionary(1.0) Hashtable(1.0)
+				Properties(1.0)
+		
+	Map(I)(1.2)
+		SortedMap(I)sorting order of key(1.2)
+			NavigableMap(I)(1.6)
+				TreeMap(1.2)
+	Sorting
+		Comparable-(Employee)---default natural sorting order
+			ex-Stringbuffer and StringBuilder--not possible bcoz its not implement with comparable
+		Comparator-(Employee)---if not satisfy default natural sorting order
+								programmer want own sorting
+			ex-String buffer and StringBuilder----bcoz its customize sorting order
+			define own sorting
+	Cursurs
+		Ennumeration
+		Iterator
+		ListIterator
+
+
+	Note:- Collection interface dosnt contain any method to retrieve object there is no
+	concrete class which coll obj directly.
+	Accept TreeSet and TreeMap every where hetrogenious allow.
+
+	List(I)
+		dupicats allows y using index.
+		preserve insertion order y using index
+	List Interface Specific method
+		add(int index,Object o)
+		addAll(int index,Collection c)
+		get(int index)
+		remove(int index)
+		set(int index,Object new)
+		indexOf(Object o)
+		lastIndexOf(Object o)
+		ListIterator listIterator();
+
+	ArrayList:-
+		internally used Object[] array and groable array;
+		duplicats
+		insertion order
+		Hetrogenious
+		null insertion possible
+		resizable and growable
+		default cap=10 if insert 11th element then new capacity
+			new cap=(curr Capacity*3/2+1.
+		Best:-
+			heigh spdeed element access(Al and vector).
+			bcoz in arrayList evry retrive operation are strt from first element only.
+			Al and vector for retrieve heghly recommended(bcoz impl from RandomeAccess(I).
+			
+		Draw back:
+			if in Al insert/remove in the midle of operaton is worst thing
+			bcoz several sift operation are require(multiple sift operation require).
+		Al multple obj allow at a time.(non snchro) but vector at a time only one thread are allowed(Snchro).
+		Al For Synchro
+			List l=Collections.synchronizedList(ll);.
+			similarly sychronization apply in Set and Map.
+		---just bcoz of RandomAccess(I) nd present in java.util pack
+						it dosnt contains any method bcoz its marker interface.
+		every coll class already implemented to serializable and Cloneable
+		but only Al and Vector class impl to RandomAccess(I)
+		Note;-
+			Convert colls obj into array
+			Object [] ar=al.toChar();  
+			While converting colls to array we whould in Object array Obj 
+			for retrieving element use iterator.
+	
+	LinkedList:-
+		implements with Serializable and clonable.
+		no default capacity
+		
+		best:
+		best choice insertion and deletion in the middle of elements.
+		bcoz element devide into node format(bcoz internally used double LL).
+		
+		Drawback:-
+		worst choice for retrival operation(bcoz evry retrive operation are strt from first element only) LL in the form of Node.
+		
+		internal DS double LL
+		insertion order
+		Hetro and null.
+		some method for LL
+		addFirst(Obj o),addLast(Obj o),getFirst(),getLast(),removeFirst(),removeLast().
+	
+	Vector:-
+		Resizable/growable array
+		Duplicats nd null
+		insertion order nd hetro
+		impll sereilizable/clonable nd also random access 
+		most of method present in synchronized.
+		default cap----10-------new cap=2*ccapa
+	For removing obj
+		Remove(obj o)			From Collection
+		removeElement(Obj o)		Vector
+		remove(int index)		List
+		removeElementAt(int index)	Vector
+		clear()				Collection
+		removeAllElement		from vector
+
+	
+	cursors:-for retrieving coll obj.
+		Ennumeration(1.0)
+		Iterator
+		ListIterator
+
+	Ennumeration:-
+		Ennumeration e=v.elements();
+		nextElement() and hasmoreElement().
+		it is appicable for lagecy class. nd only for retrieving obj
+		not replace nd add obj.
+		
+	Iterator:-
+		it is univarsal cursor.
+		we can perfrom read and remove.
+		unidirectional goes to forword direction only.
+		
+		Iterator itr=c.iterator().
+		hasNext(), next(), remove().
+		it only work forword Direction.
+		
+	ListIterator:-
+		BiDirectional(forword nd backord)
+		read,remove,replace, and new obj.
+		listIterator()----available in List(I)--that y applicable for only List imp clses.
+		hasNext() , next(),nextIndex().---ment for forword direction
+		hasPrevious() , previous(), previousIndex()---ment for backword movement.
+		remove(),set(Obj new),add(Obj new).
+	
+	Set(I)(1.2)--no duplicats nd no insertion order(bocz inserted obj based on the hashcode of obj).
+		HashSet(1.2)
+		      LHS(1.4)(insertion order Preserved)
+		SortedSet(I)
+			Navigable(I)(1.6)
+				TreeSet(1.2) is class
+
+	HashSet
+		Best Choice for search operation.
+		underlying DS is (HashTable).
+		no duplicats, no insertion order(bocz inserteding obj in HashSet based on the hashcode).
+		hetro, null serilizable nd clonable.
+		cap-16 nd fil ration 0.75(load factor).
+	LHashSet:-
+		underlying DS is HashTable and LL.
+		insetion order preseved.
+		best choice for chache based application.
+	Note:- HashSet uses HashMap object internally to store it's elements where as LinkedHashSet uses LinkedHashMap 
+	       object internally to store and process it's elements.
+	TreeSet:-
+		Underlying DataStructure is (balances TREE)
+		Insertion order not preserved.
+		accending order,for comparable() get null.
+		Tree, no duplicats,natural sorting order,no Hetro
+		Note:-if TreeSet is non Empty or try to insert null,nth null--will get NPE.(From 1.7)
+		      if empty TreeSet try to insrt first element as null----NPE
+		      if one obj having null ellement and second obj try to insert A--then get RE,NPE(1,7)
+
+		default natural sorting order.
+		for default sorting order obj should be hemo and copmarable if obj not hemo nd comparable get CCastEexception
+			Comparable mean--Like String(All wraper classes) implents with comparable
+		TreeSet st=new TreeSet()---ment for default/natural sorting order.
+		TreeSet st=new TreeSet(Comparator c) customize sorting order specifies by Comparator.
+		TreeSet st=new TreeSet(Collection c)
+		TreeSet st=new TreeSet(SortedSet s)
+
+		ex:
+		TreeSet t=new TreeSet();
+		t.add(new StrinBuffer("A"));
+		t.add(new StrinBuffer("B"));----CCE bcoz StringBuffer not implement with Comparable(I).
+		but String is implements with Comparable(I)
+
+Comparable:-
+============
+	obj1.compareTo(obj2)
+		-return  -ve if obj1 has come to before obj2--sop("a".compareTo(z));   -ve  {comaresion time z going left and a come right}ZA like.
+		-return +ve if obj2 has come to before obj1---sop("z".compareTo(a));   +ve
+		-return 0 if 0bj1 and obj2 are equal.---------sop("a".compareTo(a));   0
+		-return 0 if 0bj1 and obj2 are equal.---------sop("a".compareTo("null"));   RE,NPE
+Sorting for comparable:-
+-------------------------
+	1-Create Employee class
+		with Data variable,
+		create Constructor of employee class,
+		create a firstname class with implements Comparable<Employee>,
+		over compareTo() method
+		generate toString method.
+	3-In caller class 
+		Employee details stored in list collection,
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees,new FirstName); like this possible with comparable.
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees)
+		sysout(employee)
+		
+
+Comparater:-
+==============
+	obj1.compare(obj2)
+		-return  -ve if obj1 has come to before obj2
+		-return +ve if obj2 has come to before obj1
+		-return 0 if 0bj1 and obj2 are equal.
+		
+Sorting for comparator:-
+-----------------------
+	1-Create Employee class
+		with Data variable,
+		create Constructor of employee class,
+		generate a setter and getter method of employee class,
+		generate toString method.
+	
+	2-FirstName Sorting class
+		create a firstname class with implements Comparator<Employee>
+		comparing emp o1 and emp o2.
+	
+	3-In caller class 
+		Employee details stored in list collection,
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees,new FirstName);
+		sysout(employee)
+		
+	int compare(Employee o1,Employee o2){	
+	// return o1.getLastName().compareTo(o2.getLastName());	
+	// return o1.getAge() - o2.getAge();
+	}
+	//employees.sort(Comparator.comparing(e->e4.getAge()));
+	//employees.sort(Comparator.comparing(Employee::getFirstName));
+	
+	//System.out.println(Collections.binarySearch(employees, 2, new AgeSorter()));
+	
+	Diff b/w camparable and Comparator.
+
+		camparable							    comparator
+		default natural sorting order.			customized sorting order and define own sorting.
+		present in java.lang.pack.				java.util.pack
+		only compareTo().						1)compare() nd equals().
+		all wraper nd string cls implements		imp with two clss Collator nd RuleBasedColator.
+	
+	Map:-
+		Note:- The Key class should override equals() and hashCode() methods to test equality on hash-based map.
+		Not child interface of Collection.
+		when group of obj as key nd values
+		duplicats key not allowed but values is allows.
+	Map(I)
+		HashMap(1.2)
+			LinkedHashMap(1.4)
+		WeakHashMap(1.2)
+		IdentityHashMap(1.4)
+		Hashtable(1.0)
+			Properties(1.0)
+		
+		Map(I)(1.2)
+			SortedMap(I)(1.2)
+				NavigableMap(I)(1.6)
+					TreeMap(1.2)
+	
+	Diff Hashmap And IdentityHashMap:-
+	----------------------------------
+	HashMap:-
+		use equals() method for comparing keys or values inside the map.
+		get bucked location HashMap use the hascode() method.
+		To safely store the objects in HashMap the keys need to be immutable.
+	
+	IdentityHashMap:-
+		IdentityHashMap uses equality operator "==" for comparing keys and values inside Map
+		IdentityHashMap also doesn't use hashCode() instead it uses System.identityHashCode(object).
+		IdentityHashMap doesn’t require the key to be immutable.
+
+
+
+	
+	HashMap:-
+			implements with the Cloneable(I) and Serializable(I)  
+			key contains more then value but val cant contains more then key
+			no gurarnity maintain order, it similar to hashtable but its not Synchronized.
+			HashMap use hashing technique.
+			and internally LinkedList to store key and value pairs.
+			
+	Load Fector of HashMap:-
+		load factor of HashMap is 0.75f (75% of the map size).
+		The load factor in HashMap is basically a measure that decides when exactly to increase the size of the HashMap
+		to maintain the same time complexity of O(1).
+		that decides when to increase the HashMap capacity to maintain the get() and put() operation complexity of O(1). 
+		
+		
+	There are two factors which affect the performance of the hashmap.
+		Initial Capacity
+		Load Factor
+		
+		Initial Capacity of HashMap
+			The initial capacity of the HashMap is the number of buckets in the hash table. 
+			It creates when we create the object of HashMap class. 
+			The initial capacity of the HashMap is 24, i.e., 16. 
+			The capacity of the HashMap is doubled each time it reaches the threshold. 
+
+		Load Factor:-
+			The default load factor of HashMap is 0.75f (75% of the map size).
+
+		Problem
+			The problem is, keeping the bucket size fixed (i.e., 16), we keep on increasing the total number of items 
+			in the map that disturbs time complexity.
+
+		Solution
+			When we increase the total number of buckets, total items in each bucket starts increasing. 
+			Now we are able to keep the constant number of items in each bucket and maintain the time complexity of O(1) for get() and put() operation.
+		
+		How Load Factor is calculated
+			Load Factor decides "when to increase the number of buckets."
+
+			We can find when to increase the hashmap size by using the following formula:
+				Threshold = (Current Capacity) * (Load Factor)
+				The initial capacity of hashmap is=16
+				The default load factor of hashmap=0.75
+				According to the formula as mentioned above: 16*0.75=12
+		
+		While modification inil cap and l-fact:-
+			you can not change that after the map is created, the most you can y use the constructor defined for that
+
+		as the doc states:
+			public HashMap(int initialCapacity, float loadFactor)
+			Constructs an empty HashMap with the specified initial capacity and load factor.
+			Map<String, String> x = new HashMap<>(10, 0.85f);		
+		
+		
+		
+		Note: second key will be oveerride.
+
+		equals() nd hashCode diff
+		-------------------------
+			if two obj hashCode is same at this time eqaulas() method
+			nd if hashCode is same and content is same that duplictas obj found. 
+		obj.put(Obj key,Obj value) to add one key value pair to the map
+		if the key is already present then old value will we replace with new value and the return old val
+		
+		m.put(101,"Ab")
+		m.put(102,"CC")
+		m.put(101,"ZZ")----------101,ZZ---note AB replace to ZZ
+		methods
+			put(Obj key,Obj value)
+			putAll(Map m)
+			get(Obj key)
+			remove(Obj key)
+			containsKey(Obj key)
+			containsValue(Obj val)
+			isEmpty()
+			size()
+			clear()
+		keySet()belog to Set,values() belong to Collection,entySet() belong to Set.
+		these three method belong coll views of method
+		each key nd value pairs----one entry--
+
+		note:- Entry(I) is a inner Interface of Map(I)
+		interface Map{
+			interface Entry{
+				Object getkey()
+				Object getValue()
+				Object setValue();
+					}
+				}
+			Entry a map is a group of key val pairs and each key val pairs is called an Entry
+			hence Map is considered as coll entry objs
+			whitout existing map obj there is no chance of existing Entry obj 
+			hence Entry(I) is define inside Map(I).
+		1-create an empty hashmap obj with default initial cap 16 and default fell ration 0.75
+			hashMap m=new HashMap(int initalCap) 
+		2-create an empty HashMap obj with specifies the initial cap nd default fell ration 0.75
+			HashMap m=new HashMap(int initialcapa,float fillratio)
+			Hashmap m=new HashMap(max m).
+
+		Example
+		--------
+		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+		mp.put(1, "A");
+		mp.put(4, "D");
+		mp.put(2, "C");
+		mp.put(3, "B");
+			Set s1=mp.entrySet();
+			System.out.println("========Iterator ir = s.iterator();=========");
+			Iterator ir = s1.iterator();
+			while (ir.hasNext()) {
+				Map.Entry m = (Map.Entry) ir.next();
+				System.out.println(m.getKey()+"======"+m.getValue());
+				if(m.getKey().equals(1)) {
+					m.setValue("Sule");
+				 }
+			}
+	
+	Diff wetween HashMap and ConcurrentHashMap:-
+		HashMap is not synchronized.						  ConcurrentHashMap is synchronized.
+		HashMap is not thread safe.						      ConcurrentHashMap is thread safe.
+		HashMap iterator is fail-fast and ArrayList throws 	  ConcurrentHashMap is fail-safe and it will never throw 
+		ConcurrentModificationException if concurrent         ConcurrentModificationException during iteration.
+		modification happens during iteration.									                  
+								
+		HashMap allows key and value to be null.  				ConcurrentHashMap does not allow null key/value,
+											                    It will throw NullPointerException.
+		HashMap is faster.							            ConcurrentHashMap is slower than HashMap.
+		1.2									                    1.5
+		Locking at obj level if go for synchro					There is no locking at the object level.
+		
+	ConcurrentHashMap
+		You should use ConcurrentHashMap when you need very high concurrency in your project.
+		It is thread safe without synchronizing the whole map.
+		Reads can happen very fast while write is done with a lock.
+		There is no locking at the object level.
+		The locking is at a much finer granularity at a hashmap bucket level.
+		ConcurrentHashMap doesn’t throw a ConcurrentModificationException if one thread tries to modify 
+		it while another is iterating over it.
+		ConcurrentHashMap uses multitude of locks.
+		
+	SynchronizedHashMap
+		Synchronization at Object level.
+		Every read/write operation needs to acquire lock.
+		Locking the entire collection is a performance overhead.
+		This essentially gives access to only one thread to the entire map & blocks all the other threads.
+		It may cause contention.
+		SynchronizedHashMap returns Iterator, which fails-fast on concurrent modification.
+	
+HashMap Internal flow:-
+-----------------------
+		internal flow:
+			int Hash
+			key 
+			value
+			Node next.
+			node having reff of own obj that is reason called as LinkedList.
+			key nd val having int Hash
+			node having reff of next variable  
+			
+		work on hashCode
+			put("A",1);--65 is unicode value:A:1:null bcoz there is no next node thats y null.
+			put("B",2);
+			converting large string to small string representthe same string, and sorter value helping index and faster searcher.
+			
+			HashSet use internally in HashMap.
+			and internally LinkedList to store key and value pairs.
+			
+			1-Calculation of hashCode from the key--with A key
+				Pass to Hash func for getting binary 
+			2-calculation of index or bucket loc
+				: n is size HashMap
+				index=hashCode & (n-1)  
+			-every index collection hashcode
+
+		Map mp=new HashMap<String, String>();
+		mp.put("null", "Sk");
+		mp.put("null", "sule");
+		System.out.println(mp);------output(null,Sule)
+		
+		1. Single statement answer
+			“works on hashing principles/hashing technique“. 
+		2. What is Hashing?
+			is a way to assigning a unique code for any variable/object after applying any formula/algorithm on its properties.
+			Hashing is a process of converting an object into integer, by using the method hashCode(). 
+			It is a data structure which allows us to store object and retrieve.
+			In hashing, hash functions are used to link key and value in HashMap.
+			Its necessary to write hashCode() method for better performance of HashMap.
+			Here overrided hashCode() method returns the first character’s ASCII value as hash code. 
+			impt: So whenever the first character of key is same, the hash code will be same. 
+	Rulls:-
+		Hash function should return the same hash code each and every time when the function is applied on same or equal objects.
+		In other words, two equal objects must produce the same hash code consistently.”
+			
+		hashCode and equals():-
+			hashCode() and equals() methods have been defined in Object class which is parent class for java objects.
+			For this reason, all java objects inherit as a default implementation of these methods.
+					
+			eqaulas():-
+				equals(Object otherObject) – is used to simply verify the equality of two objects. 
+				By default, two objects are equal if and only if they are stored in the same memory address.
+				You can override this in your class to provide your own implementation.
+				
+				HashMap uses equals() to compare the key whether the are equal or not. 
+				If equals() method return true, they are equal otherwise not equal.
+				compering the content of both object.
+			hashcode() – 
+				Returns a unique integer value for the object in runtime. 
+				By default, integer value is mostly derived from memory address of the object in heap (but it’s not mandatory always).
+				This hash code is used for determining the bucket location, when this object needs to be stored in some HashTable like data structure.
+		
+		Buckets:-
+			 bucket is one element of HashMap array. 
+			 It is used to store nodes. 
+			 Two or more nodes can have the same bucket. 
+			 In that case link list structure is used to connect the nodes. 
+			 Buckets are different in capacity. 
+			 A relation between bucket and capacity is as follows:
+			 capacity = number of buckets * load factor(.75)
+		
+		Index Calculation in Hashmap
+			Hash code of key may be large enough to create an array. 
+			hash code generated may be in the range of integer and if we create arrays for such a range, then it will easily cause outOfMemoryException. 
+			So we generate index to minimize the size of array. Basically following operation is performed to calculate index.
+
+			ndex = hashCode(key) & (n-1).
+		
+		
+		3. Entry class in HashMap
+			A map by definition is : “An object that maps keys to values”. Very easy.. right?
+			So, there must be some mechanism in HashMap to store this key-value pair. 
+			The answer is YES. HashMap having an nested static class Entry, which looks like this:
+
+			Entry class
+			static class Entry<K ,V> implements Map.Entry<K, V>
+			{
+				final K key;
+				V value;
+				Entry<K ,V> next;
+				final int hash;
+				...//More code goes here
+			}   Surely Entry class has key and value mapping stored as attributes. 
+				key has been marked as final and two more fields are there: next and hash.
+				
+		4. 	How HashMap.put() methods works internally
+			Before going into put() method’s implementation, it is very important to learn that instances of Entry class are stored in an array. 
+			HashMap class defines this variable as:
+
+			entry array
+			transient Entry[] table;
+			
+			Now look at code implementation of put() method:
+			put() method
+			/**
+			* Associates the specified value with the specified key in this map. If the
+			* map previously contained a mapping for the key, the old value is
+			* replaced.
+			*
+			* @param key
+			*            key with which the specified value is to be associated
+			* @param value
+			*            value to be associated with the specified key
+			* @return the previous value associated with <tt>key</tt>, or <tt>null</tt>
+			*         if there was no mapping for <tt>key</tt>. (A <tt>null</tt> return
+			*         can also indicate that the map previously associated
+			*         <tt>null</tt> with <tt>key</tt>.)
+			*/
+			public V put(K key, V value) {
+				if (key == null)
+				return putForNullKey(value);
+				int hash = hash(key.hashCode());
+				int i = indexFor(hash, table.length);
+				for (Entry<K , V> e = table[i]; e != null; e = e.next) {
+					Object k;
+					if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+						V oldValue = e.value;
+						e.value = value;
+						e.recordAccess(this);
+						return oldValue;
+					}
+				}
+			 
+				modCount++;
+				addEntry(hash, key, value, i);
+				return null;
+			}
+			
+			4.1. What put() method does
+					Let’s note down the internal working of put method in hashmap.
+					First of all, the key object is checked for null. 
+					If the key is null, the value is stored in table[0] position. 
+					Because hashcode for null is always 0.
+					Then on next step, a hash value is calculated using the key’s hash code by calling its hashCode() method. 
+					This hash value is used to calculate the index in the array for storing Entry object. 
+					JDK designers well assumed that there might be some poorly written hashCode() functions that can return very high or 
+					low hash code value. 
+					To solve this issue, they introduced another hash() function and passed the object’s hash code to 
+					this hash() function to bring hash value in the range of array index size.
+					Now indexFor(hash, table.length) function is called to calculate exact index position for storing the Entry object.

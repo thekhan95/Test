@@ -1,0 +1,781 @@
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spring Boot Annotion.
+	Where?
+	@SpringBootApplication used in the main class or bootstrap class of application.
+		
+		bootstrap:-
+			bootstrap checking type of application(like standalone,web and reactive) based on the dependency present in pom.xml
+		class while setting up a Spring Boot project.
+		The class that is annotated with the @SpringBootApplication must be kept in the base package.
+
+	what?
+		@Configuration             configure Java class as a spring bean(It is a class-level annotation).
+
+		@EnableAutoConfiguration   @EnableAutoConfiguration annotation implicitly defines a base search package�
+		�
+		@ComponentScan	           packages to scan for annotated components
+		these 3 annotation auto comes inside  SpringBootApplication
+		
+Spring Boot:-
+---------------
+	1) What is Spring Boot?
+		spring boot favors convetion over configuration.
+		It is a methodlogy and approach which provides RAD (Rapid Application Development) feature for the developing java app 
+		with Spring framework.
+		which eliminated the boilerplate configurations required for setting up a Spring application.
+		when we create to stand alone spring based application which can just run because it needs very little/or no spring configuration.
+		its aims to RAD.
+		Spring Boot automatically configures required classes depending on the libraries on its class path.
+		
+	spring boot come with	
+		creating project with default build tool maven or gradle.
+		programing language type is java kotlin and grovy with version.
+		Auto-Dependency resolution
+		Embadded Http Server
+		managment endspoints
+		and pachkaging jar or war
+		project mata data having with groupid,artifactid,name or package etc.
+		
+		
+	why should go with Spring boot?
+		quickly bootstrap and start developing Spring-based application. 
+		It avoids a lot of boilerplate code. 
+		stability
+		connectivity
+		flexibility
+		native cloud
+		open source
+		It hides a lot of complexity behind the scene 
+		so that the developer can quickly get started and develop Spring-based applications easily.
+		
+		
+	Features:-
+		Spring boot Cli
+		Actuator
+		spring initializer
+		starter dependency
+		auto configuration
+		stand-alone spring apps
+		externalized configuration
+		logging and security
+		
+	Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies 
+	that you have added. For example, If HSQLDB is on your classpath, and you have not manually configured any database connection beans, 
+	then we will auto-configure an in-memory database.	
+		
+	Advantages	
+		it decreases the efort of developer.
+		default automatically configured.
+		No requirement for XML configuration in Spring Boot Projects.
+		with this time saving and productivity is good
+		Scan the classpath and find the dependency 
+		Automatically configure spring and 3rd party libs whenever possible.
+		Provide production-ready features such as matrix,health check and externalized configuration.
+
+@Controller:-
+		specilization of @Component,but usefull to configure class as Controller of Spring web/mvc app, to process req given by cleint.
+		This annotation is used on Java classes that playing role of controller in your application.
+		The Java class annotated with @Controller is capable of handling multiple request mappings.
+		Creating Object + Web Application Setup.
+		
+	@Repository
+		specilization of @Component,but useful to config DAO class or Repository as the spring bean.
+		Capable of translating one form of exception to another form of exceptions 
+		and translate persistent technology exception to another exception.
+		Creating bean Object + Supports JDBC/ORM Operations setup
+		
+	@Service:-
+		specilization of @Component, but use to configure the java classes of service layer.
+		as of now special behavior so its same as @Component.
+		servie impl including business logic, calculations, call external APIs, etc. 
+		Generally, it holds the business logic of the application.
+		Creating Object + Transaction Management + Logics, calculations
+
+	@CokieValue:-
+		This annotation is used at method parameter level.
+		
+	@CrossOrigin---
+		This annotation is used both at class and method level to enable cross origin requests.
+		Annotation for permitting cross-origin requests on specific handler classes and/or handler methods.
+		Processed if an appropriate HandlerMappingis configured. 
+		Both Spring Web MVC and Spring WebFlux support this annotation through the RequestMappingHandlerMapping in their respective modules.
+
+	@ExceptionHandler:-
+		This annotation is used at method levels to handle exception at the controller level.
+		annotation is used to define the class of exception it will catch. 
+	
+	@RequestAttribute
+		This annotation is used to bind the request attribute to a handler method parameter.
+		Spring retrieves the named attributes value to populate the parameter annotated with @RequestAttribute.
+		While the @RequestParam annotation is used bind the parameter values from query string,
+		the @RequestAttribute is used to access the objects which have been populated on the server side.
+	ResponseEntity:-
+		Extention of HttpEntity,
+		that add HttpCode and return it.
+		
+	RestController:-  it is combination of @Controller and @ResponseBody.
+	
+	
+	@RequesMapping:-
+			is used both at class and method level.
+			is used to map/routing web requests onto specific handler classes and handler methods.
+			is used on class level it creates a base URI and controller will be used.
+			is used on methods it will give you the URI on which the handler methods will be executed.
+	
+	@RequestParameter:-
+		This annotation is used in handler method as a arguments.
+		annotation to accept query parameters in Controller's having handler methods.
+		is use to extract values in the from query string,  http://localhost:8080/foos?id=abc   
+		is more useful on a traditional web application where data is mostly passed in the query abatements
+		@RequestParam, we can also use the required attribute.
+		
+		
+		Sometimes you get the parameters in the request URL, mostly in GET requests.
+		In that case, along with the @RequestMapping annotation you can use the
+		@RequestParam annotation to retrieve the URL parameter and map it to the method argument.
+		The @RequestParam annotation is used to bind request parameters to a method parameter in your controller.
+	
+	@PathVariable:-
+		This annotation is used in handler method as a arguments.
+		The @PathVariable annotation is used to extract the values/data from the URI.http://localhost:8080/foos/abc
+		is more suitable for RESTful web services where URL contains values
+		@PathVariable optional, to avoid conflicts in paths.
+		parameter should be bound to a URI template variable.
+		The multiple @PathVariable can be defined in a method.		
+		
+	@RequestHeader
+		The @RequestHeader annotation is used to get the details about the HTTP request headers. 
+		It can be used as a method parameter. 
+		
+	@RequestAttribute
+		The @RequestAttribute annotation is used to wrap a method parameter to the request attribute. 
+		It gives convenient access to the request attributes from a controller method. 
+		Using this annotation, we can access objects that are populated on the server-side.
+	
+		
+	Possible source of external configuration:-
+		Application propagates
+		CL properties
+		profile specific properties.
+		
+	
+	Spring boot starter:-
+		are set convenient dependency mgmt providers, which can be used in the application to enable dependency.
+		these starts make development easy and RAPID.
+		all the available starters comes under the org.springframwork.boot group.
+		ex:- spring-boot-starter-data-jpa.
+		
+	Actuator and Advantages:-
+		with the help actuator we can se what happening inside a running application.
+		actuator provide a access the production-ready REST points and fatch all kinds of info from the web.
+		health of the web application.
+		diff ends points.
+		
+	spring boot dependency:-
+		used to manage dependency an configuration automatically without you specifies the version for any dependencies.
+	
+	Thymeleaf and how to used:-
+		is a server side java template engine used for web applications.
+		aim to brings natural templates for your web application and can integrate well with spring framework and html5 java web applications
+		add thymeleaf dependency.
+		
+		
+	Expose custom application properties:-
+		one way is by using @Value ann,
+		but only problm with this anno is that all configuration values will be distributed throughout the application.
+		
+		instead this use centeralized approch.
+		that you can define a configuration component using the @ConfigurationPropeties
+		
+	Advantages of YML file	and diff ways to load:-
+		that the data is stored in a hierarchical format.
+		vry easy for the developer to debug the issue.
+		
+		use YamlMapFactoryBean as a map
+		use YamlPropertiesBean to load YAML as properties.
+		
+		when need tomcat embaded jasper?
+			when programer want to work with jsp---9.x
+		what is application.yml
+			this is like application.properties, that is use for configuration.
+		
+		what is context path?
+			give application name with http url
+			http://localhost/2020/webapp
+			
+
+	6)What is the configuration file name used by Spring Boot?
+		The configuration file used in spring boot projects is application.properties.
+		This file is very important where we would over write all the default configurations.
+		Normally we have to keep this file under the resources folder of the project.
+
+	7) What is application.properties?
+		This file is input to Spring Container. Here Spring Boot Provides default Configuration for all concepts
+		i.e <bean/> tags so Programmer is not required to write any <bean/> tags for Common Concepts like Email,
+		DataBase Connection, JMS, Log4J, ViewResolver etc…
+		“application.properties” must be created under “src/main/resources”.
+		It Stores Data in Key=Value format. Here all Keys are pre-defined.
+		Symbol “#” indicates Comment in “.properties” file.
+
+	8) How to configure External Databases in Spring Boot?
+		We can configure Database details using “DataSource” & “JPA” properties.
+		Here Programmer not required to write code for ”DataSource” & “SessionFactory” implemented class Objects
+		these will be auto configured by Spring Boot.
+		We should only provide input details using (key=value) application.properties file.
+		Spring Boot provides by default “Connection-Pool” using Apache Tomcat server.
+		Ex: application.properties
+## DataSource
+		spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+		spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+		spring.datasource.username=username
+		spring.datasource.password=pwd
+## HibernateJpaAutoConfiguration(SessionFactory)
+		spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+		spring.jpa.show-sql=true
+		spring.jpa.hibernate.ddl-auto=update
+		spring.jpa.properties.hibernate.format_sql=true
+## Connection Pooling- ref PoolProperties
+		spring.datasource.tomcat.initial-size=5
+		spring.datasource.tomcat.max-active=20
+		spring.datasource.tomcat.max-idle=10
+		spring.datasource.tomcat.min-idle=5
+	
+	mail configuration
+		# add these new properties
+		spring.mail.transport.protocol=smtp
+		spring.mail.from.email=<your-email-goes-here>
+
+		# modify these properties with your credentials
+		spring.mail.username=<your-email-goes-here>
+		spring.mail.password=<password-goes-here>
+
+	9) What is “Swagger”?
+		It is a third party tool provided by “Spring-fox” to generate UI in HTML format for all Rest-Services in our application.
+		It provides complete API in simple HTML screen that contains Urls, Operation Names, Input & Output of Operations 
+		,sample input/output formats ,provider details & Contact information etc…
+		This Ui is called as “Docket”.
+		To Create this we must provide :
+		API base-package.
+		Common path for all RestControllers in application
+		API information & contact details also called as “MetaData”.
+
+	11) What is Profile in Spring Boot?
+		Spring Profiles helps segregating your application configurations, and make them available only in certain environments.
+		An application run on many different environments. For example, Dev, QA, Test, Stage, Production etc.
+		application.properties provides complete Environment details.
+		Instead of deleting all details for new Environment just we link to new application.properties file.
+		Ex: cloud.properties
+		
+
+			The development process of an application has different stages; the typical ones are development, testing, and production.
+			Spring Boot profiles group parts of the application configuration and make it be available only in certain environments.
+
+			Spring Boot allows to define profile specific property files in the form of application-{profile}.properties.
+			It automatically loads the properties in an application.properties file for all profiles,
+			and the ones in profile-specific property files only for the specified profile. 
+			The keys in the profile-specific property override the ones in the master property file.
+
+			There are plenty of ways of defining active profiles in Spring Boot,
+			including command line arguments,
+			Maven settings, JVM system parameters,
+			environment variables,
+			spring.profiles.active property, and SpringApplication methods.
+		What?
+			profile to do environments specific configuration
+		
+		problem:-
+			whenever deploy any application on the deff environments i have to manually change properties for the specific environments 
+			like:- dev,QA,UAT,PILOT..etc.
+			properties may be:- DB,logging,smtp,apache,kafaka
+			lots of time will be west.
+			might be possible to configure wrong value.
+			every time hard-coded these properties.
+			development and productivity become slow.
+		solution:-
+			come in pichure.
+			profile to do environments specific configuration
+			spring fw and boot provide support for the profile.
+			with help of profle deploy any application on the deff environments without manually configuration.
+			need not to change any configuration or hard by the programmer or developer again nd again.
+			application.properties provides complete Environment details.
+		properties file:-
+			application.properties-----spring.profiles.activate=dev---configuring the dev profiles.
+			application-dev.properties
+			application-qa.properties
+			application-uat.properties
+			application-pilot.properties
+			application-prod.properties
+			
+		same as application.yml
+			spring:
+				profiles:
+					active: dev
+			
+			-------
+			spring:
+				profiles:dev
+				datasoruce:
+					username:sysout
+					password:root
+					url:jdbc:racle:thin:@localhost:1521/xe
+					driver-class-name:oracle.jdbc.driver.OracleDriver
+			-------------
+			spring:
+				profiles:prod
+				datasoruce:
+					username:manager
+					password:admin
+					url:jdbc:racle:thin:@localhost:1521/xe
+					driver-class-name:oracle.jdbc.driver.OracleDriver
+					
+					
+		Eamples:-
+		============================
+		@Component
+		@Profile(value="dev")
+		class MyRunner2 implements CommandLineRunner {
+
+			@Override
+			public void run(String... args) throws Exception {
+
+				System.out.println("In development");
+			}
+		}
+
+		@Component
+		@Profile(value="prod & !dev")
+		class MyRunner3 implements CommandLineRunner {
+
+			@Override
+			public void run(String... args) throws Exception {
+
+				System.out.println("In production");
+			}
+		}
+	
+	
+
+Spring Boot Annotion.
+	@SpringBootApplication used in the main class or bootstrap class of application.
+		bootstrap:-
+			bootstrap checking type of application(like standalone,web and reactive) based on the dependency present in pom.xml
+		class while setting up a Spring Boot project.
+		The class that is annotated with the @SpringBootApplication must be kept in the base package.
+		@Configuration             it is configuration using Java class (It is a class-level annotation).
+		@EnableAutoConfiguration   @EnableAutoConfiguration annotation "implicitly defines a base search package"
+		@ComponentScan	           packages to scan for annotated components
+		these 3 annotation auto comes inside  SpringBootApplication
+
+	12) Write a code for RestController?
+		is used to provide the routing info and tells to spring that any Http request must be mapped to the respectiive method.
+		Annotation for mapping web requests onto methods in request-handling classeswith flexible method signatures. 
+		RestController anno was introdused in 4.0 and its return the obj and obj data is directly written into http response as JSON or XML.
+		used to develop ReST Webservices application in Spring Boot.
+		@ResponseBody ann is active by default.
+		used for Integration layer.
+		can be integrated with any client (http client).
+		It also supports all HTTP operations like GET, POST, PUT, DELETE etc.. 
+		It supports auto conversion for JSON with @ResponseBody
+	
+	Controller--
+		This annotation is used on Java classes that play the role of controller in your application.
+		allows autodetection of component classes in the classpath and auto-registering bean definitions for them.
+		The Java class annotated with @Controller is capable of handling multiple request mappings.
+
+	
+	13) What is Spring Boot Auto Configuration?
+		Spring Boot looks at 
+		a) Frameworks available on the CLASSPATH 
+		b) Existing configuration for the application. 
+		Based on these, Spring Boot provides basic configuration needed to configure the application with these frameworks.
+		This is called Auto Configuration.
+
+	14) How spring boot handles error in application?
+		Spring Boot provides an “/error” mapping by default that handles all errors in a sensible way, and it is registered 
+		as a ‘global’ error page in the servlet container.
+
+	15) How to write custom log configuration in spring boot?
+		You can force Spring Boot to use a particular logging system using the “org.springframework.boot.logging.LoggingSystem” 
+		system property.
+		The value should be the fully-qualified class name of a LoggingSystem implementation. 
+		You can also disable Spring Boot’s logging configuration entirely by using a value of none.
+
+	16)What is the default Multipart File Uploads size in spring boot?
+		By default Spring Boot configures 
+		1MB per file to a maximum of 10MB of file data in a single request.
+
+	17)What is Hot swapping in spring boot?
+		Reloading the changes without restarting the server is called hot swapping, Modern IDEs (Eclipse, IDEA, etc.)
+		all support hot swapping of bytecode, so if you make a change that doesn’t affect class or method signatures 
+		it should reload cleanly with no side effects. It can be done using DevTools here
+
+	18)How do you Switch off the Spring Boot security configuration?
+		If you define a @Configuration with @EnableWebSecurity anywhere in your application it will switch off
+		the default webapp security settings in Spring Boot.
+
+	19) What is caching? Have you used any caching framework with Spring Boot ?
+		A cache is an area of local memory that holds a copy of frequently accessed data that is otherwise expensive to get or compute.
+	
+	Dev-Tools:-
+	------------
+		stands for Devs tool.
+		emprove development time while working with spring boot application.
+		Dev tool pickup the changes when code changes are done in project and restart the server.
+		
+		Features:-
+				Defult property.
+				Automatic start.
+				Live Reload.
+				Remote application.
+		Work:-		
+			Compile„³Packing„³Build„³Deploy„³.java to .class „³ .jar „³ .war „³ place in Server and Run.
+		
+		Dependecny:-
+		------------
+			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<version>2.0.4.RELEASE</version>
+			</dependency>
+			
+
+		Both Spring MVC and Spring WebFlux support this annotation through a RequestMappingHandlerMapping and RequestMappingHandlerAdapterin 
+		their respective modules and package structure.
+
+	
+				1. Application.properties file
+				spring.cache.type=none
+			2. Application.yml file
+				spring:
+				cache:
+				type: "none"
+			3. SpringBootApplication main method
+			package com.yawintutor.cache;
+
+			import java.util.Properties;
+
+			import org.springframework.boot.SpringApplication;
+			import org.springframework.boot.autoconfigure.SpringBootApplication;
+			import org.springframework.cache.annotation.EnableCaching;
+
+			@SpringBootApplication
+			@EnableCaching
+			public class SpringBootEnableDisableCacheApplication {
+
+				public static void main(String[] args) {
+					SpringApplication application = new SpringApplication(SpringBootEnableDisableCacheApplication.class);
+					Properties properties = new Properties();
+					properties.setProperty("spring.cache.type", "none");
+					application.setDefaultProperties(properties);
+					application.run(args);
+				}
+
+			}
+Steps to Disable cache in Spring Boot
+	Caching improving performance of the application.
+	Cache will force the application to restart when the developer changes the code or debug.
+	Most of the time, it is necessary to disable cache temporarily to fix problems quickly.
+	Normally, we need to comment the code manually in all references.
+	Spring boot support to disable the cache globally by configuring it in one place.
+	Here, we’ll see different ways to disable spring boot cache.
+
+
+2) How to exclude any package without using the basePackages filter?
+	There are different ways you can filter any package.
+	But Spring Boot provides a trickier option for achieving this without touching the component scan. 
+	You can use the "exclude attribute" while using the annotation  @SpringBootApplication. See the following code snippet:
+
+
+@SpringBootApplication(exclude= {Employee.class})
+	public class FooAppConfiguration {}
+
+3) How to disable a specific auto-configuration class?
+	You can use the exclude attribute of @EnableAutoConfiguration, if you find any specific auto-configuration classes 
+	that you do not want are being applied.
+
+
+//By using "exclude"
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+	On the other foot, if the class is not on the classpath, you can use the excludeName attribute of the annotation and specify 
+	the fully qualified name instead.
+
+//By using "excludeName"
+	@EnableAutoConfiguration(excludeName={Foo.class})
+	Also, Spring Boot provides the facility to control the list of auto-configuration classes to exclude by using the spring.autoconfigure.
+	exclude property. You can add into the application.properties. And you can add multiple classes with comma separated.
+
+
+//By using property file
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+	Actuator:-
+	==========
+	1) What is Spring Boot Actuator?
+		This is a Pre-defined Web-services defined by Spring Boot ,which supports at “Production Environment”.
+		Spring Boot Actuator is a sub-project of Spring Boot. 
+		It includes a number of additional features that help us to monitor and manage the Spring Boot application. 
+		It contains the actuator endpoints (the place where the resources live). 
+		We can use HTTP and JMX endpoints to manage and monitor the Spring Boot application. 
+		If we want to get production-ready features in an application, we should use the Spring Boot actuator.
+		by Spring Boot Actuator such as application health, bean details, version details, configurations, logger details,
+					
+		Spring Boot Actuator Features
+			There are three main features of Spring Boot Actuator:
+
+						Endpoints
+							
+						Metrics-
+							Spring Boot Actuator provides dependency management and auto-configuration for Micrometer, 
+							an application metrics facade that supports numerous monitoring systems.
+						Audit
+							This feature can be very useful for reporting and for implementing a lock-out policy based on authentication failures.
+						Logger: It provides a feature to view and update the logs level.
+					
+				EndPoint:
+					The actuator endpoints allow us to monitor and interact with our Spring Boot application. 
+					Spring Boot includes number of built-in endpoints and we can also add custom endpoints in Spring Boot application.	
+					By default, all endpoints except for shutdown are enabled. 
+					management.endpoint.shutdown.enabled=true
+					
+					management.endpoints.enabled-by-default=false
+					management.endpoint.info.enabled=true
+					
+					Here Endpoint means URL path to one (Web) Services which is developed & added to one Application also running in server.
+				Example of Actuator Endpoints:
+					url/beans= To see Object Created in Spring Container & their details like Name, Scope, Dependencies etc…
+					url/health=To know status of supporting services like: Db Status, Email Services Etc…
+					
+					
+				Health check: You can use a health endpoint to check the status of your running application.
+				
+				Expose Custom Endpoint
+					Any methods annotated with @ReadOperation, @WriteOperation, or @DeleteOperation are automatically exposed over JMX and HTTP. 
+					Even you can expose technology-specific endpoint by using @JmxEndpoint or @WebEndpoint.
+				
+		Different Actuator Endpoints:-
+		==============================
+			Once above maven dependency is included in the POM file, 16 different actuator REST endpoints, such as actuator,
+			beans, dump, info, loggers, and metrics are exposed.
+			For a complete list of actuator REST endpoints, with examples, you can take a look here.
+			If you are using Spring MVC on top of this, then four additional endpoints — docs, heapdump, jolokia, and logfile can be used.
+
+		Customizing Actuator Endpoints
+			Spring Boot allows customizing endpoints by using Spring properties. 
+			Simply mention the properties you want to customize in your application.properties. 
+			You can customize an endpoint in three ways.
+				You can enable or disable an endpoint, 
+				customize its sensitivity, 
+				and also its id.
+			The following is an example that changes the sensitivity and id of the metrics endpoint and also enables shutdown.
+				endpoints.metrics.id=springmetrics
+				endpoints.metrics.sensitive=false
+				endpoints.metrics.enabled=true
+					
+			The following example marks all endpoints as sensitive except info.
+				endpoints.sensitive=true
+				endpoints.info.sensitive=false
+				
+				In Spring Boot, including the above dependencies will by default provide inbuilt form-based 
+				authentication with the userid as the user and a randomly generated password.
+				The following entries are then required to enable basic security to your sensitive endpoints.
+
+				management.security.enabled=true
+				security.basic.enabled=true
+				security.user.name=admin
+				security.user.password=admin
+
+		5) How to enable/disable the Actuator?
+			Enabling/disabling the actuator is easy;
+			the simplest way is to enable features to add the dependency (Maven/Gradle) to the spring-boot-starter-actuator,
+			i.e. Starter. If you don't want the actuator to be enabled, then don't add the dependency.
+
+		7) What is a shutdown in the actuator?
+			Shutdown is an endpoint that allows the application to be gracefully shutdown. 
+			This feature is not enabled by default.
+			You can enable this by using management.endpoint.shutdown.enabled=true in your application.properties file.
+			But be careful about this if you are using this.	
+
+		8) Is this possible to change the port of Embedded Tomcat server in Spring boot?
+			Yes,  You can use the application.properties file to change the port.
+			But you need to mention "server.port" (i.e. server.port=8081).
+			Make sure you have application.properties in your project classpath; REST Spring framework will take care of the rest. 
+			If you mention server.port=0 , then it will automatically assign any available port.
+
+		9) Can we override or replace the Embedded Tomcat server in Spring Boot?
+			Yes, we can replace the Embedded Tomcat with any other servers by using the Starter dependencies.
+			You can use spring-boot-starter-jetty  or spring-boot-starter-undertow as a dependency for each project as you need.
+
+		10) Can we disable the default web server in the Spring Boot application?
+			Yes, we can use the application.properties to configure the  spring.main.web-application-type=none.
+
+		Q5. Explain how to create Spring Boot application using Maven 
+			ways to create a Spring Boot project/ application using maven:
+			Spring Boot CLI
+			Spring Starter Project Wizard
+			Spring Initializr
+			Spring Maven Project
+
+		Q10. What is Spring Boot dependency management?
+			basically used to manage dependencies and configuration automatically without you specifying
+			the version of dependencies.
+
+		Q11. Mention the minimum requirements for a Spring boot System
+			Spring Boot Logo - Spring Boot Interview Questions - EdurekaSpring Boot 2.1.7.RELEASE requires
+			Java 8 +
+			Spring Framework 5.1.9 +
+			Explicit build support
+
+			Maven 3.3+
+			Gradle 4.4+
+			Servlet Container Support
+
+			Tomcat 9.0 – Servlet Version 4.0
+			Jetty 9.4 –  Servlet Version 3.1
+			Undertow 2.0 – Servlet Version 4.0
+
+		Explain what is thymeleaf and how to use thymeleaf?
+			Thymeleaf is a server-side Java template engine used for web applications.
+			It aims to bring natural template for your web application and can integrate well with Spring Framework and HTML5 Java web applications. 
+			To use Thymeleaf, you need to add the following code in the pom.xml file:
+			<dependency>    
+			<groupId>org.springframework.boot</groupId>    
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>    
+			</dependency>    
+
+		Q15. Mention the steps to create a Spring Boot project using Spring  Initializr
+			Spring Initializr is a web tool provided by Spring. With the help of this tool,
+			you can create Spring Boot projects by just providing project details.
+
+			The following steps need to be followed to create a Spring Boot project using Spring Initializr:
+			Choose the maven project and the required dependencies.
+			Then, fill the other required details like Group, Artifact, and then click on Generate Project.
+			Once the project is downloaded, extract the project onto your system
+			Next, you have to import this project using the import option on the Spring Tool Suite IDE
+			While importing the project, remember that you have to choose the project type to be Maven and the source project should contain the pom.xml file.
+			Once, all the above steps are followed you will see that the Spring Boot project is created with all the required dependencies.
+			Next, you have to create a controller to handle the HTTP requests, by mentioning the following code:
+
+			package com.edureka;
+			import org.springframework.web.bind.annotation.RequestMapping;
+			import org.springframework.beans.factory.annotation.Autowired;
+			import org.springframework.jdbc.core.JdbcTemplate;
+			import org.springframework.web.bind.annotation.RestController;
+			@RestController
+			public class JdbcController {
+			@Autowired
+			JdbcTemplate jdbc;
+			@RequestMapping("/insert")
+			public String index(){
+			jdbc.execute("insert into customers(name)values('Aryya')");
+			return "Data Entry Successful";
+			}
+			}
+		Step 8: Finally, execute this project as a Java application.
+		Step 9: Next, open the URL (localhost:8080/insert), and you will see the output as Data Entry Successful.
+			You can also go forward and check if the data is entered into the table.
+
+		Q17. How to enable HTTP/2 support in Spring Boot
+			You can enable the HTTP/2 support in Spring Boot by: server.http2.enabled=true
+
+		Q18.What are the @RequestMapping  and @RestController annotation in Spring Boot used for?
+			@RequestMapping	                                                                  
+			Provide the routing information and tells to Spring that any HTTP request yes, then must be mapped to the respective method.
+			To use this annotation, you have to import org.springframework.web.
+			bind.annotation.RequestMapping;
+
+			@RestController
+			This annotation add the @ResponseBody and @Controller annotation to the class
+			To use this annotation, you have to import org.springframework.web.
+			bind.annotation.RestController;
+
+			package com.edureka; 
+			import org.springframework.web.bind.annotation.RequestMapping; 
+			import org.springframework.web.bind.annotation.RestController; 
+			@RestController 
+			public class SampleController { 
+			@RequestMapping("/example") 
+			public String example(){ 
+			return"Welcome To Edureka"; 
+				} 
+			} 
+		Q19. What is Spring Boot CLI and how to execute the Spring Boot project using boot CLI?
+			Spring Boot CLI is a tool supported by the official Spring Framework.
+			The steps to execute a Spring Boot project are as follows:
+			Download the CLI tool from the official site and extract the zip file.
+			The bin folder present in the Spring setup is used to execute the Spring Boot application.
+			Since Spring Boot CLI executes groovy files, you need to create a groovy file for Spring Boot application.
+			So, to do that, open terminal and change the current directory to the bin folder. Now, open a groovy file (for example Sample.groovy)
+			In this file create a controller as follows:
+			@RestController   
+			public class Sample {   
+			@RequestMapping("/example")   
+			String index(){   
+			<h1>"Welcome To Edureka"</h1>;  
+			}   }
+
+
+		Q20. Mention the differences between JPA and Hibernate
+			JPA										                                        Hibernate
+			JPA is a Data Access Abstraction used to reduce the amount of boilerplate code	Hibernate is an implementation of Java Persistence API and offers benefits of loose coupling
+
+
+		can we create a custom endpoint in Spring Boot Actuator?
+			To create a custom endpoint in Spring Boot 2.x, you can use the @Endpoint annotation.
+			Spring Boot also exposes endpoints using @WebEndpointor,
+			@WebEndpointExtension over HTTP with the help of Spring MVC, Jersey, etc.
+
+		What are the differences between @SpringBootApplication and @EnableAutoConfiguration annotation?
+			@SpringBootApplication								@EnableAutoConfiguration
+			Used in the main class or bootstrap class			Used to enable auto-configuration  and component scanning in your project
+			It is a combination of @Configuration, 				@ComponentScan and	It is a combination of @Configuration and @ComponentScan annotations
+			@EnableAutoConfiguration annotations.	
+
+		The packaging element in the pom.xml file must be set to jar to build a JAR file as below:
+			<packaging>jar</packaging>
+		Similarly, if you want to build a WAR file, then you will mention
+			<packaging>war</packaging>
+		Can you explain how to deploy to a different server with Spring Boot?
+		To deploy a different server with Spring Boot, follow the below steps:
+
+		Generate a WAR from the project
+			Then, deploy the WAR file onto your favorite server
+
+		What is the difference between RequestMapping and GetMapping?
+			The @GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+			Both these methods support the consumes. The consume options are :
+
+			consumes = “text/plain”
+			consumes = {“text/plain”, “application/*”}
+
+		Q44. What is the error you see if  H2 is not in the classpath?
+			If H2 is not present in the classpath, then you see the following error:
+			Cannot determine embedded database driver class for database type NONE
+			To resolve this error, add H2 to the pom.xml file, and restart your server.
+			The following code snippet can be added to add the dependency:
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<scope>runtime</scope>
+			</dependency>

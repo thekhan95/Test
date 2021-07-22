@@ -1,0 +1,761 @@
+List:-
+=======
+		Date&Time Converter
+		-------------------
+		private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+		
+		//sort by last name
+		System.out.println("Sorting by Last name---Collections.sort");
+		Collections.sort(employees, new LastNameSort());
+		System.out.println(employees);
+
+	
+		//Sort all employees by first name
+		employees.sort(Comparator.comparing(e -> e.getFirstName()));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//OR you can use below
+		employees.sort(Comparator.comparing(Employee::getFirstName));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//Sort all employees by first name in reverse order
+		Comparator<Employee> comparator = Comparator.comparing(e -> e.getFirstName());
+		employees.sort(comparator.reversed());
+		
+		System.out.println("Sort all employees first name in 
+		List<String> copy = list.stream()
+		.filter(s -> s.length() > 10)
+		.collect(Collectors.toList());
+		
+Map:-
+=====
+		
+		map.forEach((k,v)->System.out.println(k+" ==value:    "+v));
+
+		System.out.println("\n fatch data using Map.Entry concept...");
+		for (Map.Entry<String, List<Company>> entry : map.entrySet()) {
+		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+		}
+		
+		
+		//Map -> Stream -> Filter -> String
+		String result = map.entrySet().stream()
+        .filter(x -> "something".equals(x.getValue()))
+        .map(x->x.getValue())
+        .collect(Collectors.joining());
+
+		//Map -> Stream -> Filter -> MAP
+		Map<Integer, String> collect = map.entrySet().stream()
+        .filter(x -> x.getKey() == 2)
+        .collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+        
+		// or like this
+		Map<Integer, String> collect = map.entrySet().stream()
+        .filter(x -> x.getKey() == 3)
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        
+		
+		  // filter more values
+        result = HOSTING.entrySet().stream()
+                .filter(x -> {
+                    if (!x.getValue().contains("amazon") && !x.getValue().contains("digital")) {
+                        return true;
+                    }
+                    return false;
+                })
+                .map(map -> map.getValue())
+                .collect(Collectors.joining(","));
+		
+		
+		// Map.Entry<String, List<Company>>
+		// Map -> Stream -> Filter -> MAP based on the key
+		System.out.println("\ngetDetails based on the Key");
+		Map<String, List<Company>> collect = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+				System.out.println(collect);
+		
+		// or like this
+		System.out.println("\n===get Details using based on Stream api====");
+		Map<String, List<Company>> collect1 = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+				System.out.println(collect1);
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result = map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, 
+				(oldValue, newValue) -> oldValue,LinkedHashMap::new));
+				System.out.println(result);
+			
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result2 = new LinkedHashMap<>();
+				map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+				System.out.println(result2);
+
+		// based get details of map
+		System.out.println("\n=======================");
+		Set set = map.entrySet();
+		Iterator iterator = set.iterator();
+		while (iterator.hasNext()) {
+			Map.Entry mp = (Map.Entry) iterator.next();
+			if (mp.getKey().equals("hyd")) {
+				System.out.print(mp.getKey() + "=>" + mp.getValue() + "\n");
+			}
+		}
+		
+		
+		
+		public Book getBookById(int id){
+				Book book=null;
+				book=list.stream.filter(e->e.getId==id).finFirst().get();
+				return book;
+					}
+	
+---------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+List<Employee> lowSalary = employees.stream()
+               .min(comparator)
+               .stream()
+               .collect(Collectors.toList());
+lowSalary.forEach(System.out::println);
+----------------------------------------------------------------------------------------------
+
+List<Employee> employees = new ArrayList<Employee>(){{
+    add(new Employee("bilbo baggins", 10));
+    add(new Employee("frodo baggins", 10));
+    add(new Employee("gandalf grey", 100));
+}};
+
+Map<Integer, List<Employee>> result = employees.stream().collect(groupingBy(Employee::getSalary));
+
+List<Employee> allMin = result.entrySet().stream()
+        .min(Comparator.comparing(Map.Entry::getKey))
+        .map(Map.Entry::getValue)
+        .orElse(Collections.emptyList());
+
+allMin.forEach(System.out::println);
+
+-----------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+        Optional<Employee> min = employees.stream()
+                .min(comparator);
+        List<Employee> lowSalary = employees.stream()
+                .filter(ele->ele.salary==min.get().salary)
+                .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+You can calculate the minimum salary first then use it in your Stream#filtercondition:
+
+int salary = 
+   employees.stream()
+            .min(Comparator.comparing(Employee::getSalary))
+            .map(e -> e.getSalary())
+            .orElse(-1);
+
+List<Employee> emps = 
+  employees.stream()
+           .filter(emp -> emp.getSalary() == salary)
+           .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+// find employees whose salaries are above 10000
+        List<Employee> filteredList = empList.stream()
+                                            .filter(emp->emp.getSalary() > 10000)
+                                            .collect(Collectors.toList());
+ 
+        filteredList.forEach(System.out::println);
+------------------------------------------------------------------------------------------------
+		lamdaExpression
+		defaultMethod/static
+		Functional inteface
+		Predefined Funtional Interface
+			Predicate
+			Function
+			Consumer
+			Suppliyer
+				public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
+				if (value != null) {
+					return value;
+				} else {
+					throw exceptionSupplier.get();
+					}
+				 }
+
+		Double Collon Operator
+		========================
+			Method reff
+			------------
+				public interface MyInterface {
+					public void sum(String s);
+					}	
+				class MyClass {
+					public void add(String s2) {
+					System.out.println("MyClass add()======" + s2);
+					}
+						}
+				public class ReferincingInstance {
+				public static void main(String[] args) {
+				// passing argument must be same
+				MyInterface mc=(x)->System.out.println(x);
+				mc.sum("Interface sum()...........Hello Sulemaan");
+				MyClass mi=new MyClass();
+				MyInterface i=mi::add;
+				i.sum("That class is a so confuing.....");}}
+
+		Cunstructor reff:-
+		------------------
+			public interface MyConst {
+		ReffCunstruct get(String a);
+		}
+		public class ConsTest {
+		public static void main(String[] args) {
+			// Reffierece type contructor using interface
+			MyConst t =(i) -> new ReffCunstruct(i);
+			t.get("with  Interface");
+			// Reffierece type contructor using operator
+			MyConst t1 = ReffCunstruct::new;
+			t1.get("with operator");
+				}
+			}
+			
+Stream Api
+Data Nd TIme API
+Optional class
+
+
+forEach():-
+	List<Integer> l=new ArrayList<>();
+	l.add(10);
+	l.add(20);
+	l.add(30);
+	l.forEach((s)->System.out.println("using foreach="+s));
+
+	
+DefaultMethod
+
+	 Whenever you want to add additional functionality in an existing interface,you can use default methods
+	 without breaking any existing implementing classes
+	 #If you do not override them, they are the methods which will be invoked by caller classes.
+	 #When c class want implement with A and B but there no childs relation b/w A and B.
+	 #It is a method with default keyword and class can override this method
+	 #if you want invoke lmda exp then must be functional interface.
+	 #Default method (Defender methods) should be used for backward compatibility.
+	 #Default methods in interfaces were introduced to the Java language in order to evolve the collections library for the Streams API.
+	 #with backward compatability in mind, default methods are introduced.
+	
+	public interface A {
+	default void m1() {}
+	}
+	public interface B {
+	default void m2() {
+	}
+	public class C implements A, B {
+		public void m1() {
+			System.out.println("C class method.....m1()");}
+		public void m2() {
+			System.out.println("C class method.....m2()");}}
+	public class Test {
+	public static void main(String[] args) {
+		//we can also take same method both interfaces
+		B b = new C();//---m2() define in A(I)
+		b.m2();
+		A a=new C(); //m1() define in B(I)
+		a.m1();}}
+		
+		
+	public interface Java8 {
+		default void m2() {
+		 System.out.println("default interface");
+	         }
+          }
+	public class Test implements Java8 {
+		default void m2() {
+			System.out.println("child static"); will get error
+	     }
+	public static void main(String[] args) {
+		Java8 j=new Test();
+		j.m2();     //possible
+		// Java8.m2(); // not possible will get error
+	}
+}
+		
+		
+static method in interface:-
+	We can write implementation of this method in interface itself
+	Static method can invoke with only on Interface class not on class.
+	It can be used as a utility method
+	
+	public interface Java8 {
+		static void m1() {
+				System.out.println("static interface");
+			}
+
+		default void m2() {
+			System.out.println("default interface");
+			}
+	}
+	public class Test implements Java8 {
+		static void m1() {
+			System.out.println("child static");
+			}
+
+	public static void main(String[] args) {
+			Java8 j=new Test();
+		//	j.m1();      //not possible 	will get error
+			Java8.m1();  // possible
+			//	Java8.m2();  //not possible will get error
+	}
+
+			result is:static interface
+
+		
+
+Functional interface
+---------------------
+	 #an interface which contains Single ABstract Mehtod(SAM)
+	 
+	 eg-
+		Runnable==run()
+		Comparable==compareTO()
+		comparator==compare()
+		ActionListener==ActionPerformed()
+		Callable==call().
+
+Stream Operations
+	https://www.youtube.com/watch?v=DvQVdJB4Va0&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&index=2
+Intermediate Operations
+	filter().-------taking predicate argument
+	map().
+	flatMap().
+	distinct().
+	sorted().
+	peek().
+	limit().
+	skip().
+Terminal Operations
+	forEach()-----consume the value.
+	forEachOrdered()
+	toArray()
+	reduce()
+	collect()
+	min()
+	max()
+	count()
+	anyMatch()
+	allMatch()
+	noneMatch()
+	findFirst()
+	findAny()
+	
+	String result = "";
+	 //Map -> Stream -> Filter -> String
+        result = HOSTING.entrySet().stream()
+                .filter(map -> "aws.amazon.com".equals(map.getValue()))
+                .map(map -> map.getValue())
+                .collect(Collectors.joining());
+
+        System.out.println("With Java 8 : " + result);
+        // filter more values
+        result = HOSTING.entrySet().stream()
+                .filter(x -> {
+                    if (!x.getValue().contains("amazon") && !x.getValue().contains("digital")) {
+                        return true;
+                    }
+                    return false;
+                })
+                .map(map -> map.getValue())
+                .collect(Collectors.joining(","));
+				System.out.println("With Java 8 : " + result);
+
+	=================================================
+	Map<String, Integer> result = unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+
+        // Not Recommend, but it works.
+        //Alternative way to sort a Map by keys, and put it into the "result" map
+        Map<String, Integer> result2 = new LinkedHashMap<>();
+        unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+	
+2.1. Stream.of()
+	In the given example, we are creating a stream of a fixed number of integers.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9);
+		 stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+	
+2.2. Stream.of(array)
+		In the given example, we are creating a stream from the array. The elements in the stream are taken from the array.	
+			public class StreamBuilders 
+		{
+			 public static void main(String[] args)
+			 {
+				 Stream<Integer> stream = Stream.of( new Integer[]{1,2,3,4,5,6,7,8,9} );
+				 stream.forEach(p -> System.out.println(p));
+			 }
+		}
+		
+2.3. List.stream()
+	In the given example, we are creating a stream from the List. The elements in the stream are taken from the List.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>();
+	 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+	
+2.4. Stream.generate() or Stream.iterate()
+	In the given example, we are creating a stream from generated elements. 
+	This will produce a stream of 20 random numbers. We have restricted the elements count using limit() function.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 Stream<Integer> randomNumbers = Stream
+			 .generate(() -> (new Random()).nextInt(100));
+			 randomNumbers.limit(20)
+			 .forEach(System.out::println);
+		 }
+	}
+	
+2.5. Stream of String chars or tokens
+	In the given example, first, we are creating a stream from the characters of a given string. 
+	In the second part, we are creating the stream of tokens received from splitting from a string.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+		IntStream stream = "12345_abcdefg".chars();
+		stream.forEach(p -> System.out.println(p)); 
+		//OR			 
+		Stream<String> stream = Stream.of("A$B$C".split("\\$"));
+		stream.forEach(p -> System.out.println(p));
+		 }
+	}
+	
+3. Stream Collectors
+	After performing the intermediate operations on elements in the stream, 
+	we can collect the processed elements again into a Collection using the stream Collector methods.
+
+3.1. Collect Stream elements to a List
+	In the given example, first, we are creating a stream on integers 1 to 10.
+	Then we are processing the stream elements to find all even numbers.
+
+At last, we are collecting all even numbers into a List.
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>(); 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 List<Integer> evenNumbersList = stream.filter(i -> i%2 == 0)    // inside the filter used boolean value function is predicate return T/F
+										.collect(Collectors.toList());
+			 System.out.print(evenNumbersList);
+		 }
+	}
+3.2.Collect Stream elements to an Array
+	The given example is similar to the first example shown above. 
+	The only difference is that we are collecting the even numbers in an Array.
+
+	public class StreamBuilders 
+	{
+		 public static void main(String[] args)
+		 {
+			 List<Integer> list = new ArrayList<Integer>();
+	 
+			 for(int i = 1; i< 10; i++){
+				 list.add(i);
+			 }
+			 Stream<Integer> stream = list.stream();
+			 Integer[] evenNumbersArr = stream.filter(i -> i%2 == 0).toArray(Integer[]::new);
+			 System.out.print(evenNumbersArr);
+		 }
+	}
+	There are plenty of other ways also to collect stream into a Set, Map or into multiple ways.
+	Just go through Collectors class and try to keep them in mind.
+
+
+4.1. Intermediate Operations
+Intermediate operations return the stream itself so you can chain multiple methods calls in a row. Let’s learn important ones.
+
+4.1.1. Stream.filter()
+	The filter() method accepts a Predicate to filter all elements of the stream. 
+	This operation is intermediate which enables us to call another stream operation (e.g. forEach()) on the result.
+		memberNames.stream().filter((s) -> s.startsWith("A"))
+							.forEach(System.out::println);
+		Program Output:
+		Amitabh
+		Aman
+		
+4.1.2. Stream.map()
+		The map() intermediate operation converts each element in the stream into another object via the given function.
+		The following example converts each string into an UPPERCASE string.
+		But we can use map() to transform an object into another type as well.
+
+		memberNames.stream().filter((s) -> s.startsWith("A"))
+							.map(String::toUpperCase)
+							.forEach(System.out::println);                 
+		Program Output:
+		AMITABH
+		AMAN
+
+4.1.2. Stream.sorted()
+		The sorted() method is an intermediate operation that returns a sorted view of the stream.
+		The elements in the stream are sorted in natural order unless we pass a custom Comparator.
+
+		memberNames.stream().sorted()
+							.map(String::toUpperCase)
+							.forEach(System.out::println);
+		Program Output:
+		AMAN
+		AMITABH
+		LOKESH
+		RAHUL
+		SALMAN
+		SHAHRUKH
+		SHEKHAR
+		YANA
+		
+	Please note that the sorted() method only creates a sorted view of the stream without manipulating the ordering of the source Collection. 
+	In this example, the ordering of string in the memberNames is untouched.
+	
+4.2. Terminal operations
+Terminal operations return a result of a certain type after processing all the stream elements.
+
+	Once the terminal operation is invoked on a Stream, the iteration of the Stream and any of the chained streams will get started.
+	Once the iteration is done, the result of the terminal operation is returned.
+
+4.2.1. Stream.forEach()
+	The forEach() method helps in iterating over all elements of a stream and perform some operation on each of them. 
+	The operation to be performed is passed as the lambda expression.
+		memberNames.forEach(System.out::println);
+		
+4.2.2. Stream.collect()
+	The collect() method is used to receive elements from a steam and store them in a collection.
+	List<String> memNamesInUppercase = memberNames.stream().sorted()
+                            .map(String::toUpperCase)
+                            .collect(Collectors.toList());
+         
+		System.out.print(memNamesInUppercase);
+		Program Output:-
+		[AMAN, AMITABH, LOKESH, RAHUL, SALMAN, SHAHRUKH, SHEKHAR, YANA]
+		
+4.2.3. Stream.match()
+	Various matching operations can be used to check whether a given predicate matches the stream elements. 
+	All of these matching operations are terminal and return a boolean result.
+
+		boolean matchedResult = memberNames.stream()
+				.anyMatch((s) -> s.startsWith("A"));
+		System.out.println(matchedResult);
+		 
+		matchedResult = memberNames.stream()
+				.allMatch((s) -> s.startsWith("A"));
+		 
+		System.out.println(matchedResult);
+		 
+		matchedResult = memberNames.stream()
+				.noneMatch((s) -> s.startsWith("A"));
+		 
+		System.out.println(matchedResult);
+		Program Output:
+
+		true
+		false
+		false
+		
+4.2.4. Stream.count()
+	The count() is a terminal operation returning the number of elements in the stream as a long value.
+
+		long totalMatched = memberNames.stream()
+			.filter((s) -> s.startsWith("A"))
+			.count();
+		 
+		System.out.println(totalMatched);
+		Program Output:
+
+		2
+4.2.5. Stream.reduce()
+		The reduce() method performs a reduction on the elements of the stream with the given function. 
+		The result is an Optional holding the reduced value.
+
+		In the given example, we are reducing all the strings by concatenating them using a separator #.
+
+		Optional<String> reduced = memberNames.stream()
+				.reduce((s1,s2) -> s1 + "#" + s2);
+		 
+		reduced.ifPresent(System.out::println);
+		Program Output:
+
+
+
+Java 8 Stream.map() example.
+
+Stream.map() method returns a stream consisting of the results of applying the given function to the elements of this stream. 
+We can use Stream.map() function for transforming the objects based on the input method. 
+The given below example, converts all string elements in upper case.
+package com.java2novice.streams;
+ 
+import java.util.Arrays;
+import java.util.List;
+ 
+public class StreamMapEx {
+ 
+    public static void main(String a[]) {
+ 
+        List<String> vehicles = Arrays.asList("bus", "car", "bicycle", "flight", "train");
+        vehicles.stream().map(String::toUpperCase).forEach(System.out::println);
+    }
+----------------------------------------------------------------------------------------------
+ Stream.of("bus", "car", "bycle", "flight", "train")
+                .filter(e -> e.length() > 3)
+                .peek(e -> System.out.println("Filtered value: " + e))
+                .map(String::toUpperCase)
+                .peek(e -> System.out.println("Mapped value: " + e))
+                .collect(Collectors.toList());
+    }
+----------------------------------------------------------------------------------------------
+Sort the List
+List<Employee> empList = new ArrayList<>();
+        empList.add(new Employee("Nataraja G", "Accounts", 8000));
+        empList.add(new Employee("Nagesh Y", "Admin", 15000));
+        empList.add(new Employee("Vasu V", "Security", 2500));
+        empList.add(new Employee("Amar", "Entertainment", 12500));
+ 
+        empList.stream()
+                .sorted((emp1, emp2)->emp1.getSalary().compareTo(emp2.getSalary()))
+                .forEach(System.out::println);
+---------------------------------------------------------------------------------------------
+public static void main (String[] args) {
+		Map<Integer, User> userMap = new HashMap<Integer, User>();
+		userMap.put(1, new User(1, "Janu", LocalDate.of(2001, 12, 12), "Female", "Graduate"));
+		userMap.put(2, new User(2, "Renu", LocalDate.of(2005, 2, 22), "Female", "SSLC"));
+		userMap.put(3, new User(3, "Meenu", LocalDate.of(1994, 3, 3), "Female", "Post Graduate"));
+		userMap.put(4, new User(4, "Banu", LocalDate.of(2001, 6, 15), "Female", "Graduate"));
+		userMap.put(5, new User(5, "Seenu", LocalDate.of(2001, 8, 31), "Male", "Graduate"));
+		
+		int start = 1;
+		int end = 100;
+		//Wrapper Streams
+		IntStream.rangeClosed(start, end);
+		//Stream.of("w", "s", "c");
+		
+		
+		
+	
+		
+		//forEach method with Consumer
+		userMap.values().forEach(System.out::println);
+		
+		
+		
+		//LocalDate with Sort
+		if(users!=null && users.size()>0)
+			System.out.println("Working");
+		users.stream().sorted((u1, u2)->u1.getDateOfBirth().compareTo(u2.getDateOfBirth()));
+		
+		users.sort(Comparator.comparing(u->u.getDateOfBirth()));
+		
+		
+		Collections.sort(users, Comparator.comparing(User::getDateOfBirth));
+		
+		Collections.sort(users, new Comparator<User>() {
+
+			@Override
+			public int compare(User o1, User o2) {
+			int var = 0;
+			var = o1.getUserId()>o2.getUserId()?1:-1;
+				return var;
+			}
+		});
+		
+		Collections.sort(users, (o1,o2)->{
+			
+			int var = 0;
+			var = o1.getUserId()>o2.getUserId()?1:-1;
+				return var;		
+			});
+		
+		
+	}
+
+	
+	private static List<User> streamMapWithGroup(Map<Integer, User> userMap) {
+		List<User> users = userMap.values().stream()
+				//.sorted((u1,u2)->u1.getDateOfBirth().compareTo(u2.getDateOfBirth()))
+				.collect(Collectors.toList());
+				//.forEach(System.out::println);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		
+		Map<String, List<Employee>> employees = 
+				userMap.values().stream()
+				.map(user->employeeMapper(user)
+		).collect(Collectors.groupingBy(Employee::getGender));
+		
+		
+		System.out.println("HashMap Size: "+employees.size());
+		
+		employees.entrySet().stream().forEach(System.out::println);
+		return users;
+	}
+
+	
+	private static Employee employeeMapper(User user) {
+		Employee employee = new Employee(user.getUserName(), user.getGender(), user.getEducation());
+		return employee;
+	}
+
+	private static void streamFilter(Map<Integer, User> userMap) {
+		Set<User> userList = userMap.values().stream().filter(u->u.getGender().equals("Female")).collect(Collectors.toSet());
+		
+		
+	}
+	private static void streamReduce() {
+		List<String> numbers = Arrays.asList("1","2","3", "4", "5");
+		String reducedString = numbers.stream().reduce("Start", (s1,s2)->s1.concat(s2));
+		System.out.println(reducedString);
+	}
+
+Use ModelMapper to Convert DTO to an Entity:-
+---------------------------------------------
+	To convert one Model class like a DTO object to another Model class like an Entity Java bean, for example, 
+	we can use ModelMapper class the following way: 
+
+	import org.modelmapper.ModelMapper;
+	...
+	  ModelMapper modelMapper = new ModelMapper();
+	  UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+	  
+
+Use ModelMapper to Convert Entity to a DTO:-
+--------------------------------------------
+	Let’s assume we have a useRepository object which persists userEntity into a database. 
+	After user details are stored we want to convert a userEntity object to a DTO and return it as a return value.
+
+	import org.modelmapper.ModelMapper;
+	...
+	  ModelMapper modelMapper = new ModelMapper();
+	  UserEntity storedUserDetails = userRepository.save(userEntity);
+	  UserDto returnValue  = modelMapper.map(storedUserDetails, UserDto.class);	  

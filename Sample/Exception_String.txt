@@ -1,0 +1,505 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+StringConcept
+=============
+String:-
+	srequence of char which placed in double quates.
+	string obj eligible for garbage collection.
+	literal string obj not eligible for garbage collection bcoz its reff to SCPA
+
+
+Why string obj is imuatable?
+	bcoz unmodiyyable and unchangable
+	once obj is created data state cant be changed.
+	if we try to modify, then result will not store into same obj,it will store into diff obj.
+
+	exampe?
+		String str="Sulemaan";
+		str.concat("khan");   bcoz while cancat string it will create new obj with same reff in SCP---Sulemaan khan
+				      but str still refering Sulemaan
+		str=str.cancat(khan)-----in this case reff address reffer to Sulemaankhan with new result obj
+		sop(str)    //o/p Sulemaan
+	For a Muatable obj:
+		StringBuffer sb=new StringBuffer("Sulemaan");
+		sb.apend("khan");
+		sop(sb)     o/p   Sulemaankhan
+	
+Custom Immutable object:-
+-------------------------
+	define a class by declaring varables as private.
+	Define param constructor for initializing obj var at least once.
+	Dont define setter so data will not modify,if allow result store in new obj
+	define getter method to need val
+	
+	
+	
+	Is String object is thread safe?
+		yes. and all wraper classes are thread safe.
+		
+String pool:-
+-----------
+	Limitation or rules:-
+		only allow litteral obj 
+	Advantage:-
+		grouping string literal obj,reuse them.
+		memory and time will we saved
+		execution is fast.
+	
+String Constent pool:-
+----------------------
+	for implementing string pooling,inside jvm one special obj is created.
+	create one obj per jvm.
+	create special obj for a String.
+
+	String letteral:-
+	-----------------
+	where create obj
+		two areas(stack nd Heap)
+		stack:str1
+		heap:inside the heap area create SCP.
+
+	Ex:-
+		str1="Hello";
+		str2="Hello";
+	stack area: str1,str2
+	heap:-return the hello from the SCP 
+		bcoz for a second obj str2 crate only reff in stack and Hello already pesent in SCP. 
+
+	create by using double quates`
+	Stored in String constent pool.
+	
+	how wokes:
+		each time create a string leteral,JVM check the SCP.
+		if string already exists in the pool,a reff to the pooled instance is returned.
+			(Condettion jvm search scp if no obj in scp then Hello placed in SCP also------------mean that for fist time using new creating two obj
+			one is heap and scp
+			but next for obj with new create only one obj in heap area obj hello already present in SCP.
+		if doesnt exist in the pool a new instance is created and placed in the pool.
+	
+	Create obj by using newkeyword:-
+	--------------------------------
+		String str=new String("Hello");   // create two obj and one reff var
+		A new obj is always created in non pool area.
+		How its works
+			JVM create a new obj in heap area not in SCP.
+			JVM Check the SCP,if string doesnt exit in the pool,then litteral helo will placed in the SCP also.
+			the var str will reffer to the obj in heap.
+
+what are diff ways to store object in String:-
+	char [] obj
+	String str obj
+	StringBuffer
+	StringBuilder obj
+	
+How to create a string object?
+	By string literal
+	By new keyword
+	Using character array
+			char ch[]={ ‘O’,’d’,’i’,’s’,’h’,’a’,}; 
+				String str2=new String(ch); 
+	
+Example:
+	String:-
+	Whenever we create a string object of String class, it is by default created in a immutable nature. 
+	the modification we are doing on string data result will not store in current obj that will store in another object,but.
+	String is a Final class, given by java. So we can't change the behavior. It's by default immutable.
+	
+		is immutable(non changable).
+		why immutable?
+			because String objects are cached in the String pool area.
+			for using string obj as key in map colls it is create as immutable.
+			once store an obj as a key in map data should not be modify,
+			if it data is modified the value maped to this object cant retrieved from this map bcoz other
+			programmer will try to retrieved value using old data.
+			in order to not stored modification result in current obj.
+			
+		String s=new String("Soft");
+		s.concat("ware");
+		sys(s)--the output only Soft not Software.
+		s1=s.concat("ware");
+		sysout(s1); output:-software
+		Note:-once we created string obj then we cant perform any modification in existing obj.
+			and if we try to perform any changes ith those new obj will be created.
+
+	StringBuffer
+		is mutable and synvchroized.
+		its a thread safe.
+		why mutable?
+		StringBuffer sb=new StringBuffer("Soft");
+		sb.apend("ware");
+		
+		
+		sys(sb);--the output is Software...
+		Note:-once we created StringBuffer obj then we can perform any modification in existing obj.
+			Changable obj.
+
+	Diff == and equals():-
+		== operator
+			ment for copparesion reff or address
+			System.out.println(s1==s2);---false
+			-------------------------------------
+			Each time you create a string literal, the JVM checks the "string constant pool" first. 
+			If the string already exists in the pool, the pooled will return the reference to the same instance. 
+			If the string doesn't exist in the pool, a new string instance is created and placed in the pool. 
+			
+			String s1= "a";
+			String s2= "a";
+			System.out.println(s1 == s2);----T
+			
+			only one object will be created
+			it will not create a new object but will return the reference to the same instance
+			
+			String s1= "a";
+			String s2= "b";
+			System.out.println(s1 == s2);----F
+			
+			String s2 = new String("a");
+			String s1 = "b";
+			System.out.println(s1 == s2);---F
+			
+			String s1 = "a";
+			String s2 = "b";
+			String s3="ab";
+			String s4=s1+s2;
+			System.out.println(s3 == s4);---F
+			
+			String s1="ab";
+			String s2="a"+"b";
+			System.out.println(s1 == s2);---T
+			
+			String s1="a";
+			String s2="b";
+			String s3="ab";
+			String s4=s1.concat(s2);
+			System.out.println(s4);-----ab
+			System.out.println(s3 == s4);----F
+			
+			String s1 = new String("b");
+			String s2= "a";
+			s1 = "a";
+			System.out.println(s1 == s2); T
+		
+			String s2 = "a";
+			String s1 = "b";
+			s1 = new String("a");
+			System.out.println(s1 == s2);F
+		    ---------------------------------
+		
+		equals()
+			ment for content comparession.
+			System.out.println(s1.equals(s2));true
+			
+		hashCode()
+			
+			its return integer value generated by hashing algo.
+			If two objects are equal according to equals() method, then their hash code must be same.
+			If two objects are unequal according to equals() method, their hash code are not required to be different.
+			Their hash code value may or may-not be equal.
+			We can also use Project Lombok to auto generate equals and hashCode method implementations.
+			class Hash{
+			public static void main(String[] args){
+				String a = "200";
+				String b = "200";
+
+				if(a.equals(b)){
+					System.out.println("Equal variables:");
+					System.out.println(a.hashCode() + "\n" + b.hashCode());   49586 49586
+				}
+
+				String c = "10";
+				String d = "50";
+
+				if(!c.equals(d)){
+					System.out.println("\nUn-equal variables:");
+					System.out.println(c.hashCode() + "\n" + d.hashCode()); 1567 1691
+				}
+			}
+		}
+
+	Special methods StringBuffer:-
+	--------------------------
+		append
+		insert
+		delete
+		reverse
+		
+	
+
+Exception Handling:-
+====================
+	Exception:-
+		An exception is  unwanted or unexpected event,that might be occors compile time or runtime 
+		bcoz of bad input or other reason so that app turminated or stop the fother execution.
+	
+	problem:-
+		rest of application or program will stop.
+		end user dosnt uderstand raising problem.
+	
+	Solution:-
+		any raised or happend exception catched using tery catch block
+		provide user understandable msg for end-user.
+		rest of application or logic will be execute.
+
+	Checked Exception:-
+		the exeption which are raised at compilassion stage are known as checkedException.
+		or compile time exception.
+		it should declare the exception using throws keyword,
+		like
+	Throwable
+		Error
+		Exception
+		
+	Errors:
+		An Error “indicates serious problems that a reasonable application should not try to catch.” 
+		Errors are the conditions which cannot get recovered by any handling techniques.
+		It surely cause termination of the program abnormally.
+	
+	
+		Recovering from Error is not possible.
+		All errors in java are unchecked type.
+		Errors occur at runtime and not known to the compiler.
+		ex-
+			StackOverflowError
+			OutOfMemoryError
+		
+		
+	Object
+		Throwable
+			Exception
+				SQLException
+				IOException
+					FNFE
+					EOFE
+					NotSerealizableException
+				ClassNotFoundException
+				InvocationTargetException
+				NoSuchMethodException
+				NoSuchFieldException
+				CloneNotSupportedException
+				JspException
+				ServletException
+	Unchecked Exception:
+		The exception which are raised at execution stage are known as unchecked exception.
+		these exception are hendling by the try catch finally.
+		exception occurs due to the bad data provided by user during the user-program interaction. 
+		All Unchecked exceptions are direct sub classes of RuntimeException class.
+		it comes at runtime check y jvm.
+	Object
+		Throwable
+				Exception
+					RuntimeException
+						NullPointerException.
+						ArithmeticException.
+						ClassCastException.
+						SecurityException.
+						IllegalStoreException.
+						IndexOutOfBoundException
+							ArrayIndexOutOfBoundsException.
+							StringIndexOutOfBoundException
+						IllegalArgumentExceptions.
+							NumberFormatException
+							IllegalThreadException
+						NegativeArraySizeException
+						ArrayStoreException.
+
+	Throw:-
+		We use throw keyword to explicitly throw an exception from the code. 
+		thrown an exception manually from a method or constructor.
+		it must be used on methods logic.
+		Only single exception is thrown by using throw (can't throw multiple exceptions with a single throw.).
+		throw keyword is used within the method.
+		//unchecked Exceptions that are not checked using throws keyword.
+
+		where used?
+			used throw either checked or un-checked exception.
+			mainally used to throw custom exception.
+			
+
+	public class Example1{  
+		void checkAge(int age){  
+		if(age<18)  
+		throw new ArithmeticException("Not Eligible for voting");  
+		else  
+		System.out.println("Eligible for voting");  
+	 }  
+	   public static void main(String args[]){  
+		Example1 obj = new Example1();
+		obj.checkAge(13);  
+		System.out.println("End Of Program");  
+	   }  
+	}
+	Throws:-
+		used to declared an exception.
+		throws keyword is used to propagate the checked Exceptions only.
+		and using throws programmer propagate multple the exception and send to caller method.
+		there caller method handling the exception.
+
+		where used/limitions
+			only for a checked exception usage of throws and for unchecked exception is meaning less.
+			class falows throws keyword.
+			with the method sighnature.
+
+		public class Example1{  
+			   int division(int a, int b) throws ArithmeticException{  
+				int t = a/b;
+				return t;
+			   }  
+			   public static void main(String args[]){  
+				Example1 obj = new Example1();
+				try{
+				   System.out.println(obj.division(15,0));  
+				}
+				catch(ArithmeticException e){
+				   System.out.println("You shouldn't divide number by zero");
+				}
+			   }  
+			}
+	Custom Exception:-
+		In java we can create our own exception class and throw that exception using throw keyword.
+		These exceptions are known as user-defined or custom exceptions. 
+	Rules:
+		1. User-defined exception  must extend Exception class.
+		2. The exception is thrown using throw keyword.
+		
+		class InvalidAgeException extends Exception{ 
+				String s;
+			 InvalidAgeException(String s){  
+			  super(s);  
+			 }  
+			}  
+			class TestCustomException1{  
+			  
+			   static void validate(int age)throws InvalidAgeException{  
+			     if(age<18)  
+			      throw new InvalidAgeException("not valid");  
+			     else  
+			      System.out.println("welcome to vote");  
+			   }  
+			     
+			   public static void main(String args[]){  
+			      try{  
+			      validate(13);  
+			      }catch(Exception m){System.out.println("Exception occured: "+m);}  
+			  
+			      System.out.println("rest of the code...");  
+			  }  
+			} 
+			
+finally block:-
+---------------
+		A finally block is always get executed whether the exception has occurred or not.
+		If an exception occurs like closing a file or DB connection,PrintWriter and FileWriter then the finally block is used to clean up the code.
+		We cannot say the finally block is always executes because sometimes if any statement like System.
+
+
+		try {
+				System.out.println("hello");
+				System.exit(0);
+			}
+			finally {
+				System.out.println("bye");
+			} // try-finally
+			
+			putput:-hello
+			In the above example, the finally block will not execute due to the System.exit(1) condition in the try block.
+
+	condittion:1
+		int[] arr = new int[4]; 
+        try
+        { 
+            int i = arr[4]; 
+                  
+            // this statement will never execute 
+            // as exception is raised by above statement 
+            System.out.println("Inside try block"); 
+        } 
+        catch (Exception e) {
+			System.out.println("jshsg");
+		}
+          
+        finally
+        { 
+            System.out.println("finally block executed"); 
+        } 
+          
+        // rest program will not execute 
+        System.out.println("Outside try-finally clause"); 
+		
+		output:-
+			jshsg
+			finally block executed
+			Outside try-finally clause------------if you handle checked exception then only rest of Outside try-finally clause excute.
+
+condittion:-
+		int[] arr = new int[4]; 
+        try
+        { 
+            int i = arr[4]; 
+                  
+            // this statement will never execute 
+            // as exception is raised by above statement 
+            System.out.println("Inside try block"); 
+        } 
+          
+        finally
+        { 
+            System.out.println("finally block executed"); 
+        } 
+          
+        // rest program will not execute 
+        System.out.println("Outside try-finally clause"); 
+		
+		output:-
+		finally block executed
+		Run Time error:
+		Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 4
+			at com.Sample.main(Sample.java:31)
+			
+Exception not raised: 
+If an exception does not occur in try block then control flow will be finally block followed by rest of the program
+
+			// when exception doesn't occur in try block 
+			class GFG  
+			{ 
+				public static void main (String[] args)  
+				{ 					  
+					try
+					{ 
+						String str = "123"; 	  
+						int num = Integer.parseInt(str); 
+						  
+						// this statement will execute 
+						// as no any exception is raised by above statement 
+						System.out.println("Inside try block"); 
+					}
+					finally
+					{ 
+						System.out.println("finally block executed"); 
+					}  
+					// rest program will be executed 
+					System.out.println("Outside try-finally clause"); 
+				} 
+			} 
+			Output :
+			Inside try block
+			finally block executed
+			Outside try-finally clause
+

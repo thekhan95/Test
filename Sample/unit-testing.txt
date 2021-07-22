@@ -1,0 +1,272 @@
+
+for the load balance:
+--------------------
+	step-1: goto the prject dir create jar file of sample project
+	ex: c/khan/sample>mvn clean install -DskipTests
+
+	step-2: goto same dir create new instance
+	ex:c/khan/sample>java -jar -Dserver.port=9090 ./target/sample-0.0.1-shnapshot.jar	
+
+
+Git-Command:-
+
+Export local spring boot project into git remote repository
+-----------------------------------------------------------
+
+	from sts----open git fash
+	git init
+	git add .
+	git commit -m "fist commit"
+	git remote add origin https://github.com/Sulemaankhan/boot.git
+	git remote -v
+	git push origin master
+
+Import repo into local:-
+------------------------
+first goto the local dir where u want to keep repo.
+	c/khan/gitRepo     there open the cmd
+
+clone remote repo into local dir
+	c/khan/gitRepo git clone 
+
+after that change gitRepo to boot-example/project location
+
+changing the branch
+	c/khan/gitRepo/boot-example git checkout master   
+	
+if we need any commit then go to below directory
+	c/khan/gitRepo/boot-example 
+		git add .   ----working area to stagging area
+		git commit -m "firrst commit"------commit changes in local repo
+		git push origin master---------push local changes into remote repo.
+
+------------------------------------------------------------------------------------------------------------------------------
+	git init---will create a new local GIT repository. 
+	git remote add origin <host-or-remoteURL>-----To connect the local repository to a remote server,
+	git clone username@host:/path/to/repository---git clone is used to copy a repository. If the repository lies on a remote server
+	git add <temp.txt>------git add is used to add files to the staging area.
+	git commit –m “Message to go with the commit here”
+	git status
+	git push origin <master>
+	git checkout master----any branch code back to marge into master
+		git marge develop.
+	git checkout -b test    ----->create test branch and || checkout.	
+	git checkout <branch-name>---switch one branch to another branch.
+	git branch -a    ------>view branch---------which one is source and dest.
+	git remote –v  ------>veiw all remote repository
+	
+	git branch---------will list, create
+	git branch  -d <branch-name>---------will list, create
+	git pull----------------all the changes present in the remote repository to the local working directory.
+	git diff------To list down all the present conflicts
+	git log
+	
+	adding same file name confilict
+		dev1----> add f1.txt and push to remote
+		dev2---->same branch 2nd dev want add f1.txt ok and commit also ok, but when push into the remote will get confilict.
+		soln for dev2---dev2 should fatch brach.
+		fatch--what are the changes that are available into remote which is not present in your local.
+			git pull origin master---letest fatch  now f1.text also comes into locally for dev2 and now local repo synic with remote repo
+			git push origin master   --->dev2 can push local changes into remote.
+	
+DevOPS:-
+---------
+DevOps is combination of development and operation team.
+DevOPS is a methodlogy that allows a single team to manage entire app development life cycle
+implementing automation each and every stage is called DevOps.
+
+DevOps Stage:-
+	VC(Version control)--git
+	CI(Continous Integration)--jenkins
+		compile,validate,review code,unit-testing
+	CD(Continous Delivery)--maven
+		Deploy and build the app to test server.
+	CD(Continous Deployment)
+		Deploy the test app on production server.
+		
+WaterFall Model	
+	step by step
+	once complete product is developed then code share to client.
+	upgration is not possible
+
+Agile methodlogy:-
+	unit of work that can share to client   eg-login,registration.
+	after reviewing unit of work from customer,if they not satisfy can implent customer requirment.
+	problem:-
+		silos-----emp indevidual work integration problem.
+
+DevOps:-
+	improvment of agile methodlogy.	
+	single team manage entire app development life cycle.
+	
+
+Unit-Testing:-
+--------------
+What?
+	Unit testing means testing the smaller or units of your application,
+	like classes and methods.
+	Unit Testing is done during the development (coding phase) of an application by the developers.
+	Unit testing involves the testing of each unit or an individual component of the software application.
+	A unit is a single testable part of a software system and tested during the development phase of the application software.
+	The unit test case is a code which ensures that the program logic works as expected. 
+	The org
+why?
+	unit testing is the first level of testing done before integration and other remaining levels of the testing.	
+	Unit testing helps tester and developers to understand the base of code, that makes them able to change defect causing code quickly.
+	Unit testing helps in the documentation.
+	It helps with code reusability by migrating code and test cases.
+
+Unit Testing Tools?
+	Uunit
+	Junit
+	JMockit
+
+Unit Testing is of two types
+	Manual
+	Automated	
+	
+Example
+		public class MyUnit {
+
+		public String concatenate(String one, String two){
+			return one + two;
+			}
+		}
+		
+		public class MyUnitTest {
+
+		@Test
+		public void testConcatenate() {
+			MyUnit myUnit = new MyUnit();
+
+			String result = myUnit.concatenate("one", "two");
+
+			assertEquals("onetwo", result);
+
+		}
+	}
+Auto-configured Data JPA tests:-
+		-----------------------------------
+			@RunWith(SpringRunner.class)
+			@DataJpaTest
+			public class ExampleRepositoryTests {
+
+				@Autowired
+				private TestEntityManager entityManager;
+
+				@Autowired
+				private UserRepository repository;
+
+				@Test
+				public void testExample() throws Exception {
+					this.entityManager.persist(new User("sboot", "1234"));
+					User user = this.repository.findByUsername("sboot");
+					assertThat(user.getUsername()).isEqualTo("sboot");
+					assertThat(user.getVin()).isEqualTo("1234");
+				}
+
+			}
+
+	 private ModelMapper modelMapper = new ModelMapper();
+
+    @Test
+    public void whenConvertPostEntityToPostDto_thenCorrect() {
+        Post post = new Post();
+        post.setId(1L);
+        post.setTitle(randomAlphabetic(6));
+        post.setUrl("www.test.com");
+
+        PostDto postDto = modelMapper.map(post, PostDto.class);
+        assertEquals(post.getId(), postDto.getId());
+        assertEquals(post.getTitle(), postDto.getTitle());
+        assertEquals(post.getUrl(), postDto.getUrl());
+    }
+
+    @Test
+    public void whenConvertPostDtoToPostEntity_thenCorrect() {
+        PostDto postDto = new PostDto();
+        postDto.setId(1L);
+        postDto.setTitle(randomAlphabetic(6));
+        postDto.setUrl("www.test.com");
+
+        Post post = modelMapper.map(postDto, Post.class);
+        assertEquals(postDto.getId(), post.getId());
+        assertEquals(postDto.getTitle(), post.getTitle());
+        assertEquals(postDto.getUrl(), post.getUrl());
+    }
+}
+
+-----------------------------------------------------------------------------
+Junit:-
+-------
+What?
+	JUnit is a Regression Testing Framework used by developers to implement unit testing in Java,	
+	JUnit is an open source Unit Testing Framework for JAVA. 
+	It is useful for Java Developers to write and run repeatable tests.
+
+Why you need JUnit testing?
+	It finds bugs early in the code, which makes our code more reliable.
+	JUnit is useful for developers, who work in a test-driven environment.
+	Unit testing forces a developer to read code more than writing.	
+	
+methods(4):
+	assertEquals
+	assertArrayEquals
+	assertNotNull and assertNull
+	assertNotSame and assertSame
+	fail
+	assertTrue and assertFalse
+	assertThat
+	
+methods(5):
+	remaining above mthods are same
+	assertAll
+	assertIterableEquals
+	assertLinesMatch
+	assertNotEquals
+	assertThrows
+	assertTimeout and assertTimeoutPreemptively	
+	
+Mockito:
+------------
+what is mock
+		mock obj is a temparray obj or fake obj use for unit test case.
+why?
+		let us assume, dao layer not complted by dev1 and service class is complted by dev2 so dev2 want unit testing
+		whichout wait of dao class,create dao class fake obj using @mock, dev2 test service layer b.logic.
+benifit
+		need not to wait for other guiys,properly do unit testing,and submit the task.	
+3 ways mocking
+		mock obj
+		stub obj--providing some functionality for the method of mocking obj 
+		spy obj---it called partially mock obj	
+				  real obj functionality will used	
+				  
+DataBase:-
+--------------
+		type of db
+			sql(structured query lang)
+				it would be info that u can eisaly modeld in the form of table,
+				and table have rows and column.
+				can say that standard info.
+				Need acid property.
+				oracle
+				mysql
+				sql server
+				postgress-sql etc.......
+			data werehouse
+				where is uber amazon,when u want to provide analitics for all the txn.
+				generally use for offline system.
+				hadoop,spark
+			no-sql(non-structured query lang)
+				cacendra(coumner db)
+					if less number of queries and large amount of data.
+					column oriented db. 
+				mongo db--(document db)
+				
+		cuse-case amazon
+			inventory---mysql
+			recommendation----spark(why coz here filtering more search product,more buying product)
+			viewing and history----casendra
+				  
+				  

@@ -1,0 +1,706 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Rest API/Restful webservices:-
+==============================
+
+	What?
+		It enables web applications that are built top-up various programming languages to communicate with each other
+		
+	is a lightweight, maintainable, and scalable service that is built on the REST architecture. 
+	
+	Restful Web Service, expose API from your application in a secure, uniform and stateless manner to the calling client.
+	The underlying protocol for REST is HTTP. 
+	REST stands for REpresentational State Transfer.
+	
+	Explain the architectural style for creating web API?
+		The architectural style for creating web api are
+		HTTP for client server communication
+		XML/JSON as formatting language
+		Simple URI as the address for the services
+		Stateless communication
+	
+		
+	where is it?
+		it is set of rules that allow to programs to talk each other.
+		Developer create apis on server and allow the to talk with client and server.
+		User third party payment api on our website or server.
+		if anybody want perform some operation on my server simply i will provide api for him and get response from my server.
+		communication one apps with another apps using apis.
+		our apps want talk to youtube and have already created some apis there our apps use youtube apis.
+			our apps send request to youtube 
+			and youtube send back to response our apps.
+	
+			
+	Advantage:-
+		communication one apps with another apps using apis.
+		independent(.Net want comm with java)
+		provide Http methods for a several operation.
+		
+		
+	Features:-
+		Architechtural design.
+		cached.
+		stateless.
+		client-server
+		layerd system
+		uniform contract.
+	
+	Cache	
+		The Cache concept is to help with the problem of stateless which was described in the last point. 
+		Since each server client request is independent in nature, sometimes the client might ask the server for the same request again.
+			
+			
+		Json:-
+			exchange the data with the help of json/xml. 
+			Data interchange standard.
+			our apps send data in the form of the json format.
+			and get back response in the form of json format.
+			for example youtube is based on the python and our apps is java so communication java and python with common platform json
+			json is a platform independent.
+			json uses less data overall that reduces the cost and increases the parcing speed..
+			json is mored readable also
+			json is passed into ready to uses java script obj which make it way easir and simpilar.
+			json use map data structured rather then the xml tree structured.
+			
+			and i can say the jsan act like as mediater enabling comm with client and server(any language platform).
+			
+	Spring Fw 
+		standalone,webapp,distributed,reactive app,
+		manually:-
+			add web mvc dependencies
+			jasper servlet api dependencies,
+			data source dependencies
+			rest api jackson and jaxb dependencies.
+			
+	Spring boot
+		standalone,webapp,distributed,reactive app,
+		implicitly:-
+		add web mvc dependencies
+			data source dependencies
+			jasper servlet api dependencies,
+			
+	implementation of rest is:-
+		jesry
+		spring rest implementation.
+	web-starter---implecitily support jackson nd jaxb--this api
+	if apps developing with Spring Fw-add explicitly-
+	jackon-json
+	jaxb--xml
+	@Produces(MediaType.Application_XML)----form type conversion with xml format nd cunsumer
+	Client	and resource---rest api
+	
+	When need ResponseBody:
+		if you want to return string/obj of model class on web page or browser without jsp or html configuration
+		then use ResponseBody on top of controller class inside the @Controller Anno.
+		RestController---internally having with ResponseBody anno.
+
+	HTTP methods supported by REST are:
+
+		GET: It requests a resource at the request URL. 
+			 It should not contain a request body as it will be discarded. 
+			 Maybe it can be cached locally or on the server.
+		POST: It submits information to the service for processing; it should typically return the modified or new resource
+		PUT: At the request URL it update the resource
+		DELETE: At the request URL it removes the resource
+		OPTIONS: It indicates which techniques are supported
+		HEAD: About the request URL it returns meta information
+	
+	Note:- JSON and XML are the two markup language that can be used in restful web api
+	
+	Mention what is JAX-WS and JAX-RS?
+		Both JAX-WS and JAX-RS are libraries (APIs) for doing communication in various ways in Java. 
+		JAX-WS is a library that can be used to do SOAP communication in JAVA, 
+		and JAX-RS lets you do the REST communication in JAVA.
+	
+	List out the tools or API for developing or testing web api?
+	Testing tools for web services for REST APIs includes
+		Spring REST web service using MVC
+		Jersey API
+		CXF
+		Axis
+		Restlet,
+	
+	Mention what is the difference between SOAP and REST?
+	SOAP
+		SOAP is a protocol through which two computer communicates by sharing XML document
+		SOAP permits only XML
+		SOAP based reads cannot be cached
+		SOAP is like custom desktop application, closely connected to the server
+		SOAP is slower than REST
+	
+	REST
+		It runs on HTTP but envelopes the message
+		Rest is a service architecture and design for network-based software architectures
+		REST supports many different data formats
+		REST reads can be cached
+		A REST client is more like a browser; it knows how to standardized methods and an application has to fit inside it
+		REST is faster than SOAP
+		It uses the HTTP headers to hold meta information
+		
+	GET — return 200 (OK)
+	POST — return 201 (CREATED)
+	PUT — return 200 (OK)
+	DELETE — return 204 (NO CONTENT) If the operation fails, return the most
+
+	
+	The different integration styles include
+		Shared database
+		Batch file transfer
+		Invoking remote procedure (RPC)
+		Swapping asynchronous messages over a message oriented middle-ware (MOM)
+	
+	ResponseEntity:-
+		Extention of HttpEntity that add HttpCode and return it.
+		
+	RestController:-  it is combination of @Controller and @ResponseBody.
+	
+	
+	@RequesMapping:-
+			is used both at class and method level.
+			is used to map/routing web requests onto specific handler classes and handler methods.
+			is used on class level it creates a "base URI" and controller will be used.
+			is used on methods it will give you the URI on which the handler methods will be executed.
+	
+	@RequestParameter:-
+		annotation to accept query parameters in Controller's having handler methods.
+		is use to extract values from the query string,  http://localhost:8080/foos?id=abc  
+		This annotation is used in handler method as a arguments. 
+		is more useful on a traditional web application where data is mostly passed in the query abatements
+		@RequestParam, we can also use the required attribute.
+		
+		
+		Sometimes you get the parameters in the request URL, mostly in GET requests.
+		In that case, along with the @RequestMapping annotation you can use the
+		@RequestParam annotation to retrieve the URL parameter and map it to the method argument.
+		The @RequestParam annotation is used to bind request parameters to a method parameter in your controller.
+		
+	@RequestHeader
+		The @RequestHeader annotation is used to get the details about the HTTP request headers. 
+		It can be used as a method parameter. 
+		
+	@RequestAttribute
+		The @RequestAttribute annotation is used to wrap a method parameter to the request attribute. 
+		It gives convenient access to the request attributes from a controller method. 
+		Using this annotation, we can access objects that are populated on the server-side.
+	
+	@PathVariable:-
+		The @PathVariable annotation is used to extract the values/data from the URI.http://localhost:8080/foos/abc
+		is more suitable for RESTful web services where URL contains values
+		@PathVariable optional, to avoid conflicts in paths.
+		parameter should be bound to a URI template variable.
+		The multiple @PathVariable can be defined in a method.
+		
+		service.java
+		public void deleteById(int pid){
+			list=list.stream.filter(name->name.getId()!=pid).
+			collect(Collectores.toList));
+		
+		}
+		
+		Service.java
+		public Employee updateEmployee(Employee employee , int eid){		
+			list=list.stream.map(name->{
+			if(name.getId()==eid){
+				name.setFirstName();
+				name.setLastName();
+				}
+				return name;
+			)}.collect(Collectors.toList());
+		
+		}
+		
+
+	@RequestBody : 
+		Data Comming with json/xml convert into Employee employee obj.
+		public Employee create(@RequestBody Employee employee){  
+			Employee emp=empService.createEmp(employee);
+			return employee;
+			}
+		
+		
+		The @RequestBody annotations is used to "bind HTTP" request, with an object in a method parameter.
+		Internally it uses HTTP MessageConverters to convert the request’s body.
+		return it as a String or deserialize it into a Plain Old Java Object (POJO).
+		allows us to retrieve the request's body.
+		Spring has built-in mechanisms for deserializing JSON and XML objects into POJOs, 
+		
+	@ResponseBody : 
+		spring automatically convert the return value and written into http response body.
+		return the object of model data on web page without configuration of jsp and html.
+		annotation can be put on a method and indicates that the return type should be written straight to the 
+		HTTP response body (and not placed in a Model, or interpreted as a view name).
+
+	RequestMapping varient
+	@GetMapping---used for mapping, HTTP GET requests, on specific handler methods.
+		     @GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET)
+
+	@PutMapping
+			used for mapping HTTP PUT requests on specific handler methods.
+			@PutMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PUT)
+
+	@PostMapping	used for mapping HTTP POST requests on specific handler methods.
+			@PostMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST)
+
+	@PatchMapping	used for mapping HTTP PATCH requests on specific handler methods.
+			@PatchMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PATCH)
+
+	@DeleteMapping	used for mapping HTTP DELETE requests on specific handler methods.
+			@DeleteMapping is a composed annotation that acts as a shortcut for @RequestMapping(met
+			hod = RequestMethod.DELETE)
+	@Test rest api methods on some tools like postmain.
+	
+	Example on Post:-
+	---------------
+	
+	post one employee 
+		-use save(Object obj) when post one obj at a time
+		{
+        "sid": 102,------if sid use as primary key then ingnore sid details.  
+        "serviceMame": "AddDetails"
+		}
+		
+	when post Multiple
+		use saveAll(List<Object> obj)---when post multiple obj at a time.
+		[
+			{
+				"serviceMame": "AddDetails"
+			},
+			{
+				"serviceMame": "subDetails"
+			}
+		]
+		
+		Error of rest:-
+			200- success
+			201- create
+			400-UnAthorized
+			404-Resource not found
+			500- Server Error.
+			
+	
+
+
+======================================================================================================================================	
+Unit Testing:-
+==============
+	
+	@org.junit.Test
+	? @org.junit.BeforeClass
+	? @org.junit.Before
+	? @org.junit.AfterClass
+	? @org.junit.After
+	
+	
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <version>2.2.6.RELEASE</version>
+	</dependency>
+	
+	Integration Testing With @DataJpaTest
+	------------------------------------
+		@RunWith(SpringRunner.class)
+		@DataJpaTest
+		public class EmployeeRepositoryIntegrationTest {
+
+			@Autowired
+			private TestEntityManager entityManager;
+
+			@Autowired
+			private EmployeeRepository employeeRepository;
+			
+			@RunWith(SpringRunner.class) provides a bridge between Spring Boot test features and JUnit.
+			Whenever we are using any Spring Boot testing features in our JUnit tests, t
+			his annotation will be required.
+
+			@DataJpaTest provides some standard setup needed for testing the persistence layer:
+			configuring H2, an in-memory database
+			setting Hibernate, Spring Data, and the DataSource
+			performing an @EntityScan
+			turning on SQL logging
+			
+			To carry out DB operations, we need some records already in our database. 
+			To setup this data, we can use TestEntityManager.
+			The Spring Boot TestEntityManager is an alternative to the standard JPA EntityManager that provides methods commonly used when 
+			writing tests.
+ 
+		
+		
+		EmployeeRepository is the component that we are going to test.
+		--------------------------------------------------------------
+			Now let's write our first test case:
+			@Test
+			public void whenFindByName_thenReturnEmployee() {
+				// given
+				Employee alex = new Employee("alex");
+				entityManager.persist(alex);
+				entityManager.flush();
+				// when
+				Employee found = employeeRepository.findByName(alex.getName());
+				// then
+				assertThat(found.getName())
+				  .isEqualTo(alex.getName());
+			}
+			In the above test, we're using the TestEntityManager to insert an Employee in the DB and reading it via the find by name API.
+			The assertThat(…) part comes from the Assertj library, which comes bundled with Spring Boot.
+		
+		Mocking With @MockBean:-
+		---------------------------
+			Our Service layer code is dependent on our Repository.
+			However, to test the Service layer, we don't need to know or care about how the persistence layer is implemented:
+
+			@Service
+			public class EmployeeServiceImpl implements EmployeeService {
+				@Autowired
+				private EmployeeRepository employeeRepository;
+				@Override
+				public Employee getEmployeeByName(String name) {
+					return employeeRepository.findByName(name);
+				}
+			}
+		Ideally, we should be able to write and test our Service layer code without wiring in our full persistence layer.
+		To achieve this, we can use the mocking support provided by Spring Boot Test.
+
+		Let's have a look at the test class skeleton first:
+		---------------------------------------------------
+			@RunWith(SpringRunner.class)
+			public class EmployeeServiceImplIntegrationTest {
+
+				@TestConfiguration
+				static class EmployeeServiceImplTestContextConfiguration {
+			 
+					@Bean
+					public EmployeeService employeeService() {
+						return new EmployeeServiceImpl();
+					}
+				}
+
+				@Autowired
+				private EmployeeService employeeService;
+
+				@MockBean
+				private EmployeeRepository employeeRepository;
+
+				// write test cases here
+			}
+			To check the Service class, we need to have an instance of the Service class created and available as a 
+			@Bean so that we can @Autowire it in our test class.
+			We can achieve this configuration using the @TestConfiguration annotation.
+			During component scanning, we might find that components or configurations created only for specific tests accidentally get picked up everywhere.
+			 To help prevent this, Spring Boot provides the @TestConfiguration annotation that we can add on classes in src/test/java to indicate that they should not be picked up by scanning.
+
+
+			Another interesting thing here is the use of @MockBean. 
+			It creates a Mock for the EmployeeRepository, which can be used to bypass the call to the actual 
+		EmployeeRepository:
+		-------------------
+			@Before
+			public void setUp() {
+				Employee alex = new Employee("alex");
+
+				Mockito.when(employeeRepository.findByName(alex.getName()))
+				  .thenReturn(alex);
+			}
+			Since the setup is done, the test case will be simpler:
+
+			@Test
+			public void whenValidName_thenEmployeeShouldBeFound() {
+				String name = "alex";
+				Employee found = employeeService.getEmployeeByName(name);
+			 
+				 assertThat(found.getName())
+				  .isEqualTo(name);
+			 }
+			  
+		Unit Testing With @WebMvcTest
+		------------------------------
+			Our Controller depends on the Service layer; let's only include a single method for simplicity:
+
+			@RestController
+			@RequestMapping("/api")
+			public class EmployeeRestController {
+
+				@Autowired
+				private EmployeeService employeeService;
+
+				@GetMapping("/employees")
+				public List<Employee> getAllEmployees() {
+					return employeeService.getAllEmployees();
+				}
+			}
+			
+		Since we're only focused on the Controller code, it's natural to mock the Service layer code for our unit tests:
+			@RunWith(SpringRunner.class)
+			@WebMvcTest(EmployeeRestController.class)
+			public class EmployeeRestControllerIntegrationTest {
+				@Autowired
+				private MockMvc mvc;
+
+				@MockBean
+				private EmployeeService service;
+				// write test cases here
+			}
+			To test the Controllers, we can use @WebMvcTest. 
+			It will auto-configure the Spring MVC infrastructure for our unit tests.
+
+			In most cases, @WebMvcTest will be limited to bootstrap a single controller. 
+			We can also use it along with @MockBean to provide mock implementations for any required dependencies.
+
+
+		@WebMvcTest also auto-configures MockMvc, which offers a powerful way of easy testing MVC controllers 
+		without starting a full HTTP server.
+		Having said that, let's write our test case:
+		--------------------------------------------
+		@Test
+		public void givenEmployees_whenGetEmployees_thenReturnJsonArray()
+		  throws Exception {
+			Employee alex = new Employee("alex");
+			List<Employee> allEmployees = Arrays.asList(alex);
+			given(service.getAllEmployees()).willReturn(allEmployees);
+			mvc.perform(get("/api/employees")
+			  .contentType(MediaType.APPLICATION_JSON))
+			  .andExpect(status().isOk())
+			  .andExpect(jsonPath("$", hasSize(1)))
+			  .andExpect(jsonPath("$[0].name", is(alex.getName())));
+		}
+		The get(…) method call can be replaced by other methods corresponding to HTTP verbs like put(), post(), etc. 
+		Please note that we are also setting the content type in the request.
+		MockMvc is flexible, and we can create any request using it.
+		
+		Integration Testing With @SpringBootTest
+		----------------------------------------
+			As the name suggests, integration tests focus on integrating different layers of the application. 
+			That also means no mocking is involved.
+
+			Ideally, we should keep the integration tests separated from the unit tests and should not run along with the unit tests. 
+			We can do this by using a different profile to only run the integration tests. 
+			A couple of reasons for doing this could be that the integration tests are time-consuming and might need an actual database to execute.
+
+			However in this article, we won't focus on that, and we'll instead make use of the in-memory H2 persistence storage.
+
+			The integration tests need to start up a container to execute the test cases. 
+			Hence, some additional setup is required for this — all of this is easy in Spring Boot:
+			---------------------------------------------------------------------------------------
+			@RunWith(SpringRunner.class)
+			@SpringBootTest(
+			  SpringBootTest.WebEnvironment.MOCK,
+			  classes = Application.class)
+			@AutoConfigureMockMvc
+			@TestPropertySource(
+			  locations = "classpath:application-integrationtest.properties")
+			public class EmployeeRestControllerIntegrationTest {
+				@Autowired
+				private MockMvc mvc;
+				@Autowired
+				private EmployeeRepository repository;
+				// write test cases here
+			}
+		The @SpringBootTest annotation is useful when we need to bootstrap the entire container.
+		The annotation works by creating the ApplicationContext that will be utilized in our tests.
+
+		We can use the webEnvironment attribute of @SpringBootTest to configure our runtime environment; we're using WebEnvironment.
+		MOCK here so that the container will operate in a mock servlet environment.
+
+		Next, the @TestPropertySource annotation helps configure the locations of properties files specific to our tests. 
+		Note that the property file loaded with @TestPropertySource will override the existing application.properties file.
+
+		The application-integrationtest.properties contains the details to configure the persistence storage:
+		spring.datasource.url = jdbc:h2:mem:test
+		spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.H2Dialect
+		If we want to run our integration tests against MySQL, we can change the above values in the properties file.
+
+		The test cases for the integration tests might look similar to the Controller layer unit tests:
+		-----------------------------------------------------------------------------------------------
+		@Test
+		public void givenEmployees_whenGetEmployees_thenStatus200()
+		  throws Exception {
+			createTestEmployee("bob");
+			mvc.perform(get("/api/employees")
+			  .contentType(MediaType.APPLICATION_JSON))
+			  .andExpect(status().isOk())
+			  .andExpect(content()
+			  .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			  .andExpect(jsonPath("$[0].name", is("bob")));
+		}
+		The difference from the Controller layer unit tests is that here nothing is mocked and end-to-end scenarios will be executed.
+		
+		Auto-Configured Tests
+		---------------------
+			One of the amazing features of Spring Boot's auto-configured annotations is that it helps to load parts of 
+			the complete application and test-specific layers of the codebase.
+
+		In addition to the above-mentioned annotations, here's a list of a few widely used annotations:
+		----------------------------------------------------------------------------------------------
+			@WebFluxTest: We can use the @WebFluxTest annotation to test Spring WebFlux controllers. 
+			It's often used along with @MockBean to provide mock implementations for required dependencies.
+			@JdbcTest: We can use the @JdbcTest annotation to test JPA applications, but it's for tests that only require a DataSource. 
+			The annotation configures an in-memory embedded database and a JdbcTemplate.
+			@JooqTest: To test jOOQ-related tests, we can use @JooqTest annotation, which configures a DSLContext.
+			@DataMongoTest: To test MongoDB applications, @DataMongoTest is a useful annotation. 
+			By default, it configures an in-memory embedded MongoDB if the driver is available through dependencies, 
+			configures a MongoTemplate, scans for @Document classes, and configures Spring Data MongoDB repositories.
+			@DataRedisTestmakes it easier to test Redis applications. 
+			It scans for @RedisHash classes and configures Spring Data Redis repositories by default.
+			@DataLdapTest configures an in-memory embedded LDAP (if available), configures a LdapTemplate, scans for @Entry classes, 
+			and configures Spring Data LDAP repositories by default.
+			@RestClientTest: We generally use the @RestClientTest annotation to test REST clients. 
+			It auto-configures different dependencies such as Jackson, GSON, and Jsonb support; configures a RestTemplateBuilder; 
+			and adds support for MockRestServiceServer by default.
+			
+			
+		@RunWith(SpringRunner.class)
+		@JsonTest
+		public class MyJsonTests {
+			@Autowired
+			private JacksonTester<VehicleDetails> json;
+			@Test
+			public void testSerialize() throws Exception {
+				VehicleDetails details = new VehicleDetails("Honda", "Civic");
+				// Assert against a `.json` file in the same package as the test
+				assertThat(this.json.write(details)).isEqualToJson("expected.json");
+				// Or use JSON path based assertions
+				assertThat(this.json.write(details)).hasJsonPathStringValue("@.make");
+				assertThat(this.json.write(details)).extractingJsonPathStringValue("@.make")
+						.isEqualTo("Honda");
+			}
+			@Test
+			public void testDeserialize() throws Exception {
+				String content = "{\"make\":\"Ford\",\"model\":\"Focus\"}";
+				assertThat(this.json.parse(content))
+						.isEqualTo(new VehicleDetails("Ford", "Focus"));
+				assertThat(this.json.parseObject(content).getMake()).isEqualTo("Ford");
+			}
+		}
+		
+		
+		Auto-configured Spring MVC tests:
+		---------------------------------
+		@RunWith(SpringRunner.class)
+		@WebMvcTest(UserVehicleController.class)
+		public class MyControllerTests {
+
+			@Autowired
+			private MockMvc mvc;
+
+			@MockBean
+			private UserVehicleService userVehicleService;
+
+			@Test
+			public void testExample() throws Exception {
+				given(this.userVehicleService.getVehicleDetails("sboot"))
+						.willReturn(new VehicleDetails("Honda", "Civic"));
+				this.mvc.perform(get("/sboot/vehicle").accept(MediaType.TEXT_PLAIN))
+						.andExpect(status().isOk()).andExpect(content().string("Honda Civic"));
+			}
+
+		}
+		
+		3.8 Auto-configured Data JPA tests:-
+		-----------------------------------
+			@RunWith(SpringRunner.class)
+			@DataJpaTest
+			public class ExampleRepositoryTests {
+
+				@Autowired
+				private TestEntityManager entityManager;
+
+				@Autowired
+				private UserRepository repository;
+
+				@Test
+				public void testExample() throws Exception {
+					this.entityManager.persist(new User("sboot", "1234"));
+					User user = this.repository.findByUsername("sboot");
+					assertThat(user.getUsername()).isEqualTo("sboot");
+					assertThat(user.getVin()).isEqualTo("1234");
+				}
+
+			}
+			In-memory embedded databases generally work well for tests since they are fast and don’t require any developer installation. 
+			If, however, you prefer to run tests against a real database you can use the @AutoConfigureTestDatabase annotation:
+
+			@RunWith(SpringRunner.class)
+			@DataJpaTest
+			@AutoConfigureTestDatabase(replace=Replace.NONE)
+			public class ExampleRepositoryTests {
+
+				// ...
+
+			}
+		
+		11 Auto-configured REST clients
+		-------------------------------
+			The @RestClientTest annotation can be used if you want to test REST clients. 
+			By default it will auto-configure Jackson and GSON support, configure a RestTemplateBuilder and add support for MockRestServiceServer. 
+			The specific beans that you want to test should be specified using value or components attribute of @RestClientTest:
+
+			@RunWith(SpringRunner.class)
+			@RestClientTest(RemoteVehicleDetailsService.class)
+			public class ExampleRestClientTest {
+
+				@Autowired
+				private RemoteVehicleDetailsService service;
+
+				@Autowired
+				private MockRestServiceServer server;
+
+				@Test
+				public void getVehicleDetailsWhenResultIsSuccessShouldReturnDetails()
+						throws Exception {
+					this.server.expect(requestTo("/greet/details"))
+							.andRespond(withSuccess("hello", MediaType.TEXT_PLAIN));
+					String greeting = this.service.callRestService();
+					assertThat(greeting).isEqualTo("hello");
+				}
+			}
+			
+		TestRestTemplate:-
+		------------------
+			@RunWith(SpringRunner.class)
+			@SpringBootTest
+			public class MyTest {
+
+				@Autowired
+				private TestRestTemplate template;
+
+				@Test
+				public void testRequest() throws Exception {
+					HttpHeaders headers = template.getForEntity("http://myhost.com", String.class).getHeaders();
+					assertThat(headers.getLocation().toString(), containsString("myotherhost"));
+				}
+				@TestConfiguration
+				static class Config {
+					@Bean
+					public RestTemplateBuilder restTemplateBuilder() {
+						return new RestTemplateBuilder()
+							.additionalMessageConverters(...)
+							.customizers(...);
+					}
+				}
+			}
+
+		

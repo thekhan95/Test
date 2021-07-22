@@ -1,0 +1,486 @@
+
+	
+
+
+
+MethodArgumentNotValidException
+--------------------------------
+When we use @Valid, applying validation which is defined in model class fields, 
+there are different types of validation you can choose like @NotNull, @Max, @Min and so on. 
+But in general, all of this are parallel to MethodArgumentNotValidException which will be thrown in all cases.
+
+
+ConstraintViolationException
+------------------------------
+ Checking for duplicates before insert. 
+ stop duplication entry into db.
+ solve double posting probllem.
+
+
+Monolithic Archi
+---------------
+	charectarsistics:-
+	------------------
+	Built as a single autonoumous unit
+	modification to small section,build and deploye complte apps.
+	scaling specific function.
+	to large and complex.
+	size of apps.
+	
+SOA:-
+	effective scalling
+	high performance
+	independent deployment
+	independent data storage
+	independentally changable
+	
+	
+
+what is msa
+	loosely coupled service oriented archtecture with bounded context.
+	is a archtectural style that structure and app as a colls of small autonomous
+	service,modeled around a business model.
+	each service self is selft contained and implemented a single
+	single business capability.
+	
+	
+Charecteristics of MSA
+	exposed as a service.
+	CD.
+	loosely coupled. 
+	independent.
+	build and run by independent team.
+	light weight communication.
+	less startup-time.
+	
+	
+api gateway
+	sigle entry point
+	authentication
+	monitoring
+	loadbalance
+	caching
+	routing compossion
+	
+diff monolthic and msa
+
+
+diff soa and msa
+	importance on business funs reuse.
+	use ESB for commu.
+	support multiple access protocol.
+	multithreaded.
+	tredetional rdb more often use
+	maximize apps servie reusable.
+	
+	importance on the concept on the bounded context.
+	simple messaging system.
+	they use light-weight protocol such as Htpp/rest.
+	single-threaded
+	modern relational db more often use
+	focus on decupling
+	
+	
+
+development life cycle of monolthic and msa:-
+----------------------------------------------
+
+benifit of msa
+---------------
+	better testibility
+	better development
+	better scalability
+	eiser understand for developer
+	or less start-up time.
+	
+when can we use MSA
+---------------------	
+	large apps
+	commanally used in ecommerce app/banking app
+	complex app
+	heigh release velocity
+	heigh scalable
+	small development team.
+		
+advantage or best practice
+
+
+Chanllanges for MSA:-
+----------------------
+	Distributed txn mgmt.
+	integration testing
+	Deployment complexity
+	Data integregity
+	increase m/m consuption
+	mgmt- devops,logging
+	
+
+
+Design pattern of MSA
+----------------------
+	
+Decomposion-pattern
+	1-business capabilities
+	2-sub-domain
+		order-mgmt(sub-domain)
+			product catelog service
+			inventory service
+			delivery service
+			
+	3-txn 2pc pattern
+		decompose service over the txn.
+		will be multiple txn in the system.
+		probllem with 2pc it bit slow.
+		this approch is'nt useauly use in a heigh load senario. 
+	4-strangler pattern
+		lagacy system slowly try to following MSA.
+			
+intergration pattern
+	1-api gatwaye pattern
+	2-aggregrator pattern
+		composite microservice or api gateway
+	3-wackend for front-end api gateway
+	4-proxy pattern
+		expose microservice over api gateway.
+	5-gateway routing pattern
+	6-branch pattern
+
+		a-s connect to b-s, and b-s connect to c-s or d-s.
+	7-chain of responsibility
+		a-s depend on b-s and b-s depend on c something like.
+	
+	
+Databse pattern
+	1-database per service.
+	2-shared data pattern.
+	3-event source pattern.
+	4-asychrnous msg pattern.
+	5-asychrnous event.
+	6-cqrs.
+	7-saga.
+		provide txn mgmt using seq of local txns
+		each local txn updates the db and publishes a msg
+		if local txn fails,the saga execute a series of compensacting txns
+		
+		it can be implent two ways:
+			Choroigraphy
+				each local tnx publishes event/mesgs that trgger local txn in other service.
+			Orchestration
+				orchestor tells the participent what local txn to be execute.
+
+
+Cross-cutting-concern pattern:-
+--------------------------------				
+1-Service discovery pattern
+	registering service using eureka server
+2-circuit breaker pattern	
+	it used to stop process of req and res if a service is not working.
+	two probllem:-
+		clinet will not have any knowledege about a particular service being down.
+		n/w resource will exhausted with low performance and bad user exp.
+	solve these probllem use circuit breaker pattern.
+	in this pattern clinet will invoke a remote service by proxy.
+	this proxy will basically behave as a circuit barrier.
+3-External configuration.	
+	
+------------------------------------------------------------------------
+
+	
+	String result = "";
+	 //Map -> Stream -> Filter -> String
+        result = HOSTING.entrySet().stream()
+                .filter(map -> "aws.amazon.com".equals(map.getValue()))
+                .map(map -> map.getValue())
+                .collect(Collectors.joining());
+
+        System.out.println("With Java 8 : " + result);
+        // filter more values
+        result = HOSTING.entrySet().stream()
+                .filter(x -> {
+                    if (!x.getValue().contains("amazon") && !x.getValue().contains("digital")) {
+                        return true;
+                    }
+                    return false;
+                })
+                .map(map -> map.getValue())
+                .collect(Collectors.joining(","));
+				System.out.println("With Java 8 : " + result);
+
+	=================================================
+	Map<String, Integer> result = unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+
+        // Not Recommend, but it works.
+        //Alternative way to sort a Map by keys, and put it into the "result" map
+        Map<String, Integer> result2 = new LinkedHashMap<>();
+        unsortMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+
+
+List:-
+=======
+
+		//sort by last name
+		System.out.println("Sorting by Last name---Collections.sort");
+		Collections.sort(employees, new LastNameSort());
+		System.out.println(employees);
+
+		System.out.println("========using java8 =========");
+		//List<Employee> employees = getEmployeesFromDB();
+
+		//Sort all employees by first name
+		employees.sort(Comparator.comparing(e -> e.getFirstName()));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//OR you can use below
+		employees.sort(Comparator.comparing(Employee::getFirstName));
+		System.out.println("Sort all employees by first name\n" + employees);
+
+		//Sort all employees by first name in reverse order
+		Comparator<Employee> comparator = Comparator.comparing(e -> e.getFirstName());
+		employees.sort(comparator.reversed());
+		
+		System.out.println("Sort all employees first name in 
+		List<String> copy = list.stream()
+		.filter(s -> s.length() > 10)
+		.collect(Collectors.toList());
+		
+Map:-
+=====
+		
+		map.forEach((k,v)->System.out.println(k+" ==value:    "+v));
+
+		System.out.println("\n fatch data using Map.Entry concept...");
+		for (Map.Entry<String, List<Company>> entry : map.entrySet()) {
+		System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+		}
+		
+		// Map.Entry<String, List<Company>>
+		// Map -> Stream -> Filter -> MAP based on the key
+		System.out.println("\ngetDetails based on the Key");
+		Map<String, List<Company>> collect = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+				System.out.println(collect);
+		
+		// or like this
+		System.out.println("\n===get Details using based on Stream api====");
+		Map<String, List<Company>> collect1 = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+				System.out.println(collect1);
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result = map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, 
+				(oldValue, newValue) -> oldValue,LinkedHashMap::new));
+				System.out.println(result);
+			
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result2 = new LinkedHashMap<>();
+				map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+				System.out.println(result2);
+
+		// based get details of map
+		System.out.println("\n=======================");
+		Set set = map.entrySet();
+		Iterator iterator = set.iterator();
+		while (iterator.hasNext()) {
+			Map.Entry mp = (Map.Entry) iterator.next();
+			if (mp.getKey().equals("hyd")) {
+				System.out.print(mp.getKey() + "=>" + mp.getValue() + "\n");
+			}
+		}
+		
+		
+		
+		public Book getBookById(int id){
+				Book book=null;
+				book=list.stream.filter(e->e.getId==id).finFirst().get();
+				return book;
+					}
+	
+---------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+List<Employee> lowSalary = employees.stream()
+               .min(comparator)
+               .stream()
+               .collect(Collectors.toList());
+lowSalary.forEach(System.out::println);
+----------------------------------------------------------------------------------------------
+
+List<Employee> employees = new ArrayList<Employee>(){{
+    add(new Employee("bilbo baggins", 10));
+    add(new Employee("frodo baggins", 10));
+    add(new Employee("gandalf grey", 100));
+}};
+
+Map<Integer, List<Employee>> result = employees.stream().collect(groupingBy(Employee::getSalary));
+
+List<Employee> allMin = result.entrySet().stream()
+        .min(Comparator.comparing(Map.Entry::getKey))
+        .map(Map.Entry::getValue)
+        .orElse(Collections.emptyList());
+
+allMin.forEach(System.out::println);
+
+-----------------------------------------------------------------------------------------------
+Comparator<Employee> comparator = Comparator.comparing( Employee :: getSalary);
+        Optional<Employee> min = employees.stream()
+                .min(comparator);
+        List<Employee> lowSalary = employees.stream()
+                .filter(ele->ele.salary==min.get().salary)
+                .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+You can calculate the minimum salary first then use it in your Stream#filtercondition:
+
+int salary = 
+   employees.stream()
+            .min(Comparator.comparing(Employee::getSalary))
+            .map(e -> e.getSalary())
+            .orElse(-1);
+
+List<Employee> emps = 
+  employees.stream()
+           .filter(emp -> emp.getSalary() == salary)
+           .collect(Collectors.toList());
+
+------------------------------------------------------------------------------------------------
+// find employees whose salaries are above 10000
+        List<Employee> filteredList = empList.stream()
+                                            .filter(emp->emp.getSalary() > 10000)
+                                            .collect(Collectors.toList());
+ 
+        filteredList.forEach(System.out::println);
+------------------------------------------------------------------------------------------------
+
+Java 8 Stream.map() example.
+
+Stream.map() method returns a stream consisting of the results of applying the given function to the elements of this stream. 
+We can use Stream.map() function for transforming the objects based on the input method. 
+The given below example, converts all string elements in upper case.
+package com.java2novice.streams;
+ 
+import java.util.Arrays;
+import java.util.List;
+ 
+public class StreamMapEx {
+ 
+    public static void main(String a[]) {
+ 
+        List<String> vehicles = Arrays.asList("bus", "car", "bicycle", "flight", "train");
+        vehicles.stream().map(String::toUpperCase).forEach(System.out::println);
+    }
+----------------------------------------------------------------------------------------------
+ Stream.of("bus", "car", "bycle", "flight", "train")
+                .filter(e -> e.length() > 3)
+                .peek(e -> System.out.println("Filtered value: " + e))
+                .map(String::toUpperCase)
+                .peek(e -> System.out.println("Mapped value: " + e))
+                .collect(Collectors.toList());
+    }
+----------------------------------------------------------------------------------------------
+Sort the List
+List<Employee> empList = new ArrayList<>();
+        empList.add(new Employee("Nataraja G", "Accounts", 8000));
+        empList.add(new Employee("Nagesh Y", "Admin", 15000));
+        empList.add(new Employee("Vasu V", "Security", 2500));
+        empList.add(new Employee("Amar", "Entertainment", 12500));
+ 
+        empList.stream()
+                .sorted((emp1, emp2)->emp1.getSalary().compareTo(emp2.getSalary()))
+                .forEach(System.out::println);
+---------------------------------------------------------------------------------------------
+public static void main (String[] args) {
+		Map<Integer, User> userMap = new HashMap<Integer, User>();
+		userMap.put(1, new User(1, "Janu", LocalDate.of(2001, 12, 12), "Female", "Graduate"));
+		userMap.put(2, new User(2, "Renu", LocalDate.of(2005, 2, 22), "Female", "SSLC"));
+		userMap.put(3, new User(3, "Meenu", LocalDate.of(1994, 3, 3), "Female", "Post Graduate"));
+		userMap.put(4, new User(4, "Banu", LocalDate.of(2001, 6, 15), "Female", "Graduate"));
+		userMap.put(5, new User(5, "Seenu", LocalDate.of(2001, 8, 31), "Male", "Graduate"));
+		
+		int start = 1;
+		int end = 100;
+		//Wrapper Streams
+		IntStream.rangeClosed(start, end);
+		//Stream.of("w", "s", "c");
+		
+		
+		
+	
+		
+		//forEach method with Consumer
+		userMap.values().forEach(System.out::println);
+		
+		
+		
+		//LocalDate with Sort
+		if(users!=null && users.size()>0)
+			System.out.println("Working");
+		users.stream().sorted((u1, u2)->u1.getDateOfBirth().compareTo(u2.getDateOfBirth()));
+		
+		users.sort(Comparator.comparing(u->u.getDateOfBirth()));
+		
+		
+		Collections.sort(users, Comparator.comparing(User::getDateOfBirth));
+		
+		Collections.sort(users, new Comparator<User>() {
+
+			@Override
+			public int compare(User o1, User o2) {
+			int var = 0;
+			var = o1.getUserId()>o2.getUserId()?1:-1;
+				return var;
+			}
+		});
+		
+		Collections.sort(users, (o1,o2)->{
+			
+			int var = 0;
+			var = o1.getUserId()>o2.getUserId()?1:-1;
+				return var;		
+			});
+		
+		
+	}
+
+	
+	private static List<User> streamMapWithGroup(Map<Integer, User> userMap) {
+		List<User> users = userMap.values().stream()
+				//.sorted((u1,u2)->u1.getDateOfBirth().compareTo(u2.getDateOfBirth()))
+				.collect(Collectors.toList());
+				//.forEach(System.out::println);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		
+		Map<String, List<Employee>> employees = 
+				userMap.values().stream()
+				.map(user->employeeMapper(user)
+		).collect(Collectors.groupingBy(Employee::getGender));
+		
+		
+		System.out.println("HashMap Size: "+employees.size());
+		
+		employees.entrySet().stream().forEach(System.out::println);
+		return users;
+	}
+
+	
+	private static Employee employeeMapper(User user) {
+		Employee employee = new Employee(user.getUserName(), user.getGender(), user.getEducation());
+		return employee;
+	}
+
+	private static void streamFilter(Map<Integer, User> userMap) {
+		Set<User> userList = userMap.values().stream().filter(u->u.getGender().equals("Female")).collect(Collectors.toSet());
+		
+		
+	}
+	private static void streamReduce() {
+		List<String> numbers = Arrays.asList("1","2","3", "4", "5");
+		String reducedString = numbers.stream().reduce("Start", (s1,s2)->s1.concat(s2));
+		System.out.println(reducedString);
+	}

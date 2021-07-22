@@ -1,0 +1,647 @@
+Spring DAO:-
+===========
+		methodlogy:
+			JDBCTemplate
+			NamedPrarameterJDBCTemplate
+			SimpleJDBCTemplate(remove from 4.x)
+			SimpleJDBCInsert, SimpleJdbcCall
+		
+		1)JdbcTemplate:-
+			this central class of Spring jdbc provide abstraction layer on plain JDBC and 
+			simplify persistance logic to develop.
+		
+		two approch work with JdbcTemplate
+			1-using direct method(no need to jdbc code)
+			2-using Callback interface(no need to write plain java object)
+		
+		method:-
+			queryForInt---give single numeric val as result
+			queryForLong---
+			queryForMap()--give single record
+			QueryForObject()--
+			queryForList()
+			queryForRowSet()
+			
+		ResultSetExtractor:-
+			state less
+			extractor data having return type <T>
+			
+		RowCallBack:-
+			it is state full
+			return type is void.
+What is Spring ORM?
+===================
+	Spring ORM is covers many technologies like Hibernate, iBatis and JPA.  
+	Spring provides integration classes thanks to which, each of the technologies mentioned are able to be implemented following 
+	the Spring principles of confiugration.
+
+	The recommended integration style is to make DAOs against Hibernate, JPA and DaO.
+	Because everything is designed as a set of reusable JavaBeans, we can extract just as much functionality from ORM support as we would extract from a library.
+
+ Advantages of using ORM
+	Since we are mapping to a database table with a java object called “Entity”, 
+	we can interact with the environment using OOP concepts such as inheritance and encapsulation, and so on. 
+	This is a huge benefit because we are already familiar with OOP concepts and we won’t have to spend time learning new concepts, etc.
+	
+	why Spring orm-:
+		avoid write both common and application specific logics.
+		inject HibernateTemplat obj and perform persistent operation.
+
+	Easier testing
+	Common data access exceptions
+	General resource management
+	Integration transaction management
+	
+	Plain Hibernate Application:-
+		create configuration call configure().
+		create service registry using serviceRegistryBuilder.
+		create sessionFectory obj.
+		open session
+		begin txn.
+		
+		perform persistent operation.
+		cimmit/rollback
+		close session or sessionFectory.		
+	
+	OneToOne
+	{
+	"id":101,
+	"title":"java"
+		"auther":{
+			"aid":10,
+			"name":"name"
+		}
+	}	
+
+
+	OneToMany:-
+		{
+		 id : 1,
+		 name : "Peter",
+		 endpoint: "123.456.778",
+		 policies: [
+						{
+						   id : 1,
+						   name: "policy 01"
+						},
+						{
+						   id : 2,
+						   name: "policy 02"
+						}
+				 ]
+	}
+	
+	
+JPA:-
+=======	
+	(doublt)The Java Persistence API (JPA) is the specification of Java that is "used to persist data" between Java object and relational database. 
+	JPA is a specification which means, a set of guidelines be followed, to represent Java objects in databases. 
+	JPA provides a set of concepts in the form of interfaces & annotations to configure Java objects.
+	JPA acts like as bridge between object-oriented domain models and relational database systems. 
+	As JPA is just a specification, it doesn't perform any operation by itself.
+	It requires an implementation.
+	
+	why go Spring Data JPA?
+		No-code Repositories
+		Reduced boilerplate code
+		Generated queries
+		
+		create a JPA-based repository layer that is mainly for CRUD operations, and you do not want to create abstract DAO, 
+		implementing interfaces, Spring Data JPA is a good choice.
+		
+	Spring data work with 3 ways:-
+		1-using built-in template method of CrudRepository/JPARepository/PAgingAndSortingRepository.
+		2-generate query using findBy derived method.
+		3-using custom Query.
+	
+	Features:-
+		Simplifies Data Access Layer.
+		Intelligent Spring Repository Stereotyped Interfaces.
+		Auditing, Paging, Handling Native SQL Queries.
+		Extending and adding custom query with JPQL.
+		Query Domain Specific Language(DSL).
+		Defining custom methods by using findBy().
+	
+	CrudRepository and JPARepository and PAgingAndSortingRepository pred-define interface provided by Spring data JPA.
+	in this interface we are having saveral method which is to perform crud operation.
+	
+	Repository----marker interface
+		extends
+			CrudPrepository---Prede-fine Interface
+				extends
+					UserRepository---Custom Interface
+		Note:-
+			1-if we create User define Repository extends from CrudRepository, then implementation class will be created at the runtime
+			  for our user define repository interface.
+			2-for a using orm then two anno put must @Entity and @Id.
+			
+	Why @Repository is a opetional?
+		  1-whenever our application is start componentscan is happen then its regoznige bean
+		  2-First scan data repository available in a classpath,if present then Spring data jpa provde impl class for your interfce 
+		    and will representsnt as a spring bean in the runtime this is the reason.
+		
+		Note:-  1-java cant create obj for interface and IOC also.
+				2-for the get obj using getBeans() of user define repository proxy design pattern comes in the pichture at run time,
+				  bcoz of that impl class is create at runtime.
+	
+	Foreign key:-
+		link table togather.
+		a field in one table that refers pk to another table. 
+	
+	Where to use JPA?
+		To reduce the burden of writing codes for relational object management, a programmer follows the ‘JPA Provider’ framework,
+		which allows easy interaction with database instance. 
+		Here the required framework is taken over by JPA.
+	
+	@Entity:- Specifies that the class is an entity. This annotation can be applied on Class, Interface of Enums.
+	@Table:-  It specifies the table name in the database with which this entity is mapped. 
+	@Column:  Specify the column mapping using @Column annotation.        -----@Table(name = "employee")
+	@Id:-  This annotation specifies the primary key of the entity class.
+	@GeneratedValue: This annotation specifies the generation strategies for the values of primary keys.
+					Caused by: org.hibernate.AnnotationException: No identifier specified for entity: com.sk.dto.ParentService
+					when your are not specified indedentifier---like @Id
+	Boolean property contain setter and is method.
+	
+	@Embedded	This annotation specifies the properties of class or an entity whose value instance of an embeddable class.
+	
+	@JoinColumn :-
+		annotation is used for one-to-one or many-to-one associations when "foreign key is held by one of the entities".
+		
+	@PrimaryKeyJoinColumn:- 
+		This annotation is used to associate entities sharing the same primary key.
+	
+	@AccessType
+		Annotation to define how Spring Data shall access values of persistent properties. 
+		Can either be Type.FIELDor Type.PROPERTY. Default is field access.	
+		
+	@Param:-
+		Annotation to bind as method parameters be bound to a query via a named parameter.
+	
+	@Eager Loading	
+		will load all dependent enitiy.
+		will be retrieving all dependent entities.
+		In eager loading, an entity is immediately loaded at the time of parent gets loaded. 
+	
+	@Lazy Loading
+		In lazy loading, an entity is only loaded when an actual getter generate for that the entity is called.
+		will be retrieving dependent entity based on the request.
+		will load first main entity class and then dependent enitiy class	
+		use-case:-
+			loading for 
+		
+		
+	Eager fetch
+		Fetching the whole record while finding the record using Primary Key.	
+		Loads ALL relationships
+	
+	lazy fetch
+		But lazy fetch is possible when you try to fetch the record for the first time. 
+		That way,Doesn’t load the relationships unless explicitly “asked for” via getter 
+		Performance wise, lazy fetch is preferable.
+			
+	Methods inherited from interface org.springframework.data.jpa.repository.JpaRepository
+		deleteAllInBatch, deleteInBatch, findAll,findAllById, flush, getOne, saveAll, saveAndFlush
+		
+	Methods inherited from interface org.springframework.data.repository.PagingAndSortingRepository
+		findAll
+	Methods inherited from interface org.springframework.data.repository.CrudRepository
+		count, delete, deleteAll, deleteAll, deleteById, existsById, findById, save
+		
+	Methods inherited from interface org.springframework.data.repository.query.QueryByExampleExecutor
+		count, exists, findAll, findOne
+		
+	Methods inherited from interface org.springframework.data.jpa.repository.JpaSpecificationExecutor
+		count, findAll, findAll, findAll, findOne
+	
+	
+	@Query---JPQL
+	@NativeQuery---SQL	
+	@Version
+	@Lob	
+	@Transient:-
+		Field will not be saved in database.
+	@NamedQuery
+	@NamedNativeQuery
+	
+	What Is Cascading?
+		Entity relationships often "depend on the existence" of another entity — for example, the Person–Address relationship. 
+		Without the Person, the Address entity doesn't have any meaning of its own. 
+		When we delete the Person entity, our Address entity should also get deleted.
+			Person{
+				private int id;
+				private String name;
+				@OneToOne(cascade = CascadeType.ALL) 
+				private Address address;
+			}
+		
+	OneToOne-----default type---FetchType.Eager
+	OneToMay-----default type---FetchType.Lazy
+	ManyToOne-----default type---FetchType.Eager
+	ManyToMany-----default type---FetchType.Lazy	
+			
+			
+	2.1. JPA Cascade Type
+		All JPA-specific cascade operations are represented by the javax.persistence.CascadeType enum containing entries:
+
+		ALL-Cascade.ALL propagates all operations — including Hibernate-specific ones — from a parent to a child entity.
+		PERSIST
+		MERGE
+		REMOVE
+		REFRESH
+		DETACH
+		
+		Persist:-
+		---------
+			The persist operation makes a transient instance persistent. 
+			CascadeType PERSIST propagates the persist operation from a parent to a child entity. 
+			When we save the person entity, the address entity will also get saved.
+		
+		CascadeType.MERGE
+			The merge operation copies the state of the given object onto the persistent object with the same identifier. 
+			CascadeType.MERGE propagates the merge operation from a parent to a child entity.
+			
+		CascadeType.Remove
+			CascadeType.REMOVE propagates the remove operation from parent to child entity. 
+			Similar to JPA's CascadeType.REMOVE, we have CascadeType.DELETE, which is specific to Hibernate.
+			
+		CascadeType.DETACH
+			The detach operation removes the entity from the persistent context. 
+			When we use CascaseType.DETACH, the child entity will also get removed from the persistent context.
+		
+		
+		CascadeType.Refresh
+			When we use this operation with CascadeType REFRESH, 
+			the child entity also gets reloaded from the database whenever the parent entity is refreshed.
+			
+		Both persist and merge have unique purposes.
+			Persist:
+			Persist takes an entity instance and adds it to the context making that instance managed.
+			Insert a new register to the database.
+			
+			Merge:
+			Merge creates a new instance of your entity, copies the state from the supplied entity and then makes the new copy managed.
+			Find an attached object with the same id and update it.
+		
+		
+	2.2. Hibernate Cascade Type
+		Hibernate supports three additional Cascade Types along with those specified by JPA. 
+		These Hibernate-specific Cascade Types are available in org.hibernate.annotations.CascadeType:
+
+		REPLICATE
+		SAVE_UPDATE
+		LOCK
+		
+		CascadeType.LOCK
+			Unintuitively, CascadeType.LOCK re-attaches the entity and its associated child entity with the persistent context again.
+			
+			
+		CascadeType.REPLICATE
+			The replicate operation is used when we have more than one data source, and we want the data in sync
+		
+	
+	for configuration of data:
+	--------------------------
+		datasoruce.name=
+		datasource.url=
+		datasource.diver-class-name=
+		datasource.username=
+		datasource.password=
+		
+		hibernate confuguration
+		spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+		spring.jpa.hibernate.ddl-auto=update/create
+		
+	Iterable multiple obj send to db-
+		-------------------------------
+		List<User> users=List.of(user1,user2);
+		Iterable(User) result=userRepo.saveAll(users);
+		result.forEach(name)->{
+		sysout(name)
+		});
+		
+		Iterable<User> users=userRepo.findAll();
+		users.forEach(name->sysout(name)) for single
+			users.forEach(name->{
+				sysout(name);
+				}); for multple
+	
+	If you add Spring Data dependency in pom.xml,then it will activate spring data and you should configure data source in properties file.
+		Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+		Reason: Failed to determine a suitable driver class.
+		
+	Orm:-
+		when be need to perform object type operation in db then go with orm/hibernate.
+		orm convert row into object.
+		get the data from db and return in object.
+		the object need to perform as a insert into db.
+		if you dont prefare orm then you have to manually write sql
+		
+	
+		EntityManager(I)
+			EntityManagerFactory class
+				create
+				get
+				update
+				delete
+			
+	CRUDRepositry
+		provide specification.
+	
+	JPARepository--is a child repo of CRUDRepositry,that rovide extra functionality.
+		flush db directly.
+	
+	JPARepository(Entity,"indentity")
+			Entity- what type of data want handle.
+			indentity-what type of id entity class.
+			
+	Spring-boot-startar-data-jpa
+		orm dependency
+		hibernate core
+		and java persistance api 
+		
+	Jpa and Hibernate diff:-
+		Hibernate-
+			for crud operations have to write logic maually.
+
+		JPA:-
+			jpa proviide built-in template for perform crud operation.
+			
+
+	There are three basic types of JPA Queries:
+	-------------------------------------------
+	Query:-
+			Query, written in Java Persistence Query Language (JPQL) syntax
+			Query refers to JPQL/HQL query with syntax similar to SQL generally used to execute DML statements(CRUD operations).
+			In JPA, you can create a query using entityManager.createQuery().
+
+	NativeQuery:-
+			NativeQuery, written in plain SQL syntax
+			Native query refers to actual sql queries (referring to actual database objects). 
+			These queries are the sql statements which can be directly executed in database using a database client.
+
+	There are two additional Query sub-types:
+			TypedQuery
+			NamedQuery
+		
+	CustomUpdate Query:-
+    -------------------	
+	In fact, JPA defines two annotations, @Modifying and @Query, which allow us to write our update statement explicitly.
+	We can now tell our application how to behave during an update, without leaving the burden on the ORM.
+	Let's add our custom update method in the repository:
+
+			@Modifying
+			@Query("update Customer u set u.phone = :phone where u.id = :id")
+			void updatePhone(@Param(value = "id") long id, @Param(value = "phone") String phone);
+			Now, we can rewrite our update method:
+
+			public void updateCustomerContacts(long id, String phone) {
+				repo.updatePhone(id, phone);
+			}
+
+	@Query, written in Java Persistence Query Language (JPQL) syntax
+			Using named queries to declare queries for entities is a valid approach and works fine for a small number of queries.
+			
+			@Query("FROM Author WHERE firstName = ?1")
+			List<Author> findByFirstName(String firstName);
+			
+			@Query("SELECT a FROM Author a WHERE firstName = ?1 AND lastName = ?2")
+			List<Author> findByFirstNameAndLastName(String firstName, String lastName);
+			
+			@Query("SELECT u FROM User u WHERE UserName = ?1 AND Password = ?2")
+			List<Author> findByUserNameAndPassword(String UserName, String password);
+			
+			@Query("FROM Author WHERE firstName = ?1 ORDER BY lastName ASC")
+			List<Author> findByFirstNameOrderByLastname(String firstName);
+			
+			@Query("Select c From Company c")        //JPQL
+			List<Company> getDetailsParentService();
+			
+			@Query("select c From Company c where c.cname =:n")  //company Should be like Company
+			<List>Company getCompanyByName(@Param("n") String cname);  // JPQL
+			
+			@Query(value = "Select * from Company",nativeQuery = true)   //nativeQury--mean sql query
+			List<Company> getService();
+ 
+
+
+			
+		select u from User u where u.emailAddress = ?1 and u.lastname = ?2
+		@Entity
+		@NamedQuery(name = "User.findByEmailAddress",
+		query = "select u from User u where u.emailAddress = ?1")
+		public class User {
+
+		}
+		public interface UserRepository extends JpaRepository<User, Long> {
+			List<User> findByLastname(String lastname);
+			User findByEmailAddress(String emailAddress);
+		}
+		and
+		public interface UserRepository extends JpaRepository<User, Long> {
+		  @Query("select u from User u where u.emailAddress = ?1")
+		  User findByEmailAddress(String emailAddress);
+		}
+
+	@NativeQuery, written in plain SQL syntax
+		The @Query annotation allows for running native queries by setting the nativeQuery flag to true, as shown in the following example:
+		Example 63. Declare a native query at the query method using @Query
+		public interface UserRepository extends JpaRepository<User, Long> {
+
+		  @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
+		  User findByEmailAddress(String emailAddress);
+		}
+	Criteria API Query, constructed programmatically via different methods
+	
+	Method:-
+		save();
+		saveAll();
+		findAll();
+		findById();
+		findAllById();
+		delete()/deleteAll/deleteById();
+		
+		note:-
+			find----introducer
+			ByName---By(creteria) and Name is a property of Entity class 
+			
+		
+	Lazy:-	
+		DEFAULT (default) — Repositories are instantiated eagerly unless explicitly annotated with @Lazy.
+		The lazification only has effect if no client bean needs an instance of the repository as that will require
+		the initialization of the repository bean.	
+	Example:-
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		  
+		  @Id
+		  @Column(name = "id")
+		  @GeneratedValue(strategy=SEQUENCE, generator="ID_SEQ")
+		  private int id;
+		}
+	}
+	@OrderBy: Sort your data using @OrderBy annotation. 
+			  In example below, it will sort all employees_address by their id in ascending order.
+			@OrderBy("id asc")
+			private Set employee_address;
+	
+	@Transient: Every non static and non-transient property of an entity is considered persistent,
+			unless you annotate it as @Transient. 
+			@Transient
+			Private int employeePhone;
+	OneToOne:-
+	-----------
+		Employee and EmployeeDetail entities share the same primary key and we can associate them using @OneToOne and @PrimaryKeyJoinColumn.
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		   
+		  @Id
+		  @Column(name = "id")
+		  @GeneratedValue
+		  private int id;
+		   
+		  @OneToOne(cascade = CascadeType.MERGE)
+		  @PrimaryKeyJoinColumn                   //hould be used for associated entities sharing the same primary key.
+		  private EmployeeAddress employeeAddress;
+		}
+		 
+		@Entity
+		@Table(name = "employeeDetail")
+		public class EmployeeAddress implements Serializable {
+		 
+		  @Id
+		  @Column(name = "id")
+		  private int id;
+		}
+	@ManyToOne
+		Many employees can share the same status. 
+		So, employee to employeeStatus is a many to one relation.
+		@ManyToOne annotation can be used for the same.
+
+		@Entity
+		@Table(name = "employee")
+		public class Employee implements Serializable {
+		 
+		  @ManyToOne
+		  @JoinColumn(name = "statusId")
+		  private EmployeeStatus status;
+		}
+		
+	Units	Description
+		EntityManagerFactory	This is a factory class of EntityManager. It creates and manages multiple EntityManager instances.
+		EntityManager			It is an Interface, it manages the persistence operations on objects. It works like factory for Query instance.
+		Entity					Entities are the persistence objects, stores as records in the database.
+		EntityTransaction		It has one-to-one relationship with EntityManager. For each EntityManager, operations are maintained by EntityTransaction class.
+		Persistence				This class contain static methods to obtain EntityManagerFactory instance.
+		Query					This interface is implemented by each JPA vendor to obtain relational objects that meet the criteria.
+		
+	@OneToMany( targetEntity=Employee.class )
+    private List employeelist;
+	
+	What type of collections can be used in JPA?
+		To store multivalued entity associations and a collection of objects, following types of Java collections is used: -
+
+		List
+		Set
+		Map
+	
+	What type of objects can be stored in the JPA collections mapping?
+		Following are the type of objects that JPA allows to store: -
+
+		Basic Types
+		Entities
+		Embeddable
+		
+	What are the constraints on an entity class?
+		An entity class must fulfill the following requirements:
+
+		The class must have a no-argument constructor.
+		The class can't be final.
+		The class must be annotated with @Entity annotation.
+		The class must implement a Serializable interface if value passes an empty instance as a detached object.
+		
+	What is the role of Entity Manager in JPA?
+		An entity manager is responsible for the following operations.
+
+		The entity manager implements the API and encapsulates all of them within a single interface.
+		The entity manager is used to read, delete and write an entity.
+		An object referenced by an entity is managed by entity manager.
+		
+	What are the different directions of entity mapping?
+		The direction of a mapping can be either unidirectional or bidirectional. 
+		In unidirectional mapping, only one entity can be mapped to another entity, 
+		whereas in bidirectional mapping each entity can be mapped or referred to another entity.
+		
+	What is the JPQL?
+		JPQL is the Java Persistence query language defined in JPA specification. It is used to construct the queries.
+		
+	What are the advantages of JPA?
+		The advantages of JPA are given below.
+		The burden of interacting with the database reduces significantly by using JPA.
+		The user programming becomes easy by concealing the O/R mapping and database access processing.
+		The cost of creating the definition file is reduced by using annotations.
+		We can merge the applications used with other JPA providers
+		Using different implementations can add the features to the standard Implementation which can later be the part of JPA specification.
+	
+	What is the object-relational mapping?
+		The object-relational mapping is a mechanism which is used to develop and maintain a relationship between an object and 
+		the relational database by mapping an object state into the database column. It converts attributes of programming code into columns of the table. 
+		It is capable of handling various database operations easily such as insertion, updation, deletion, etc.
+		
+	What are the different types of entity mapping ?
+		One-to-one mapping: 
+				This mapping represents a single-valued association where an instance of one entity is associated with an instance of another entity. 
+				This means that one instance of source entity can be mapped with at most one instance of the target entity.
+		One-To-Many mapping: 
+				This mapping collection-valued association,
+				where an entity is associated with a collection of other entities. 
+				instance of one entity can be mapped with any number of instances of another entity.
+		Many-to-one mapping: 
+				This mapping represents a single-valued association,
+				where a collection of entities can be associated with the similar entity. 
+				This means that more than one row of an entity can refer to the same row of another entity.
+		Many-to-many mapping: 
+				This mapping represents a collection-valued association where any number of entities can be associated with a collection of other entities. 
+				This means that more than one row of one entity can refer to more than one row of another entity.
+				
+		What is the role of Entity Manager in JPA?
+				An entity manager is responsible for the following roles in JPA.
+				The entity manager has the role to manage an object referenced by an entity.
+				It implements the API and encapsulates all of them within a single interface.
+				It is used for operations like read, delete and write an entity.
+
+	
+What is Spring ORM?
+===================
+	Spring ORM is covers many technologies like Hibernate, iBatis and JPA.  
+	Spring provides integration classes thanks to which, each of the technologies mentioned are able to be implemented following 
+	the Spring principles of confiugration.
+
+	The recommended integration style is to make DAOs against Hibernate, JPA and DDO.
+	Because everything is designed as a set of reusable JavaBeans, we can extract just as much functionality from ORM support as we would extract from a library.
+
+ Advantages of using ORM
+	Since we are mapping to a database table with a java object called “Entity”, 
+	we can interact with the environment using OOP concepts such as inheritance and encapsulation, and so on. 
+	This is a huge benefit because we are already familiar with OOP concepts and we won’t have to spend time learning new concepts, etc.
+	
+	why Spring orm-:
+		avoid write both common and application specific logics.
+		inject HibernateTemplat obj and perform persistent operation.
+
+	Easier testing
+	Common data access exceptions
+	General resource management
+	Integration transaction management
+	
+	Plain Hibernate Application:-
+		create configuration call configure().
+		create service registry using serviceRegistryBuilder.
+		create sessionFectory obj.
+		open session
+		begin txn.
+		
+		perform persistent operation.
+		cimmit/rollback
+		close session or sessionFectory.

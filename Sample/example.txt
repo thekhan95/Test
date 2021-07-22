@@ -1,0 +1,387 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.module.ts
+	app.component.ts
+		selector: 'app-root',
+		templateUrl: './app.component.html',
+			app.component.html
+				configure
+					navigation var
+						home,abut,etc...
+					header
+						display list of customer
+					footer
+customers.component.ts:-
+-----------------------
+			export class EmployeeListComponent implements OnInit {
+			  employees: Observable<Employee[]>;
+
+			  constructor(private employeeService: EmployeeService,
+				private router: Router) {}
+
+			  ngOnInit() {
+				this.reloadData();
+			  }
+
+			  reloadData() {
+				this.employees = this.employeeService.getEmployeesList();
+			  }
+
+			  deleteEmployee(id: number) {
+				this.employeeService.deleteEmployee(id)
+				  .subscribe(
+					data => {
+					  console.log(data);
+					  this.reloadData();
+					},
+					error => console.log(error));
+			  }
+
+			  employeeDetails(id: number){
+				this.router.navigate(['details', id]);
+			  }
+
+			  updateEmployee(id: number){
+				this.router.navigate(['update', id]);
+			  }
+			}
+
+service.ts
+----------
+export class EmployeeService {
+
+  private baseUrl = 'http://localhost:8090/api/v1/employees';
+
+  constructor(private http: HttpClient) { }
+
+  getEmployee(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  createEmployee(employee: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, employee);
+  }
+
+  updateEmployee(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}`, value);
+  }
+
+  deleteEmployee(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }
+
+  getEmployeesList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+}
+
+Controller class
+----------------
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RestController
+	@RequestMapping("/api/v1")
+	public class CustomerController {
+		// @Autowired
+		// private CustomerRepository CustomerRepository;
+
+		@Autowired
+		private CustomerService custService;
+
+		@GetMapping("/Customers")
+		public List<Customer> getAllCustomers() {
+			// return customerRespositry.findAll();
+			return this.custService.findAllcustService();
+		}
+
+		@GetMapping("/Customers/{id}")
+		public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long CustomerId)
+				throws ResourceNotFoundException {
+			Customer Customer = custService.getCustomerFindById(CustomerId);
+			new ResourceNotFoundException("Customer not found for this id :: " + CustomerId);
+			return ResponseEntity.ok().body(Customer);
+		}
+		@PutMapping("/Customers/{id}")
+		public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") String firstName,
+				@Valid @RequestBody Customer CustomerDetails) throws ResourceNotFoundException {
+			Customer Customer = custService.updateCustomerFirstName(firstName, CustomerDetails);
+				//	throw new ResourceNotFoundException("Customer not found for this id :: " + CustomerId);
+	//
+	//		Customer.setEmailId(CustomerDetails.getEmailId());
+	//		Customer.setLastName(CustomerDetails.getLastName());
+		
+			Customer.setFirstName(CustomerDetails.getLastName());
+			final Customer updatedCustomer = custService.insertCustomer(Customer);
+			return ResponseEntity.ok(updatedCustomer);
+		}
+------------------------------------------------------------------------------------------------------------------------------------		
+		
+		
+		
+Service class:-
+--------------
+
+	public interface CustomerService {
+		List<Customer> findAllcustService();
+		//Customer getCustomerFindByFname(String fname);
+		Customer getCustomerFindById(Long id);
+		Customer insertCustomer(Customer cust);
+		Customer updateCustomerFirstName(String firstname, Customer Customer);
+	}
+	@Service
+	public class CustomerServiceImpl implements CustomerService {
+			@Autowired
+			private custRepository custRepo;
+
+
+		//	@Override
+		//	public Customer getCustomerFindByFname(String fname) {
+		//
+		//		return this.custRepo.findByFirstName(fname);
+		//	}
+			@Override
+			public Customer getCustomerFindById(Long id) {
+				return this.custRepo.CustomerfindById(id);
+			}
+			@Override
+			public Customer insertCustomer(Customer cust) {
+				return this.custRepo.save(cust);
+			}
+			@Override
+			public Customer updateCustomerFirstName(String firstName, Customer Customer) {
+				return this.custRepo.updateByFirstName(firstName, Customer);
+			}
+		}
+		-------------------------------------------------------------------------------------------------------------------------------
+		
+Repository:-
+-----------
+	@Repository
+	public interface custRepository extends JpaRepository<Customer, Long>{
+		
+		@Query(value = "Select * from Customers",nativeQuery = true)
+		public List<Customer> findAllCustomer();
+		
+		@Query("SELECT e From Customer e WHERE e.firstName = :firstName")  //company Should be like Company is a Entity name of class
+		//Customer pass in query,bcoz Entity class name is Customer 
+		Customer findByFirstName(@Param("firstName") String firstName);
+		
+		@Query("SELECT e FROM Customer e WHERE e.id = :id") //  :firstName before column(:) space is mandatory
+		public Customer CustomerfindById(@Param("id") Long id);
+		
+		@Query("SELECT e FROM Customer e WHERE e.firstName = :firstName") //  :firstName before column(:) space is mandatory
+		public Customer find(@Param("firstName") String firstName);
+		
+		@Query(value = "Insert into Customers values",nativeQuery = true)
+		public Customer insert(Customer cust);
+		
+		@Modifying
+		@Query("update Customer u set u.firstName = :firstName where u.id = :id")
+		public Customer updateByFirstName(@Param(value = "firstName") String firstName, @Param(value = "Customer") Customer Customer);
+
+	}
+	-----------------------------------------------------------------------------------------------------------------------------------
+	
+	
+Model class:-
+-------------
+
+co.sk.exception:-
+-----------------
+CustomExeption:-
+------------------
+		@ResponseStatus(value = HttpStatus.NOT_FOUND)
+		public class ResourceNotFoundException extends Exception{
+
+			private static final long serialVersionUID = 1L;
+
+			public ResourceNotFoundException(String message){
+				super(message);
+			}
+		}
+		
+		
+@ControllerAdvice   //
+	public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+		@ExceptionHandler(ResourceNotFoundException.class)
+		public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+			ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+			return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+			}
+
+		@ExceptionHandler(Exception.class)
+		public ResponseEntity<?> globleExcpetionHandler(Exception ex, WebRequest request) {
+			ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+			return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+	}
+	
+	
+public class ErrorDetails {
+			private Date timestamp;
+			private String message;
+			private String details;
+
+			public ErrorDetails(Date timestamp, String message, String details) {
+				super();
+				this.timestamp = timestamp;
+				this.message = message;
+				this.details = details;
+			}
+
+			public Date getTimestamp() {
+				return timestamp;
+			}
+
+			public String getMessage() {
+				return message;
+			}
+
+			public String getDetails() {
+				return details;
+			}
+		}
+		--------------------------------------------------------------------------------------------------------------------------
+	
+Security:-		
+	WebSecurityConfig
+	UserDetailsServiceImpl
+	MyUserDetails
+	
+	
+	@Configuration
+	@EnableWebSecurity
+	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+		static {
+			System.out.println("WebSecurityConfig");
+		}
+
+		@Bean
+		public UserDetailsService userDetailsService() {
+			return new UserDetailsServiceImpl();
+		}
+		
+		@Bean
+		public BCryptPasswordEncoder passwordEncoder() {
+			return new BCryptPasswordEncoder();
+		}
+		
+		@Bean
+		public DaoAuthenticationProvider authenticationProvider() {
+			DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+			authProvider.setUserDetailsService(userDetailsService());
+			authProvider.setPasswordEncoder(passwordEncoder());
+			
+			return authProvider;
+		}
+
+		@Override
+		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.authenticationProvider(authenticationProvider());
+		}
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.authorizeRequests()
+				.antMatchers("/edit/**", "/delete/**","/js/**",
+						"/css/**",
+						"/img/**").hasRole("ADMIN")
+				.anyRequest().authenticated()
+				.and()
+				.formLogin().permitAll()
+				.and()
+				.logout()
+				.invalidateHttpSession(true)
+				.clearAuthentication(true)
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.permitAll()
+				.and()
+				.exceptionHandling().accessDeniedPage("/403")
+				;
+		}
+	}
+	
+	public class UserDetailsServiceImpl implements UserDetailsService {
+		static {
+			System.out.println("UserDetailsServiceImpl");
+		}
+
+		@Autowired
+		private UserRepository userRepository;
+		
+		@Override
+		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+			User user = userRepository.getUserByUsername(username);
+			System.out.println("getUserByUsername   :"+user);
+			
+			if (user == null) {
+				throw new UsernameNotFoundException("Could not find user");
+			}
+			
+			return new MyUserDetails(user);
+		}
+	}
+	
+public class MyUserDetails implements UserDetails {
+		static {
+			System.out.println("MyUserDetails");
+		}
+		private User user;
+		public MyUserDetails(User user) {
+			this.user = user;
+		}
+		@Override
+		public Collection<? extends GrantedAuthority> getAuthorities() {
+			SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+			return Arrays.asList(authority);
+		}
+		@Override
+		public String getPassword() {
+			System.out.println("Password"+user.getPassword());
+			return user.getPassword();
+		}
+		@Override
+		public String getUsername() {
+			System.out.println("UserName"+user.getUsername());
+			return user.getUsername();
+		}
+		@Override
+		public boolean isAccountNonExpired() {
+			return true;
+		}
+		@Override
+		public boolean isAccountNonLocked() {
+			return true;
+		}
+		@Override
+		public boolean isCredentialsNonExpired() {
+			return true;
+		}
+		@Override
+		public boolean isEnabled() {
+			return true;
+		}
+	}
+
+
+
+
+		

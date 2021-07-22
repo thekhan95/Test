@@ -1,0 +1,2570 @@
+
+
+inner class:-
+	class S {
+	static class B {
+		static class C {
+			static class D {  happly declared like but S class should not we static.
+			}
+		}
+	}
+}
+
+Singleton in java:-
+===================
+	what?
+	create one obj per jvm.
+	initiate of creating multiple time obj, create one time and based on requirement return obj multiple time.
+	
+	when need?
+		if obh not having any states.
+		if obj is shareable and readable.
+	
+	use of:-
+		In terms of practical use Singleton patterns are used in 
+		logging, 
+		caches, 
+		thread pools, 
+		configuration settings, 
+		driver objects.
+	
+	class JDBCSingleton {    
+      //create a JDBCSingleton class.  
+     
+	 //static member holds only one instance of the JDBCSingleton class.   
+       private static JDBCSingleton jdbc;  
+     
+	 //JDBC Singleton prevents the instantiation from any other class.  
+     
+	 //stop authorization initiate obj outside
+	 private JDBCSingleton() {  }  
+
+    //Now we are providing gloabal point of access.  
+         public static JDBCSingleton getInstance() {    
+                                     if (jdbc==null)  
+                                   {  
+                                            jdbc=new  JDBCSingleton();  
+                                   }  
+                         return jdbc;  
+             }
+
+
+Thread Safe Singleton:-
+	The easier way to create a thread-safe singleton class make the global access method synchronized,
+	so that only one thread can execute this method at a time. 
+	General implementation of this approach is like the below class.
+
+		package com.journaldev.singleton;
+		public class ThreadSafeSingleton {
+			private static ThreadSafeSingleton instance;			
+			private ThreadSafeSingleton(){}
+			
+			public static synchronized ThreadSafeSingleton getInstance(){
+				if(instance == null){
+					instance = new ThreadSafeSingleton();
+				}
+				return instance;
+			}			
+		}
+		
+		
+Generics:-
+	java Genrics is one of the most important features introduced in Java 5.
+	Generics in Java with collection classes is very easy and it provides a lot more features than just creating the type of collection.
+	Generics means parameterized types. 
+	The idea is to allow type (Integer, String, … etc,
+			
+Note:-
+	T is used for type, A type variable can be any non-primitive type you specify: 
+	any class type, 
+	any interface type, 
+	any array type, or even another type variable.
+			
+		Types of generics:-
+			Generic Type Classes or Interfaces.
+			Generic Type Method or Constructor.
+			
+		Why Generics
+			Object is the superclass of all other classes and Object reference can refer to any type object. 
+			Elimination of Type Casting; 
+			Stronger type checking at compile time. 
+			Generics adds that type safety feature.
+			Generics add stability to your code by making more of your bugs detectable at compile time			
+			For example, classes like HashSet, ArrayList, HashMap, etc use generics very well. 
+		
+		Limitations of Genericsss
+			Generics work only with Reference Types.
+			When we declare an instance of generic type, the type argument passed must and should be a reference type. 
+			We cannot use primitive data types like int,char.
+			Test<int> obj = new Test<int>(20);.
+			
+		Generics provide type safety by shifting more type checking responsibilities to the compiler
+			a) Generics and parameterized types eliminate the need for down casts when using Java Collections
+			b) When designing your own collections class (say, a linked list), generics and parameterized types allow you to achieve type safety with just a single class definition as opposed to defining multiple classes
+		
+		Advantages:-
+		-------------
+			Advantages of Generics:
+			*Programs that uses Generics has got many benefits over non-generic code.
+			*Code Reuse: We can write a method/class/interface once and use for any type we want.
+			*Type Safety : Generics make errors to appear compile time than at run time 
+			(It’s always better to know problems in your code at compile time rather than making your code fail at run time).
+			*Generics promotes code reusability.
+			*Implementing generic algorithms: By using generics, we can implement algorithms 
+			that work on different types of objects and at the same they are type safe too.
+		
+		Generic class:-
+				/ A Simple Java program to show working of user defined 
+				// Generic classes 
+				   
+				// We use < > to specify Parameter type 
+				class Test<T> 
+				{ 
+					// An object of type T is declared 
+					T obj; 
+					Test(T obj) {  this.obj = obj;  }  // constructor 
+					public T getObject()  { return this.obj; } 
+				} 
+				   
+				// Driver class to test above 
+				class Main 
+				{ 
+					public static void main (String[] args) 
+					{ 
+						// instance of Integer type 
+						Test <Integer> iObj = new Test<Integer>(15); 
+						System.out.println(iObj.getObject()); 
+				   
+						// instance of String type 
+						Test <String> sObj = 
+										  new Test<String>("GeeksForGeeks"); 
+						System.out.println(sObj.getObject()); 
+					} 
+				}
+				
+				Example2:-
+				-----------
+				class Test<T, U> 
+				{ 
+					T obj1;  // An object of type T 
+					U obj2;  // An object of type U 
+				  
+					// constructor 
+					Test(T obj1, U obj2) 
+					{ 
+						this.obj1 = obj1; 
+						this.obj2 = obj2; 
+					} 
+
+		Generic Function:-
+			class Test 
+				{ 
+					// A Generic method example 
+					static <T> void genericDisplay (T element) 
+					{ 
+						System.out.println(element.getClass().getName() + 
+										   " = " + element); 
+					} 
+				   
+					// Driver method 
+					public static void main(String[] args) 
+					{ 
+						 // Calling generic method with Integer argument 
+						genericDisplay(11); 
+				   
+						// Calling generic method with String argument 
+						genericDisplay("GeeksForGeeks"); 
+				   
+						// Calling generic method with double argument 
+						genericDisplay(1.0); 
+					} 
+				}
+		
+			
+	Here are few differences between static and non-static methods in Java:
+
+		A static method belongs to the class itself.                         non-static method belongs to each instance of a class. 
+		called directly without creating any instance of the class.          for non-static method need a object 
+		Static members can only access static mambers.                       non-static members can access both static and non-static members.
+		A static method use early binding (or compile time binding).         whereas non-static members require late (runtime) binding. 
+		This is the reason why we can call a static method without creating any instance.
+		We cannot override a static method in Java                           while we can override a non-static method.
+		method/var hidding possible											 Not.
+		We cannot use this and super keywords inside a static method since.  they are associated to a particular instance.
+		Once declared method as static method one copy of m/m is created.    memory is allocated every time the method is called.
+																			 
+			  
+	When to use static method?
+		Consider making your method static if the method doesn’t depend on the individual characteristics of its class. 
+		For example, the utility and factory methods in singleton class are usually static in Java. 
+		Static methods are also useful when we need a single instance of something to be shared across all objects of that class.
+		
+------------------------------------------------------------------------------------------------------------------------------------
+
+Opps Concept
+==============
+	Procedural programing:-
+		The program move through a linear series of instruction.
+		follwing top down approch
+		no access specifier
+		function are impt then data
+		is based on the unreal world.
+		fortran,cobol,pascal and c
+	
+	Functional progreming:-
+		the programs movies from one funcrion to another function.
+		and it is specially designed to handle symbolic computation and list processing.
+		scala,ML,SQL
+
+	waht OOP Language:-
+		OOP is the most natural and pardigam approch.
+		OOP is prograing paradigam that dev app on the concept of class&object.
+		any langguage every action is perform of the obj and supporting OO concept. 
+
+	Type of OPPS langg
+		java script,C++,java,Python..etc.
+	
+	Why use OOp?
+		structure of a software program into simple.
+		encapsulation
+		inheritance
+		polymarpism
+
+	Advantage:-
+		
+		Re-use code through inheritance, 
+		Flexcible code through polymarpishm, 
+		secure ,protects info through encaps,
+		Reproducible and simple structure.
+		Modularity for easier troubleshooting
+		effective problem solving
+		increase the flexibility and maintainability of programs. 
+		
+
+	Building block of oops:-
+	class-
+		what?
+		It represents the "Data members", "set of properties" or "methods" that are common to all objects of one type. 
+		class is logical structure which is creats obj.
+		
+		Where use:-
+		There are various types of classes that are used in real time applications such as nested classes, anonymous classes, lambda expressions. 
+		
+	Object-
+		unit of OOP and represents the real life entities.
+		Physical existance of the class.
+		it is represent real world entity.
+		State :    It is represented by attributes of an object.It also reflects the properties of an object.
+		Behavior : It is represented by methods of an object.It also reflects the response of an object with other objects.
+		Identity : It gives a unique name to an object and enables one object to interact with other objects.
+	
+	Method:-Methods repesent bahaviors.
+		perform action and return info abut the obj
+		
+	Attributes:-Attributes are the info that is stored.
+		    are defined in the class.
+	
+	Princple of OPPS:-
+	
+	Inheritance-
+		When a child class acquires all the properties and behaviors from a parent class,
+			single,multilevel,hierachical, (multiple , Hybrid) not support.
+		Why? 
+		achive polymarpism.
+		is-a relation
+		
+		Advantage:-
+		code resuability.
+
+	Encapsculation-
+		what?
+		Binding or wraping data member togather into single unit.
+		process of creating a class by binding varable and method as a single unit,
+		and then operating varable only through these method.
+		
+		1-by declaring all varables as a private.
+		2-use setter and gatter.
+		3-we declare varables as private to stop accessing them directly from out side.
+		
+		Why?
+		we can stop unauthorizedn from out side, poeple accessing our obj data.
+		we can stop wrong value assignment.
+		we can modify code without effecting user class code.
+		
+		Advantages:-
+		achive setter and gatter method
+		Tightly encaps---every var persent inside clss shloud we privates
+		Data hidding
+		Abstraction
+		main purpose encaps is security.	
+	
+	Abstraction-
+		Mean that user intracts with only selected attributes and methods of obj.
+		Hidding internal details and implemention provede specification for use operation after perform validation.
+			using simple things represent the complexity
+			Hide complex details from user.
+
+		common use case- cell phone,ATM,Veichle Engine
+		Benifits:-
+			Simple high level user interfaces.
+			complex code is hidden.
+			security
+			easier soft maintainses 
+
+			only declaration----();
+			parationlly implemented class.
+			abstract class can contains zero number of abstract method.
+			HttpServlet is abstract class but doesnt contains abstract method.
+			
+			You cannot create an instance of an abstract class because it does not have a complete implementation. 
+			If it does, it should not be marked abstract in the first place. 
+			Simply speaking, an abstract class is like a shell of a class.
+	
+	Polymarpism-
+		what?
+		One object having diff behaviour and form.
+		the same programming comps more then one behavior and form.
+		
+		Why?
+		to achieve static binding and Dynamic biding.
+		
+		Uese-Case:-
+		for a Animal--eat()
+		a lion eat non-veg, a cow eat veg, etc.
+		
+		animal(Dynamic binding)
+			having eat(one obj)-----interface or Parent class
+				for lion is-non veg implementation.---for lion diff impl
+				and for cow is veg implementation.----for cow diff impl
+
+		Area:-(static binding)
+			Shape having area method
+			for square one param(area method)
+			for reactangle two param(area method)
+
+
+	Diff Abstract and Interface
+	 Abstract						:-	interface
+	1) Abstract class can have abstract and concreate methods.	  -Interface can have only abstract methods. Since Java 8,
+																	it can have default and static methods also.
+	2) Abstract class doesn't support multiple inheritance.		  -Interface supports multiple inheritance(from 1.8) as default method.
+	3) Abstract class can have final, non-final, static and		  -Interface has only static and final variables(default).
+	non-static variables.						
+	4) Abstract class can take the implementation of interface.	  -Interface can't provide the implementation of abstract class.
+	6) An abstract class can extend another Java class and implement  -An interface can extend another Java interface only.
+	multiple Java interfaces.	
+	7) An abstract class can be extended using keyword "extends".	  -An interface can be implemented using keyword "implements".				
+		
+Has-A Relation:-
+		Address.java
+		------------
+		public class Address {  
+		String city,state,country;  
+		  
+		public Address(String city, String state, String country) {  
+		    this.city = city;  
+		    this.state = state;  
+		    this.country = country; }  }
+
+		Emp.java
+		--------
+		public class Emp {  
+		int id;  
+		String name;  
+		Address address;  
+		public Emp(int id, String name,Address address) {  
+		    this.id = id;  
+		    this.name = name;  
+		    this.address=address;  
+		}  
+		void display(){  
+		System.out.println(id+" "+name);  
+		System.out.println(address.city+" "+address.state+" "+address.country);  
+		}  
+		public static void main(String[] args) {  
+		Address address1=new Address("gzb","UP","india");  
+		Address address2=new Address("gno","UP","india");  
+		 
+		Emp e=new Emp(111,"varun",address1);  
+		Emp e2=new Emp(112,"arun",address2);  
+		      
+		e.display();  
+		e2.display();  }}
+
+Diff Abstract and Interface
+	 Abstract						:-	interface
+	1) Abstract class can have abstract and concreate methods.	  -Interface can have only abstract methods. Since Java 8,
+									   -it can have default and static methods also.
+	2) Abstract class doesn't support multiple inheritance.		  -Interface supports multiple inheritance(from 1.8) as default method.
+	3) Abstract class can have final, non-final, static and		  -Interface has only static and final variables(default).
+	non-static variables.						
+	4) Abstract class can provide the implementation of interface.	  -Interface can't provide the implementation of abstract class.
+	6) An abstract class can extend another Java class and implement  -An interface can extend another Java interface only.
+	multiple Java interfaces.	
+	7) An abstract class can be extended using keyword "extends".	  -An interface can be implemented using keyword "implements".		   
+
+
+
+Overloading:-
+	multiple methods by the same names with diff parameter. 
+	when i need diff implementation with same mehtod name and with diff argument or parameter.
+	
+	Advantages:- increase the readability of the program.
+	
+	Diff ways to overload:-
+		1- by using no of parameter.
+		2- by changing data types of argument.
+	
+	why?:-
+		initiate of writing multiple method diff method name,write same method but diff argument/parameter.
+		code resuability.
+	
+	use case is:- area implementation method use 
+					squre area(double a)
+					rectangle area(duble l,duble h)
+					trinagle area.
+	compile time polymarpism
+	static polymarpism
+	Early  binding
+
+	note in overloading method resolution always check by the compiler or compile time.
+	     byte-  sort
+				int--long--float--double
+	     char               int--long--float--double-----------is called automatic promotion.
+	     exact matchs Heigher priority..
+	     null args match for Parent class and Child class -but exact match is child class.
+	     Note:- in overloading condittion
+		    if null matched with StringBuffer and String then you will get ambiguty problem
+		    why bcoz they are not parent child(no relation) class
+		    if both methods are matched in same class then wil get ambiguty problem
+		    overloading always check compile time thats y its chaecking reff type not Object type.
+		    A a=new B();
+		    A a---reff type
+		    new B();----obj type
+
+	Class A{	
+		public void m1(Object a) {
+		System.out.println("int args");
+	}
+	public static void main(String[] args) {
+		EncepTest cp = new EncepTest();
+		cp.m1('a');
+		cp.m1(1);
+		cp.m1(10f);
+		cp.m1(10l);
+		cp.m1(10.0);}}--------
+		when method is object type or pass args like(int,float,long,double,charString,StringBuffer,StringBuilder)
+		then you can overloading--why bcoz all are belong to Object.
+
+Overriding:-
+	what?
+	from parent to child class has the same method name and signature.
+	
+	why?
+	if programmer not satisfies with Parent class implemention,and Programmer want own implemention in clild class.
+	
+	Advantage:-
+	use for runtime polymarpishm/late binding.
+			
+	Rules:-
+		Must have same method name as the parent class.
+		must have same method arument as the parent class.
+		must have same return type till 1.4 as the parent class.
+		Must be IS-A Relation.
+		method name should not be static and final.
+		while working with overriding we cannot reduce accessibility modifiers from the parent to child.
+					
+	
+		overriden method is  -----ParentClass method
+		overriding method is -----ChildClass method.
+		Dynamic binding/late binding
+		
+	usages:-used to provide specific implementation of a method that already provide by the parent class.	
+	EX-
+		class Vechile{
+			public void run(){
+			sysout("vechile running")
+			}
+		}
+		class Bike extends Vechile{
+			public void run(){
+			sysout("Bike is running")
+			}
+		}
+		
+	1- overriding not possible same class.
+	2- in overriding method resolution always check by jvm(at runtime).
+	overriding always check method resolution at rutime based on the Object type.
+		    A a=new B();
+		    A a---reff type
+		    new B();----obj type(here perform overriding).
+	3- runtime polymarpsm/Dynamic/late binding
+	4- method name and return type should we same till 1.4 then we can perform overriding.
+	5- after 1.4 mathod name same but return type co-varient can perform overriding.
+Co-varient-
+	child method return type need not we same as parennt method return type its child class also allows.(from 1.5)
+	eg-Object----object,String,StringBuffer,Strigbulder can perform verriding.
+	eg-Number----Number,byte,sort,Integer,Lonng,Float,Double. can perform verriding
+	but cant perform String to Object(String in parennt and Object in Child)
+	 
+	6- not applicable for private method.
+	Note- if in Parent class private and child class private same mehtod it work like persanally not overriding
+	
+	7- not applicable for final method in parent class.
+	 note- parent-non finnal method and child final method is ----acceptable.
+	       abstact to non abstract----yes
+	       non abstract to abstract---yes.
+	       parent synchro to child non synchro is----possible
+	       parent non-synchro to child synchro is----possible
+	       native and non native -----possible
+	       strictfp to non strictfp---possible
+	 class p{
+	public void m1(){}
+	}
+	class c extends p{
+	protected void m1(){}
+	}-------related to access modfier---in subclass method we cant reduce scope of access modifiers----not possible.
+	        but you can increase scope of access modifiers respact with child class---possible.
+		reduce access modifier---public,protected,default,private
+		default,protected,public
+		public to public----only valid
+		protected to protected/public  is valid..
+		default to default/protected/public---valid
+
+	for Exception Overriding
+		1-  child classes at runtime exception(un checked exception) and error part also
+		   RE-AE
+		     -NPE
+		     -CCE
+		2- child classes at compile time exception(checked exception)
+		IOE
+			FNFE
+			EOFE
+		Intrupted
+		SE
+
+		Note- 1- if child clss method throws any "checked exception" compusory parent class methods
+			should throws same checked exception are its in parent.or else CTE
+			and also checked Parent and child exception (with checked Excep Condition).
+			eg-IOE in Parent and FNFE in Child......ok possible     Bcoz IOE=Parent, FNFE=Child.
+			   IOE in Parent and EOFException,IntruptrdE in child---not  Bcoz IOE=Parent, EntruptedE=not Child of IOE.
+				why bcoz Intrupted not child of IOE.
+			  IOE in parent and EOFE,NPE in child---ok possible   Bcoz IOP=Parent, EOFE=Child of IOE.
+									      NPE-is unchekded still work bcoz no worry abut unchecked Excep
+		      2- but for unchecked exception no rules.
+
+
+	Method Hidding:-
+		Super class static and SubClass static method is called method hidding
+		Mehtod hidding method resolution at compile time based on the reff type.
+	Varable Hidding:-
+		in var hidding overridig not possible why bcoz overriding possble with method level.
+		varable hidding method resolution at compile time based on the reff type.
+
+PolyMarpism:-
+	One object multipe behaviour and form.
+	Process of defining method with diff implementation for existing diff behavior of the obj in a same operation.
+	static/compile time/erly---1)overloading, 2)method hidding.
+	Dynamic/runtime time/late---overriding
+	bigest feature is Filexibility.
+
+Object type casting:-
+	Object o=new String("H");
+	StringBuffer sb=(StringBuffer)o;          Note:- Check only what holding o reff, o reff holding string value.
+	a=StringBuffer, b=sb, c=(StringBuffer), d=o
+	(c)d----failed bcoz not same type and not parent child relation.
+
+
+	first compiler check----
+	rule-ligel or not and then compiler check the assignment ligel or not
+	Note:-type of d and c must have relationship and either P to C and C to P or Same type
+	if is not relation Comiper throw error.
+
+	rule2-compiler check the assignment
+	(c) either must same as (a)
+	or (c) it child type
+
+	second runtime----
+	Object o=new String("H");
+	StringBuffer sb=(StringBuffer)o;
+	a=StringBuffer, b=sb, c=(StringBuffer), d=o
+	but d is=string type
+	(d) same as (c) at runtime object what u have storing in (d)
+	(d) must child class of c at runtime.
+	****left topic.
+
+	
+	why cant instiate abstract class obj?
+		bcoz its not fully implemented class.
+	
+	ABstract
+		abstract void m1();
+		abstract void m2() throws Exception.
+		private ----no		
+		
+There are five different ways to create an object in Java:
+	Java using new keyword:-1
+			Using new keyword is the most basic way to create an object.
+			
+	Java Class.newInstance() Class.foName() method:-2
+			If we know the name of the class & if it has a public default constructor we can create an object –Class.forName. 
+			Class cls = Class.forName("NewInstanceExample"); 
+            NewInstanceExample obj = 
+                    (NewInstanceExample) cls.newInstance(); 
+            System.out.println(obj.name); 
+			
+	Java newInstance() method of constructor:-3
+			 This is similar to the newInstance() method of a class. 
+			 There is one newInstance() method in the java.lang.reflect.Constructor class which we can use to create objects.
+			 
+			 class ReflectionExample{
+			 //default constructor
+			 Constructor<ReflectionExample> constructor 
+                = ReflectionExample.class.getDeclaredConstructor(); 
+            ReflectionExample r = constructor.newInstance(); 
+            r.setName("GeeksForGeeks"); 
+            System.out.println(r.name);  
+			}
+		
+	Java Object.clone() method:-4
+			public class CloneExample implements Cloneable{
+			@Override
+			protected Object clone() throws CloneNotSupportedException 
+			{ 
+				return super.clone(); 
+			} 
+			String name = "GeeksForGeeks"; 
+		  
+			public static void main(String[] args) 
+			{ 
+				CloneExample obj1 = new CloneExample(); 
+				try
+				{ 
+					CloneExample obj2 = (CloneExample) obj1.clone(); 
+					System.out.println(obj2.name); 
+				} 
+			}
+			
+	Java Object Serialization and Deserialization:-5
+			class DeserializationExample implements Serializable 
+			{ 
+				private String name; 
+				DeserializationExample(String name) 
+				{ 
+					this.name = name; 
+				} 
+			  
+				public static void main(String[] args) 
+				{ 
+					try
+					{ 
+						DeserializationExample d = 
+								new DeserializationExample("GeeksForGeeks"); 
+						FileOutputStream f = new FileOutputStream("file.txt"); 
+						ObjectOutputStream oos = new ObjectOutputStream(f); 
+						oos.writeObject(d); 
+						oos.close(); 
+						f.close(); 
+					} 
+					
+					
+		Initialize an object in Java
+		=============================
+			In this post, we will discuss various methods to initialize an object in Java.
+			
+		1. Naive method
+		---------------
+			The idea is to get an instance of the class using new operator and set the values using setters provided by the class.
+			
+			// Initialize Object in Java
+			class Main
+			{
+				public static void main(String[] args)
+				{
+					Person person = new Person();
+					person.setName("John");
+					person.setAge(22);
+					System.out.println(person);
+				}
+			}
+
+		2. Constructor:-
+		---------------
+			 When we instantiate an object with new operator, we must specify a constructor.
+			 A constructor has the same name as the class and no return type. 
+			 It can accept a set of parameters which are the fields we want to set values for or it can be parameter-less (no-arg constructor). 
+			 If we declare a class with no constructors, the compiler will automatically create one for the class.
+
+			// Initialize Object in Java
+			class Main
+			{
+				public static void main(String[] args)
+				{
+					Person person = new Person("John", 22);
+					System.out.println(person);
+				}
+			} 
+
+		3. Copy Constructor:-
+		--------------------
+		A copy constructor is a special constructor for creating a new object as a copy of an existing object. 
+		It takes just one argument that will be another instance of the same class. 
+		We can explicitly invoke another constructor from the copy constructor by using this() statement.
+
+		// Initialize Object in Java
+		class Main
+		{
+			public static void main(String[] args)
+			{
+				Person oldUser = new Person("John", 22);
+		 
+				// Initialize user using copy constructor
+				Person newUser = new Person(oldUser);
+		 
+				System.out.println(newUser);
+			}
+		}
+ 
+		4. Anonymous Inner Class:-
+		--------------------------
+		Another alternative to initialize an object is to use “Double Brace Initialization”. 
+		This creates an anonymous inner class with just an instance initializer in it. 
+		The use of this method is highly discouraged.
+
+
+		// Initialize Object in Java
+		class Main
+		{
+			public static void main(String[] args)
+			{
+				// Anonymous Class
+				Person person = new Person() {{
+						// Initializer Block
+						setName("John");
+						setAge(22);
+					}};
+		 
+				System.out.println(person);
+			}
+		}
+		
+		
+		Path:-
+		------
+			Path is an environment variable,it is used by the "operating system" to find the executables files((.exe)or java binaries files.
+			setting up an environment for operating system. 
+			path is set for use java tool in your java program like java, javac, javap
+			
+		
+		ClassPath:-
+		-----------
+			classpath is also environment var used by "application classLoader" to locate and load .class files.
+			setting up the environment for Java. 
+			classpath is used to specify the location of .class files.
+			Java will use to find compiled classes.
+	
+Serialization 
+	#Serialization is a convert Object into stream of bytes and that we can send over the network 
+	#De-Serialization is vise-varsa of serailzation the byte of stream convert into Object.
+		
+	where we used?	
+		1- while used DTOs obj sending to the over network. 
+		2-while testing @PostMapping api the obj is serialized and De-Serialization in json/xml.. format.
+		3-while working with Entity class that having Data member obj are serialized and send to the over network 
+		jpa
+	
+	#Serializable is a marker interface and has no fields or methods to implement.
+	#Serialization in java is implemented by ObjectInputStream and ObjectOutputStream,
+
+	private Serialization khan=null;
+	
+Advantages of Serialization
+	1. Provide the security on the object
+	2. To travel an object across a network.
+	3. To save/persist state of a object. 
+	4. Constructor of object is never called when an object is deserialized.
+	
+Points to remember:-	
+	1. Only non-static data members are saved via Serialization process.
+	2. Static data members and transient data members are not saved via Serialization process.
+
+SerialVersionUID
+	The Serialization runtime associates a version number with "each Serializable class called a SerialVersionUID".
+
+transient variables:- 
+	A variable defined with transient keyword is not serialized during serialization process.
+
+static Variables:- 
+	A variable defined with static keyword is not serialized during serialization process.
+	This variable will be loaded with current value defined in the class during deserialization.
+
+@Transiant:-
+	its not serialized property
+	basically when programmer dont want or serialized specific property  
+
+ClassLoader in Java:-
+====================
+ClassLoader:-
+	The Java ClassLoader is a part of the JRE that loads Java classes dynamically into the JVM.
+	the Java ClassLoader is called by the JRE and these ClassLoaders load classes into memory dynamically
+	 
+A Java Classloader is of three types:
+-------------------------------------
+BootStrap ClassLoader: 
+	It is not a java class.
+	Its job is to load the first pure Java ClassLoader. 
+	Bootstrap ClassLoader loads classes from the location rt.jar.
+	
+Extension ClassLoader: 
+	The Extension ClassLoader is a child of Bootstrap ClassLoader, 
+	It loads files from jre/lib/ext directory.
+	and loads the extensions of core java classes from the respective JDK Extension library.
+
+System ClassLoader: 
+	An Application ClassLoader is also known as a System ClassLoader. 
+	The Application/system ClassLoader is a child class of Extension ClassLoader.
+	It loads the Application type classes found in the environment variable CLASSPATH,
+	classpath or -cp command line option.
+	
+
+Mehtods for class loader:-
+--------------------------	
+loadClass(String name, boolean resolve):
+	This method is used to load the classes which are referenced by the JVM.
+	It takes the name of the class as a parameter. 
+	This is of type loadClass(String, boolean).
+	
+defineClass():
+	The defineClass() method is a final method and cannot be overriden.
+	This method is used to define a array of bytes as an instance of class. 
+	If the class is invalid then it throws ClassFormatError.
+	
+findClass(String name):
+	This method is used to find a specified class. 
+	This method only finds but doesn’t load the class.
+	
+findLoadedClass(String name): 
+	This method is used to verify whether the Class referenced by the JVM was previously loaded or not.
+	
+Class.forName(String name, boolean initialize, ClassLoader loader): 
+	This method is used to load the class as well as initialize the class. This method also gives the option to choose any one of the ClassLoaders. 
+	If the ClassLoader parameter is NULL then Bootstrap ClassLoader is used.
+	
+There are 5 steps to connect any java application with the database using JDBC. These steps are as follows:
+	add ojdbc dependency/jar in classpath
+	Register the Driver class
+	Create connection
+	Create Prepraedstatement
+	set param 
+	Execute queries
+	Close connection
+	
+try{ 
+		//Register the Driver class
+		Class.forName("oracle.jdbc.driver.OracleDriver");  
+		
+		 //Create connection 
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+		
+		//Create statement 
+		PreparedStatement stmt=con.prepareStatement("insert into Emp values(?,?)"); 
+		
+		//set param 
+		stmt.setInt(1,101);//1 specifies the first parameter in the query  
+		stmt.setString(2,"Ratan");  
+		
+		//execute the query 
+		int i=stmt.executeUpdate();  
+		System.out.println(i+" records inserted");  		  
+		con.close();  
+  
+		}catch(Exception e){ System.out.println(e);}  	
+
+Object class method.
+		toString()
+		hashCode()
+		equals(Object obj) ---null type cant compare.--error-npe
+		finalize() method : This method is called just before an object is garbage collected. 
+		clone() : It returns a new object that is exactly the same as this object.
+		getClass()
+		wait()
+		notify() 
+		notifyAll()
+		
+	what are the method we oveerride in subclass from Object class:
+		equals
+		hashCode
+		toString---to print obj data. and call PrintStream class.
+		clone
+		finalize
+	how can retrieve jvm generated hashcode from the sublcass??
+		System.identityHashCode();
+		super.HashCode();
+		
+		
+	Cloning:-
+		deep cloning
+		sallow cloning.
+		
+		use case:-
+			bike manufecturing company-all same features and states expect few properties(lke engine number and model number).
+			
+			Bike b1=new Bike();
+			Bike b2=(Bike)b1.clone();  ----b1.clone()---sallow cloning
+			sop(b1.company==b2.company)---T
+			sop(b1==b2)---F
+			
+		
+Data Conversion Using valueOf() method in Java:-
+==============================================
+
+		Using valueOf() method:-
+		-----------------------
+		The valueOf() method "converts data from" its internal form into human-readable form.
+		It is static method that is overloaded within string for all of Java’s build-in types, 
+		so that each type can be converted properly into a string.
+		
+		class ValueOfDemo
+			{
+				public static void main(String arg[])
+				{
+					int i = 10;
+					boolean b = true;
+					float f = 4.56789f;
+					char[] data = {'M','E','R','I','T',' ','C','A','M','P','U','S'};
+					String sample = String.valueOf(i); // LINE A
+					System.out.println("String of integer i : " + sample);
+					sample = String.valueOf(b); // LINE B
+					System.out.println("String of boolean b : " + sample);
+					sample = String.valueOf(f); // LINE C
+					System.out.println("String of float f : " + sample);
+					sample = String.valueOf(data, 0, 12); // LINE D
+					System.out.println("String representation of data : "+ sample);
+					sample = String.valueOf(data, 0, 5); // LINE E 
+					System.out.println("Subarray in data starting at index 0 : " + sample);
+					sample = String.valueOf(data, 6, 6); // LINE F
+					System.out.println("Subarray in data starting at index 6 : " + sample);    
+				}
+			}
+					OUTPUT
+					String of integer i : 10
+					String of boolean b : true
+					String of float f : 4.56789
+					String representation of data : MERIT CAMPUS
+					Subarray in data starting at index 0 : MERIT
+					Subarray in data starting at index 6 : CAMPUS
+					
+			Using toString method():-
+			------------------------
+				class GfG
+						{
+						  public static void main(String args[])
+						  {
+							int a = 1234;
+							int b = -1234;
+							String str1 = Integer.toString(a);
+							String str2 = Integer.toString(b);
+							System.out.println("String str1 = " + str1); 
+							System.out.println("String str2 = " + str2);
+						  }
+						} 
+
+		
+	
+	JDK:-
+	-----
+	The Java Development Kit (JDK) is one of three core technology packages used in Java programming,
+	along with the JVM (Java Virtual Machine) and the JRE (Java Runtime Environment).
+	
+	JRE:-
+	-----
+	The Java Runtime Environment, or JRE, is a software layer that runs on top of a computer’s os software and 
+	provides the class libraries and other resources that a specific Java program needs to run.
+	
+	JVM:-
+	-----
+		Every system has its own JVM which gets installed automatically when the jdk software is installed. ... 
+		An important point is JAVA is platform-independent language, the JVM is platform-dependent. 
+		Different JVM is designed for different OS and byte code is able to run on different OS.
+		It converts Java bytecode into machines language with help of JIT.
+					
+					
+class-level modifir
+	private-default-protected-public---------increasing order
+	protected-
+		(package and all sub classes)
+		with in the same pack no restrictions(if does not child parrent mttr)
+		non child class outside the pack not access memmber.
+		from outside pack parent class protected members can access in the child class and with in child class reff only.
+		P a=new C();-------a.m1(); No
+		C a=new C();-------a.m1(); yes
+	default-
+		only with in the package(pack level)
+	public 
+		any where
+		same pck or diff pack
+	private
+		with in the same class only.
+		recommended modifiers in variable---private
+		recommended modifiers in method---public
+	abstract-
+		abstract method
+		abstract class but not for variable.
+	Note:- most restricted---private-default-protected-public
+	
+	can we declared class private and static?
+		no, only in inner class 
+	
+How many type of m/m areas in jvm:-
+	1-Class implemented area
+	2-Heap area
+	3-Stack
+	4-program counter register
+	5-native method stack
+	
+	tostring()
+		return the string representation of any obj.
+
+final,finally anf finalize:-
+----------------------------
+final:-
+	final with Variables : 
+		The value of variable cannot be changed once initialized.
+		final int b = 6; 
+        // modifying the non final variable : Allowed. 
+        a++; 
+        // modifying the final variable.
+        // Immediately gives Compile Time error. 
+        b++;
+		
+finally:-
+---------
+		 The finally block will be executed after the try and catch blocks, but before control transfers back to its origin.
+		 finally block always execute.
+		 use for closing jdbc conn,PrintWriter and FileWriter.
+		 
+finalize:-
+----------
+		the Garbage Collector always called finalize() just before the deletion/destroying the object.
+		as to perform clean-up activity.
+		object like Database Connection, Network Connection or we can say resource de-allocation.
+		Remember it is not a reserved keyword.
+		finalize method is present in Object class.
+		System.gc(); // Requesting JVM to call Garbage Collector method.
+
+Constructor:-
+		-is special method whose name is same its class name and it will not contain return type.
+		-default constructor is created by JVM.
+		-but if created param constructor then default constructor desabled.
+		-you have to create maully default constructor.
+		-can't declare final and static bcoz class will not daclared static or private.
+	
+	how wany ways to initialized the obj:
+		-through constructor
+		-copy constructor
+		-after obj creation next line through is setter method.
+		-anoneymus inner class
+		
+	Constructor chaining:-
+		-Calling one constructor from other  constructor by using super(),and this() without creating new obj.
+		
+	Can overload constructor:-
+		-Yes,we can.
+		-we can overload the constructor for initializing diff logic.
+	super():-
+		-its store NSM reff from parent class to child class.
+		-pre define instance varable use to hold super class m/m  reff through subclass obj.
+	this():-
+		-it use to store current obj reff.
+		-pre-define reff var used to hold current obj reff.
+		
+	How stop instanciation and relation of class, in client or other class.
+		declared private constructor of class----does not allow class to be subclasses.
+		declared data member as private.
+		
+		Example:-
+		public class Record {
+			private static final int MAX_INSTANCES = 20;
+			private static volatile int instanceCounter = 0;
+
+			private Record() {
+				if (instanceCounter >= MAX_INSTANCES)
+					throw new RuntimeException("max instances exceeded");
+
+				instanceCounter ++;
+			}
+		}
+		
+		
+		
+
+		
+
+hashCode() and equals()
+----------------------
+	public class StringTest {
+	String name;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StringTest other = (StringTest) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public static void main(String[] args) {
+		StringTest st = new StringTest();
+		StringTest st1 = new StringTest();
+		st.setName("SK");
+		st1.setName("SK");
+		System.out.println(st.equals(st1));---             Note will get output false when (will not oveerride hashCode() explicitly).
+		System.out.println(st.hashCode()==st1.hashCode()); Note will get output false when (will not oveerride equals() explicitly).
+
+		System.out.println(st.equals(st1));---             Note will get output true when (will oveerride hashCode() explicitly).
+		System.out.println(st.hashCode()==st1.hashCode()); Note will get output ture when (will oveerride equals() explicitly).
+
+		String s=new String("S");
+		String s1=new String("S");
+		System.out.println(st.equals(st1)); output true
+		System.out.println(st.hashCode()==st1.hashCode());output true
+		Note:- for All wraper classes(String,Integer,Double...) hashCode() nd equals() are internally use.
+	}
+}
+
+
+
+Collections.
+------------
+	Collection:-
+		is a obj that used to store hemo hetro duplicates and unique obj without size limitation.
+		carrying mul obj at a time.
+	Coll fw is a semi reusable apps which provide some common low level fw.
+	
+	
+	why?
+	
+	where use?
+	
+
+Map:-
+	If we need to store data in form of key and value than go with Map. 
+	You can choose from Hashtable,HashMap,LinkedHashMap,WeakHashMap,IdentityHashMap, and TreeMap based upon your subsequent need.
+	
+List:-
+	If we need to create a collection of duplicate elements by using the index than List, choosing any
+	Its List implementation e.g. ArrayList,LinkendList,Vector,Stack provides faster access if you know index. 
+Set:-
+	If we need to create a collection of unique elements and don't want any duplicate than, choosing any
+	Set implementation e.g. HashSet, LinkedHashSet or TreeSet. 
+
+Characteristics of a Map:
+	A Map cannot contain duplicate keys and each key can map to at most one value.
+	it allow only one null key and null value (HashMap and LinkedHashMap) but some does not (TreeMap).
+
+Why and When Use Maps:
+	Maps are perfectly for key-value association mapping such as dictionaries. 
+	Use Maps when you want to retrieve and update elements by keys, or perform lookups by keys. Some examples:
+	A map of error codes and their descriptions.
+	A map of city(name) as a key and company names(as a object value).
+	A map of Domain emp(java) as a key and employees(as a obj type val )
+	A map of managers and employees. Each manager (key) is associated with a list of employees (value) he manages.
+	A map of classes and students. Each class (key) is associated with a list of students (value).
+	
+HashMap: 
+	this implementation uses a hash table as the underlying data structure. 
+	It implements all of the Map operations and allows null values and one null key.
+	This class is roughly equivalent to Hashtable - a legacy data structure before Java Collections Framework, 
+	but it is not synchronized and permits nulls. HashMap does not guarantee the order of its key-value elements.
+	Therefore, consider to use a HashMap when order does not matter and nulls are acceptable.  
+LinkedHashMap:
+	this implementation uses a hash table and a linkedList as the underlying data structures,
+	thus the order of a LinkedHashMap is predictable, with insertion-order as the default order.
+	This implementation also allows nulls like HashMap.
+	So consider using a LinkedHashMap when you want a Map with its key-value pairs are sorted by their insertion order.  
+TreeMap: 
+	this implementation uses a red-black tree as the underlying data structure. 
+	A TreeMap is sorted according to the natural ordering of its keys, or by a Comparator provided at creation time. 
+	This implementation does not allow nulls. So consider using a TreeMap when you want a Map sorts
+	its key-value pairs by the natural order of the keys (e.g. alphabetic order or numeric order), or by a custom order you specify.	
+		
+
+	Diff b/w Callections and Collection FrameWork
+	can we perform a group of obj as single entity.
+	Collection interface defines the most common mehtods.
+	Collection interface is considered as root interface of Collection FW
+
+	Collections:-is utility class present in java.util.package to define several utility methods like
+			sorting,searching,binarySearch.
+	Collection-:Collection is a interfaces which can we use to represent a group of obj as single entity.
+
+
+	Collection(I)(1.2)--List(I)(1.2)---insertion order preserved,duplicats
+				ArrayList(1.2)
+				LinkedList(1.2)
+				Vector(1.0)---Lagecy
+					Stack(1.0)Lagecy(Lifo)
+	Set(I)(1.2)(no duplicats,not insertion order preserved
+				HashSet(1.2)
+				LenkedHashSet(1.4)insertion order preserved
+	Collection(I)-Set(I)
+			SortedSet(I)---chilld interface of Set
+					where duplicats are not allowed but all obj should be inserted to sorting order.
+				NavigableSet(I)-is child Interface of SortedSet(1.6)
+					TreeSet(No duplicats,and default or natural sorting order
+	Collection(I)-Queue(I)(1.5)
+			PriorityQueue(1.5)
+			BlockingQueue(1.5) 
+				LinkedBlokingQueue(1.5)
+				PriorityBlockingQueue(1.5)
+	
+	Map(I)(1.2)
+		HashMap(1.2)
+			LinkedHashMap(1.4)
+		WeakHashMap(1.2)
+		IdentityHashMap(1.4)
+Dictionary(1.0) Hashtable(1.0)
+				Properties(1.0)
+		
+	Map(I)(1.2)
+		SortedMap(I)sorting order of key(1.2)
+			NavigableMap(I)(1.6)
+				TreeMap(1.2)
+	Sorting
+		Comparable-(Employee)---default natural sorting order
+			ex-String buffer and StringBuilder--not possible bcoz its not implement with comparable
+		Comparator-(Employee)---if not satisfy default natural sorting order
+			ex-String buffer and StringBuilder----bcoz its customize sorting order
+			define own sorting
+	Cursurs
+		Ennumeration
+		Iterator
+		ListIterator
+
+
+	Note:- Collection interface dosnt contain any method to retrieve object there is no
+	concrete class which coll obj directly.
+	Accept TreeSet and TreeMap every where hetrogenious allow.
+
+	List(I)
+		dupicats allows y using index.
+		preserve insertion order y using index
+	List Interface Specific method
+		add(int index,Object o)
+		addAll(int index,Collection c)
+		get(int index)
+		remove(int index)
+		set(int index,Object new)
+		indexOf(Object o)
+		lastIndexOf(Object o)
+		ListIterator listIterator();
+
+	ArrayList:-
+		internally used Object[] array and groable array;
+		duplicats
+		insertion order
+		Hetrogenious
+		null insertion possible
+		resizable and growable
+		default cap=10 if insert 11th element then new capacity
+			new cap=(curr Capacity*3/2+1.
+		heigh spdeed element access(Al and vector).
+		bcoz evry retrive operation should we strt from first element only)
+		Al and vector for retrieve heghly recommended(impl from RandomeAccess(I).
+			bcoz evry retrive operation should we strt from first element only
+		if in Al insert/remove in the midle of operaton is worst thing
+			bcoz several sift operation are require(multiple sift operation require.
+		Al multple obj allow at a time.(non snchro) but vector at a time only one thread are allowed(Snchro).
+		Al For Synchro
+			List l=Collections.synchronizedList(ll);.
+			similarly sychronization apply in Set and Map.
+		---just bcoz of RandomAccess(I) nd present in java.util pack
+						it dosnt contains any method bcoz its marker interface.
+		every coll class already implemented to serializable and Cloneable
+		but only Al and Vector class impl to RandomAccess(I)
+		Note;-
+			Convert colls obj into array
+			Object [] ar=al.toChar();  
+			While converting colls to array we whould in Object array Obj 
+			for retrieving element use iterator.
+	
+	LinkedList:-
+		implements with Serializable and clonable.
+		no default capacity
+		best choice insertion and deletion in the middle of elements.
+		bcoz element devide in node format(internally double LL).
+		worst choice for retrival operation(bcoz evry retrive operation should we strt from first element only).
+		internal DS double LL
+		insertion order
+		Hetro and null.
+		some method for LL
+		addFirst(Obj o),addLast(Obj o),getFirst(),getLast(),removeFirst(),removeLast().
+	
+	Vector:-
+		Resizable/growable array
+		Duplicats nd null
+		insertion order nd hetro
+		impll sereilizable/clonable nd also random access 
+		most of method present in synchronized.
+		default cap----10-------new cap=2*ccapa
+	For removing obj
+		Remove(obj o)			From Collection
+		removeElement(Obj o)		Vector
+		remove(int index)		List
+		removeElementAt(int index)	Vector
+		clear()				Collection
+		removeAllElement		from vector
+
+	
+	cursors:-for retrieving coll obj.
+		Ennumeration(1.0)
+		Iterator
+		ListIterator
+
+	Ennumeration:-
+		Ennumeration e=v.elements();
+		nextElement() and hasmoreElement().
+		it is appicable for lagecy class. nd only for retrieving obj
+		not replace nd add obj.
+		
+	Iterator:-
+		it is univarsal cursor nd we can perfrom read and remove.
+		Iterator itr=c.iterator().
+		hasNext(), next(), remove().
+		it only work forword Direction.
+		
+	ListIterator:-
+		BiDirectional(forword nd backord)
+		read,remove,replace, and new obj.
+		listIterator()----available in List(I)--that y applicable for only List imp clses.
+		hasNext() , next(),nextIndex().---ment for forword direction
+		hasPrevious() , previous(), previousIndex()---ment for backword movement.
+		remove(),set(Obj new),add(Obj new).
+	
+	Set(I)(1.2)--no duplicats nd no insertion order(bocz inserted obj based on the hashcode of obj).
+		HashSet(1.2)
+		      LHS(1.4)(insertion order Preserved)
+		SortedSet(I)
+			Navigable(I)(1.6)
+				TreeSet(1.2) is class
+
+	HashSet
+		Best Choice for search operation.
+		underlying DS is (HashTable).
+		no duplicats, no insertion order(bocz inserteding obj in HashSet based on the hashcode).
+		hetro, null serilizable nd clonable.
+		cap-16 nd fil ration 0.75(load factor).
+	LHashSet:-
+		underlying DS is HashTable and LL.
+		insetion order preseved.
+		best choice for chache based application.
+	Note:- HashSet uses HashMap object internally to store it's elements where as LinkedHashSet uses LinkedHashMap 
+	       object internally to store and process it's elements.
+	TreeSet:-
+		Underlying DataStructure is (balances TREE)
+		Insertion order not preserved.
+		accending order,for comparable() get null.
+		Tree, no duplicats,sorting order,no Hetro
+		Note:-if TreeSet is non Empty or try to insert nth null--will get NPE.(From 1.7)
+		      if empty TreeSet try to insrt first element as null--Happily add.
+		      if one obj having null ellement and second obj try to insert A--then get RE,NPE
+
+		default natural sorting order.
+		for default sorting order obj should be hemo and copmarable if obj not hemo nd comparable get CCastEexception
+			Comparable mean--Like String(All wraper classes) implents with comparable
+		TreeSet st=new TreeSet()---ment for default/natural sorting order.
+		TreeSet st=new TreeSet(Comparator c) customize sorting order specifies by Comparator.
+		TreeSet st=new TreeSet(Collection c)
+		TreeSet st=new TreeSet(SortedSet s)
+
+		ex:
+		TreeSet t=new TreeSet();
+		t.add(new StrinBuffer("A"));
+		t.add(new StrinBuffer("B"));----CCE bcoz StringBuffer not implement with Comparable(I).
+		but String is implements with Comparable(I)
+
+Comparable:-
+============
+	obj1.compareTo(obj2)
+		-return  -ve if obj1 has come to before obj2--sop("a".compareTo(z));   -ve  {comaresion time z going left and a come right}ZA like.
+		-return +ve if obj2 has come to before obj1---sop("z".compareTo(a));   +ve
+		-return 0 if 0bj1 and obj2 are equal.---------sop("a".compareTo(a));   0
+		-return 0 if 0bj1 and obj2 are equal.---------sop("a".compareTo("null"));   RE,NPE
+Sorting for comparable:-
+-------------------------
+	1-Create Employee class
+		with Data variable,
+		create Constructor of employee class,
+		create a firstname class with implements Comparable<Employee>,
+		over compareTo() method
+		generate toString method.
+	3-In caller class 
+		Employee details stored in list collection,
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees,new FirstName); like this possible with comparable.
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees)
+		sysout(employee)
+		
+
+Comparater:-
+==============
+	obj1.compare(obj2)
+		-return  -ve if obj1 has come to before obj2
+		-return +ve if obj2 has come to before obj1
+		-return 0 if 0bj1 and obj2 are equal.
+		
+Sorting for comparator:-
+-----------------------
+	1-Create Employee class
+		with Data variable,
+		create Constructor of employee class,
+		generate a setter and getter method of employee class,
+		generate toString method.
+	
+	2-FirstName Sorting class
+		create a firstname class with implements Comparator<Employee>
+		comparing emp o1 and emp o2.
+	
+	3-In caller class 
+		Employee details stored in list collection,
+		emplyees is a obj where storing employee data.
+		Collections.sort(employees,new FirstName);
+		sysout(employee)
+		
+	int compare(Employee o1,Employee o2){	
+	// return o1.getLastName().compareTo(o2.getLastName());	
+	// return o1.getAge() - o2.getAge();
+	}
+	//employees.sort(Comparator.comparing(e->e4.getAge()));
+	//employees.sort(Comparator.comparing(Employee::getFirstName));
+	
+	//System.out.println(Collections.binarySearch(employees, 2, new AgeSorter()));
+	
+	Diff b/w camparable and Comparator.
+
+		camparable							    comparator
+		default natural sorting order.			customized sorting order.
+		present in java.lang.pack.				java.util.pack
+		only compareTo().						1)compare() nd equals().
+		all wraper nd string cls implements		imp with two clss Collator nd RuleBasedColator.
+	
+	Map:-
+		Note:- The Key class should override equals() and hashCode() methods to test equality on hash-based map.
+		Not child interface of Collection.
+		when group of obj as key nd values
+		duplicats key not allowed but values is allows.
+	Map(I)
+		HashMap(1.2)
+			LinkedHashMap(1.4)
+		WeakHashMap(1.2)
+		IdentityHashMap(1.4)
+		Hashtable(1.0)
+			Properties(1.0)
+		
+		Map(I)(1.2)
+			SortedMap(I)(1.2)
+				NavigableMap(I)(1.6)
+					TreeMap(1.2)
+	
+	HashMap:-
+			implements with the Cloneable(I) and Serializable(I)  
+			key contains more then value but val cant contains more then key
+			no gurarnity maintain order, it similar to hashtable but its not Synchronized.
+			HashMap use hashing technique.
+			HashSet use internally in HashMap.
+			and internally LinkedList to store key and value pairs.
+			
+	Load Fector of HashMap:-
+		load factor of HashMap is 0.75f (75% of the map size).
+		The load factor in HashMap is basically a measure that decides when exactly to increase the size of the HashMap
+		to maintain the same time complexity of O(1).
+		that decides when to increase the HashMap capacity to maintain the get() and put() operation complexity of O(1). 
+		
+		
+	There are two factors which affect the performance of the hashmap.
+		Initial Capacity
+		Load Factor
+		
+		Initial Capacity of HashMap
+			The initial capacity of the HashMap is the number of buckets in the hash table. 
+			It creates when we create the object of HashMap class. 
+			The initial capacity of the HashMap is 24, i.e., 16. 
+			The capacity of the HashMap is doubled each time it reaches the threshold. 
+
+		Load Factor:-
+			The default load factor of HashMap is 0.75f (75% of the map size).
+
+		Problem
+			The problem is, keeping the bucket size fixed (i.e., 16), we keep on increasing the total number of items 
+			in the map that disturbs time complexity.
+
+		Solution
+			When we increase the total number of buckets, total items in each bucket starts increasing. 
+			Now we are able to keep the constant number of items in each bucket and maintain the time complexity of O(1) for get() and put() operation.
+		
+		How Load Factor is calculated
+			Load Factor decides "when to increase the number of buckets."
+
+			We can find when to increase the hashmap size by using the following formula:
+				Threshold = (Current Capacity) * (Load Factor)
+				The initial capacity of hashmap is=16
+				The default load factor of hashmap=0.75
+				According to the formula as mentioned above: 16*0.75=12
+		
+		While modification inil cap and l-fact:-
+			you can not change that after the map is created, the most you can y use the constructor defined for that
+
+		as the doc states:
+			public HashMap(int initialCapacity, float loadFactor)
+			Constructs an empty HashMap with the specified initial capacity and load factor.
+			Map<String, String> x = new HashMap<>(10, 0.85f);		
+		
+		
+		
+		Note: second key will be oveerride.
+
+		equals() nd hashCode diff
+		-------------------------
+			if two obj hashCode is same at this time eqaulas() method
+			nd if hashCode is same and content is same that duplictas obj found. 
+		obj.put(Obj key,Obj value) to add one key value pair to the map
+		if the key is already present then old value will we replace with new value and the return old val
+		m.put(101,"Ab")
+		m.put(102,"CC")
+		m.put(101,"ZZ")----------101,ZZ---note AB replace to ZZ
+		methods
+			put(Obj key,Obj value)
+			putAll(Map m)
+			get(Obj key)
+			remove(Obj key)
+			containsKey(Obj key)
+			containsValue(Obj val)
+			isEmpty()
+			size()
+			clear()
+		keySet()belog to Set,values() belong to Collection,entySet() belong to Set.
+		these three method belong coll views of method
+		each key nd value pairs----one entry--
+
+		note:- Entry(I) is a inner Interface of Map(I)
+		interface Map{
+			interface Entry{
+				Object getkey()
+				Object getValue()
+				Object setValue();
+					}
+				}
+			Entry a map is a group of key val pairs and each key val pairs is called an Entry
+			hence Map is considered as coll entry objs
+			whitout existing map obj there is no chance of existing Entry obj 
+			hence Entry(I) is define inside Map(I).
+		1-create an empty hashmap obj with default initial cap 16 and default fell ration 0.75
+			hashMap m=new HashMap(int initalCap) 
+		2-create an empty HashMap obj with specifies the initial cap nd default fell ration 0.75
+			HashMap m=new HashMap(int initialcapa,float fillratio)
+			Hashmap m=new HashMap(max m).
+
+		Example
+		--------
+		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+		mp.put(1, "A");
+		mp.put(4, "D");
+		mp.put(2, "C");
+		mp.put(3, "B");
+			Set s1=mp.entrySet();
+			System.out.println("========Iterator ir = s.iterator();=========");
+			Iterator ir = s1.iterator();
+			while (ir.hasNext()) {
+				Map.Entry m = (Map.Entry) ir.next();
+				System.out.println(m.getKey()+"======"+m.getValue());
+				if(m.getKey().equals(1)) {
+					m.setValue("Sule");
+				 }
+			}
+	
+	Diff wetween HashMap and ConcurrentHashMap:-
+		HashMap is not synchronized.								ConcurrentHashMap is synchronized.
+		HashMap is not thread safe.									ConcurrentHashMap is thread safe.
+		HashMap iterator is fail-fast and ArrayList throws 			ConcurrentHashMap is fail-safe and it will never throw 
+																	ConcurrentModificationException during iteration.
+		ConcurrentModificationException if concurrent 
+		modification happens during iteration.						
+		HashMap allows key and value to be null.  					ConcurrentHashMap does not allow null key/value,
+																	It will throw NullPointerException.
+		HashMap is faster.											ConcurrentHashMap is slower than HashMap.
+		1.2															1.5
+		Locking at obj level if go for synchro						There is no locking at the object level.
+		
+	ConcurrentHashMap
+		You should use ConcurrentHashMap when you need very high concurrency in your project.
+		It is thread safe without synchronizing the whole map.
+		Reads can happen very fast while write is done with a lock.
+		There is no locking at the object level.
+		The locking is at a much finer granularity at a hashmap bucket level.
+		ConcurrentHashMap doesn’t throw a ConcurrentModificationException if one thread tries to modify 
+		it while another is iterating over it.
+		ConcurrentHashMap uses multitude of locks.
+		
+	SynchronizedHashMap
+		Synchronization at Object level.
+		Every read/write operation needs to acquire lock.
+		Locking the entire collection is a performance overhead.
+		This essentially gives access to only one thread to the entire map & blocks all the other threads.
+		It may cause contention.
+		SynchronizedHashMap returns Iterator, which fails-fast on concurrent modification.
+	
+HashMap Internal flow:-
+-----------------------
+		internal flow:
+			int Hash
+			key 
+			value
+			Node next.
+			node having reff of own obj that is reason called as LinkedList.
+			key nd val having int Hash
+			node having reff of next variable  
+			
+		work on hashCode
+			put("A",1);--65 is unicode value:A:1:null bcoz there is no next node thats y null.
+			put("B",2);
+			converting large string to small string representthe same string, and sorter value helping index and faster searcher.
+			
+			HashSet use internally in HashMap.
+			and internally LinkedList to store key and value pairs.
+			
+			1-Calculation of hashCode from the key--with A key
+				Pass to Hash func for getting binary 
+			2-calculation of index or bucket loc
+				: n is size HashMap
+				index=hashCode & (n-1)  
+			-every index collection hashcode
+
+		Map mp=new HashMap<String, String>();
+		mp.put("null", "Sk");
+		mp.put("null", "sule");
+		System.out.println(mp);------output(null,Sule)
+		
+		1. Single statement answer
+			“works on hashing principles/hashing technique“. 
+		2. What is Hashing?
+			is a way to assigning a unique code for any variable/object after applying any formula/algorithm on its properties.
+			Hashing is a process of converting an object into integer, by using the method hashCode(). 
+			It is a data structure which allows us to store object and retrieve.
+			In hashing, hash functions are used to link key and value in HashMap.
+			Its necessary to write hashCode() method for better performance of HashMap.
+			Here overrided hashCode() method returns the first character’s ASCII value as hash code. 
+			So whenever the first character of key is same, the hash code will be same. 
+	Rulls:-
+		Hash function should return the same hash code each and every time when the function is applied on same or equal objects.
+		In other words, two equal objects must produce the same hash code consistently.”
+			
+		hashCode and equals():-
+			hashCode() and equals() methods have been defined in Object class which is parent class for java objects.
+			For this reason, all java objects inherit as a default implementation of these methods.
+					
+			eqaulas():-
+				equals(Object otherObject) – is used to simply verify the equality of two objects. 
+				By default, two objects are equal if and only if they are stored in the same memory address.
+				You can override this in your class to provide your own implementation.
+				
+				HashMap uses equals() to compare the key whether the are equal or not. 
+				If equals() method return true, they are equal otherwise not equal.
+				compering the content of both object.
+			hashcode() – 
+				Returns a unique integer value for the object in runtime. 
+				By default, integer value is mostly derived from memory address of the object in heap (but it’s not mandatory always).
+				This hash code is used for determining the bucket location, when this object needs to be stored in some HashTable like data structure.
+		
+		Buckets:-
+			 bucket is one element of HashMap array. 
+			 It is used to store nodes. 
+			 Two or more nodes can have the same bucket. 
+			 In that case link list structure is used to connect the nodes. 
+			 Buckets are different in capacity. 
+			 A relation between bucket and capacity is as follows:
+			 capacity = number of buckets * load factor(.75)
+		
+		Index Calculation in Hashmap
+			Hash code of key may be large enough to create an array. 
+			hash code generated may be in the range of integer and if we create arrays for such a range, then it will easily cause outOfMemoryException. 
+			So we generate index to minimize the size of array. Basically following operation is performed to calculate index.
+
+			ndex = hashCode(key) & (n-1).
+		
+		
+		3. Entry class in HashMap
+			A map by definition is : “An object that maps keys to values”. Very easy.. right?
+			So, there must be some mechanism in HashMap to store this key-value pair. 
+			The answer is YES. HashMap having an nested static class Entry, which looks like this:
+
+			Entry class
+			static class Entry<K ,V> implements Map.Entry<K, V>
+			{
+				final K key;
+				V value;
+				Entry<K ,V> next;
+				final int hash;
+				...//More code goes here
+			}   Surely Entry class has key and value mapping stored as attributes. 
+				key has been marked as final and two more fields are there: next and hash.
+				
+		4. 	How HashMap.put() methods works internally
+			Before going into put() method’s implementation, it is very important to learn that instances of Entry class are stored in an array. 
+			HashMap class defines this variable as:
+
+			entry array
+			transient Entry[] table;
+			
+			Now look at code implementation of put() method:
+			put() method
+			/**
+			* Associates the specified value with the specified key in this map. If the
+			* map previously contained a mapping for the key, the old value is
+			* replaced.
+			*
+			* @param key
+			*            key with which the specified value is to be associated
+			* @param value
+			*            value to be associated with the specified key
+			* @return the previous value associated with <tt>key</tt>, or <tt>null</tt>
+			*         if there was no mapping for <tt>key</tt>. (A <tt>null</tt> return
+			*         can also indicate that the map previously associated
+			*         <tt>null</tt> with <tt>key</tt>.)
+			*/
+			public V put(K key, V value) {
+				if (key == null)
+				return putForNullKey(value);
+				int hash = hash(key.hashCode());
+				int i = indexFor(hash, table.length);
+				for (Entry<K , V> e = table[i]; e != null; e = e.next) {
+					Object k;
+					if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+						V oldValue = e.value;
+						e.value = value;
+						e.recordAccess(this);
+						return oldValue;
+					}
+				}
+			 
+				modCount++;
+				addEntry(hash, key, value, i);
+				return null;
+			}
+			
+			4.1. What put() method does
+					Let’s note down the internal working of put method in hashmap.
+					First of all, the key object is checked for null. 
+					If the key is null, the value is stored in table[0] position. 
+					Because hashcode for null is always 0.
+					Then on next step, a hash value is calculated using the key’s hash code by calling its hashCode() method. 
+					This hash value is used to calculate the index in the array for storing Entry object. 
+					JDK designers well assumed that there might be some poorly written hashCode() functions that can return very high or 
+					low hash code value. 
+					To solve this issue, they introduced another hash() function and passed the object’s hash code to 
+					this hash() function to bring hash value in the range of array index size.
+					Now indexFor(hash, table.length) function is called to calculate exact index position for storing the Entry object.
+				
+						
+						
+Java8 Features:-
+----------------
+lamdaExpression
+defaultMethod/static
+Functional inteface
+Predefined Funtional Interface
+	Predicate
+	Function
+	Consumer
+	Suppliyer
+		public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
+        if (value != null) {
+            return value;
+        } else {
+            throw exceptionSupplier.get();
+			}
+		 }
+
+Double Collon Operator
+========================
+	Method reff
+	------------
+		public interface MyInterface {
+			public void sum(String s);
+			}	
+		class MyClass {
+			public void add(String s2) {
+			System.out.println("MyClass add()======" + s2);
+			}
+				}
+		public class ReferincingInstance {
+		public static void main(String[] args) {
+		// passing argument must be same
+		MyInterface mc=(x)->System.out.println(x);
+		mc.sum("Interface sum()...........Hello Sulemaan");
+		MyClass mi=new MyClass();
+		MyInterface i=mi::add;
+		i.sum("That class is a so confuing.....");}}
+
+	Cunstructor reff:-
+	------------------
+		public interface MyConst {
+	ReffCunstruct get(String a);
+	}
+	public class ConsTest {
+	public static void main(String[] args) {
+		// Reffierece type contructor using interface
+		MyConst t =(i) -> new ReffCunstruct(i);
+		t.get("with  Interface");
+		// Reffierece type contructor using operator
+		MyConst t1 = ReffCunstruct::new;
+		t1.get("with operator");
+			}
+		}
+Stream Api
+Data Nd TIme API
+Optional class
+
+
+forEach():-
+	List<Integer> l=new ArrayList<>();
+	l.add(10);
+	l.add(20);
+	l.add(30);
+	l.forEach((s)->System.out.println("using foreach="+s));
+
+LamdaExression:-
+	
+	it is a anonymous function.
+	nameless
+	without return type
+	without modifires
+	
+	Example First
+	public interface box {
+	public int glass(int g1, int g2);
+	}
+	public static void main(String[] args) {
+		 box b = (x, y) -> {
+		 return x + y;
+		 };
+		 System.out.println("param and return type interface with lamda exp===Glass Calculation\n"+b.glass(4, 8));
+		box b1 = (x, y) -> (x + y);        
+		System.out.println("// param and without return type interface with lamda exp===Add=" + b1.glass(34, 56));}}
+	
+	2nd
+	public interface Car {
+	public void Engine(String oil);
+	}
+	public static void main(String[] args) {
+		// Single param interface
+		Car c = (o) -> System.out.println("Details\n" + o);
+		mc.Engine("castrol");}}
+	3Rd:-
+	-------
+		public class Student {   
+		   private Long id;
+		   private String name;
+		   // standard setters and getters
+		}
+
+		Comparator<Student> byId = new Comparator<Student>() {
+		   @Override
+		   public int compare(Student s1, Student s2) {
+		       return s1.getId().compareTo(s2.getId());
+		   }
+		};
+		Comparator<Student> byId = (s1, s2) -> s1.getId().compareTo(s2.getId());
+		Comparator<Student> byId = Comparator.comparing(Student::getId);
+
+	
+DefaultMethod
+
+	 Whenever you want to add additional functionality in an existing interface,you can use default methods
+	 without breaking any existing implementing classes
+	 #If you do not override them, they are the methods which will be invoked by caller classes.
+	 #When c class want implement with A and B but there no childs relation b/w A and B.
+	 #It is a method with default keyword and class can override this method
+	 #if you want invoke lmda exp then must be functional interface.
+	 #Default method (Defender methods) should be used for backward compatibility.
+	 #Default methods in interfaces were introduced to the Java language in order to evolve the collections library for the Streams API.
+	 #with backward compatability in mind, default methods are introduced.
+	
+	public interface A {
+	default void m1() {}
+	}
+	public interface B {
+	default void m2() {
+	}
+	public class C implements A, B {
+		public void m1() {
+			System.out.println("C class method.....m1()");}
+		public void m2() {
+			System.out.println("C class method.....m2()");}}
+	public class Test {
+	public static void main(String[] args) {
+		//we can also take same method both interfaces
+		B b = new C();//---m2() define in A(I)
+		b.m2();
+		A a=new C(); //m1() define in B(I)
+		a.m1();}}
+		
+		
+	public interface Java8 {
+		default void m2() {
+		 System.out.println("default interface");
+	         }
+          }
+	public class Test implements Java8 {
+		default void m2() {
+			System.out.println("child static"); will get error
+	     }
+	public static void main(String[] args) {
+		Java8 j=new Test();
+		j.m2();     //possible
+		// Java8.m2(); // not possible will get error
+	}
+}
+		
+		
+static method in interface:-
+	We can write implementation of this method in interface itself
+	Static method can invoke with only on Interface class not on class.
+	It can be used as a utility method
+	
+	public interface Java8 {
+		static void m1() {
+				System.out.println("static interface");
+			}
+
+		default void m2() {
+			System.out.println("default interface");
+			}
+	}
+	public class Test implements Java8 {
+		static void m1() {
+			System.out.println("child static");
+			}
+
+	public static void main(String[] args) {
+			Java8 j=new Test();
+		//	j.m1();      //not possible 	will get error
+			Java8.m1();  // possible
+			//	Java8.m2();  //not possible will get error
+	}
+
+			result is:static interface
+
+		
+
+Functional interface
+---------------------
+	 #an interface which contains Single ABstract Mehtod(SAM)
+	 
+	 eg-
+		Runnable==run()
+		Comparable==compareTO()
+		comparator==compare()
+		ActionListener==ActionPerformed()
+		Callable==call().
+
+Stream APi:-
+--------------
+	System.out.println("\ngetDetails based on the Key");
+		Map<String, List<Company>> collect = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+		System.out.println(collect);
+		
+		
+		step1-   // x -> x.getKey().equals("hyd")
+		Step2-  //Collectors.toMap(step3);
+		step3-// Map.Entry::  Double Collon resulation operator        x->x.   lamda expression concept
+		result=map.entrySet.stream.filter(step1).collect
+		collect(step2);
+		
+		
+
+	System.out.println("\n===get Details using based on Stream api====");
+		Map<String, List<Company>> collect1 = map.entrySet().stream().filter(x -> x.getKey().equals("hyd"))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+				System.out.println(collect1);
+
+		System.out.println("\n==========sort based on the key======Using stream api========");
+		Map<String, List<Company>> result = map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, 
+				(oldValue, newValue) -> oldValue,LinkedHashMap::new));
+				System.out.println(result);
+				
+		public Book getBookById(int id){
+				Book book=null;
+				book=list.stream.filter(e->e.getId==id).finFirst().get();
+				return book;
+					}
+
+
+StringConcept
+=============
+String:-
+	srequence of char which placed in double quates.
+	string obj eligible for garbage collection.
+	literal string obj not eligible for garbage collection bcoz its reff to SCPA
+	
+Custom Immutable object:-
+-------------------------
+	define a class by declaring varables as private.
+	Define param constructor for initializing obj var at least once.
+	Dont define setter so data will not modify,if allow result store in new obj
+	define getter method to need val
+	
+	
+	
+	Is String object is thread safe?
+		yes. and all wraper classes are thread safe.
+		
+String pool:-
+-----------
+	Limitation or rules:-
+		only allow litteral obj 
+	Advantage:-
+		grouping string literal obj,reuse them.
+		memory and time will we saved
+		execution is fast.
+	
+String Constent pool:-
+----------------------
+	for implementing string pooling,inside jvm one special obj is created.
+	create one obj per jvm.
+	create special obj for a String.
+	
+	
+what are diff ways to store object in String:-
+	char [] obj
+	String str obj
+	StringBuffer
+	StringBuilder obj
+	
+How to create a string object?
+	By string literal
+	By new keyword
+	Using character array
+			char ch[]={ ‘O’,’d’,’i’,’s’,’h’,’a’,}; 
+				String str2=new String(ch); 
+	
+Example:
+	String:-
+	Whenever we create a string object of String class, it is by default created in a immutable nature. 
+	the modification we are doing on string data result will not store in current obj that will store in another object,but.
+	String is a Final class, given by java. So we can't change the behavior. It's by default immutable.
+	
+		is immutable(non changable).
+		why immutable?
+			because String objects are cached in the String pool area.
+			for using string obj as key in map colls it is create as immutable.
+			once store an obj as a key in map data should not be modify,
+			if it data is modified the value maped to this object cant retrieved from this map bcoz other
+			programmer will try to retrieved value using old data.
+			in order to not stored modification result in current obj.
+			
+		String s=new String("Soft");
+		s.concat("ware");
+		sys(s)--the output only Soft not Software.
+		s1=s.concat("ware");
+		sysout(s1); output:-software
+		Note:-once we created string obj then we cant perform any modification in existing obj.
+			and if we try to perform any changes ith those new obj will be created.
+
+	StringBuffer
+		is mutable and synvchroized.
+		its a thread safe.
+		why mutable?
+		StringBuffer sb=new StringBuffer("Soft");
+		sb.apend("ware");
+		
+		
+		sys(sb);--the output is Software...
+		Note:-once we created StringBuffer obj then we can perform any modification in existing obj.
+			Changable obj.
+
+	Diff == and equals():-
+		== operator
+			ment for copparesion reff or address
+			System.out.println(s1==s2);---false
+			-------------------------------------
+			Each time you create a string literal, the JVM checks the "string constant pool" first. 
+			If the string already exists in the pool, the pooled will return the reference to the same instance. 
+			If the string doesn't exist in the pool, a new string instance is created and placed in the pool. 
+			
+			String s1= "a";
+			String s2= "a";
+			System.out.println(s1 == s2);----T
+			
+			only one object will be created
+			it will not create a new object but will return the reference to the same instance
+			
+			String s1= "a";
+			String s2= "b";
+			System.out.println(s1 == s2);----F
+			
+			String s2 = new String("a");
+			String s1 = "b";
+			System.out.println(s1 == s2);---F
+			
+			String s1 = "a";
+			String s2 = "b";
+			String s3="ab";
+			String s4=s1+s2;
+			System.out.println(s3 == s4);---F
+			
+			String s1="ab";
+			String s2="a"+"b";
+			System.out.println(s1 == s2);---T
+			
+			String s1="a";
+			String s2="b";
+			String s3="ab";
+			String s4=s1.concat(s2);
+			System.out.println(s4);-----ab
+			System.out.println(s3 == s4);----F
+			
+			String s1 = new String("b");
+			String s2= "a";
+			s1 = "a";
+			System.out.println(s1 == s2); T
+		
+			String s2 = "a";
+			String s1 = "b";
+			s1 = new String("a");
+			System.out.println(s1 == s2);F
+		    ---------------------------------
+		
+		equals()
+			ment for content comparession.
+			System.out.println(s1.equals(s2));true
+			
+		hashCode()
+			
+			its return integer value generated by hashing algo.
+			If two objects are equal according to equals() method, then their hash code must be same.
+			If two objects are unequal according to equals() method, their hash code are not required to be different.
+			Their hash code value may or may-not be equal.
+			We can also use Project Lombok to auto generate equals and hashCode method implementations.
+			class Hash{
+			public static void main(String[] args){
+				String a = "200";
+				String b = "200";
+
+				if(a.equals(b)){
+					System.out.println("Equal variables:");
+					System.out.println(a.hashCode() + "\n" + b.hashCode());   49586 49586
+				}
+
+				String c = "10";
+				String d = "50";
+
+				if(!c.equals(d)){
+					System.out.println("\nUn-equal variables:");
+					System.out.println(c.hashCode() + "\n" + d.hashCode()); 1567 1691
+				}
+			}
+		}
+
+	Special methods StringBuffer:-
+	--------------------------
+		append
+		insert
+		delete
+		reverse
+		
+	
+
+Exception Handling:-
+====================
+	Exception handling:-
+		An exception is an unwanted or unexpected event,that might be occors compile time or runtime 
+		bcoz of bad input or other reason so that app turminated or stop the fother execution.
+	
+	problem:-
+		rest of application or program will stop.
+		end user dosnt uderstand raising problem.
+	
+	Solution:-
+		any raised or happend catched exception and using tery catch block
+		provide user understandable msg for end-user.
+		rest of application or logic will be execute.
+
+	Checked Exception:-
+		the exeption which are raised at compilassion stage are known as checkedException.
+		or compile time exception.
+		it should declare the exception using throws keyword,
+		like
+	Throwable
+		Error
+		Exception
+		
+	Object
+		Throwable
+			Exception
+				SQLException
+				IOException
+					FNFE
+					EOFE
+					NotSerealizableException
+				ClassNotFoundException
+				InvocationTargetException
+				NoSuchMethodException
+				NoSuchFieldException
+				CloneNotSupportedException
+				JspException
+				ServletException
+	Unchecked Exception:
+		The exception which are raised at execution stage are known as unchecked exception.
+		these exception are hendling by the try catch finally.
+		exception occurs due to the bad data provided by user during the user-program interaction. 
+		All Unchecked exceptions are direct sub classes of RuntimeException class.
+		it comes at runtime check y jvm.
+	Object
+		Throwable
+				Exception
+					RuntimeException
+						NullPointerException.
+						ArithmeticException.
+						ClassCastException.
+						SecurityException.
+						IllegalStoreException.
+						IndexOutOfBoundException
+							ArrayIndexOutOfBoundsException.
+							StringIndexOutOfBoundException
+						IllegalArgumentExceptions.
+							NumberFormatException
+							IllegalThreadException
+						NegativeArraySizeException
+						ArrayStoreException.
+
+	Throw:-
+		We use throw keyword to explicitly throw an exception from the code. 
+		thrown an exception manually from a method or constructor.
+		it must be used on methods logic.
+		Only single exception is thrown by using throw (can't throw multiple exceptions with a single throw.).
+		throw keyword is used within the method.
+		//unchecked Exceptions that are not checked using throws keyword.
+
+	public class Example1{  
+		void checkAge(int age){  
+		if(age<18)  
+		throw new ArithmeticException("Not Eligible for voting");  
+		else  
+		System.out.println("Eligible for voting");  
+	 }  
+	   public static void main(String args[]){  
+		Example1 obj = new Example1();
+		obj.checkAge(13);  
+		System.out.println("End Of Program");  
+	   }  
+	}
+	Throws:-
+		throws keyword is used to propagate the checked Exceptions only.
+		and using throws programmer propagate the exception and send to caller method.
+		there caller method handling the exception.
+
+		public class Example1{  
+			   int division(int a, int b) throws ArithmeticException{  
+				int t = a/b;
+				return t;
+			   }  
+			   public static void main(String args[]){  
+				Example1 obj = new Example1();
+				try{
+				   System.out.println(obj.division(15,0));  
+				}
+				catch(ArithmeticException e){
+				   System.out.println("You shouldn't divide number by zero");
+				}
+			   }  
+			}
+	Custom Exception:-
+		In java we can create our own exception class and throw that exception using throw keyword.
+		These exceptions are known as user-defined or custom exceptions. 
+	Rules:
+		1. User-defined exception  must extend Exception class.
+		2. The exception is thrown using throw keyword.
+		
+		class InvalidAgeException extends Exception{ 
+				String s;
+			 InvalidAgeException(String s){  
+			  super(s);  
+			 }  
+			}  
+			class TestCustomException1{  
+			  
+			   static void validate(int age)throws InvalidAgeException{  
+			     if(age<18)  
+			      throw new InvalidAgeException("not valid");  
+			     else  
+			      System.out.println("welcome to vote");  
+			   }  
+			     
+			   public static void main(String args[]){  
+			      try{  
+			      validate(13);  
+			      }catch(Exception m){System.out.println("Exception occured: "+m);}  
+			  
+			      System.out.println("rest of the code...");  
+			  }  
+			} 
+			
+finally block:-
+---------------
+		A finally block is always get executed whether the exception has occurred or not.
+		If an exception occurs like closing a file or DB connection,PrintWriter and FileWriter then the finally block is used to clean up the code.
+		We cannot say the finally block is always executes because sometimes if any statement like System.
+
+
+		try {
+				System.out.println("hello");
+				System.exit(0);
+			}
+			finally {
+				System.out.println("bye");
+			} // try-finally
+			
+			putput:-hello
+			In the above example, the finally block will not execute due to the System.exit(1) condition in the try block.
+
+	condittion:1
+		int[] arr = new int[4]; 
+        try
+        { 
+            int i = arr[4]; 
+                  
+            // this statement will never execute 
+            // as exception is raised by above statement 
+            System.out.println("Inside try block"); 
+        } 
+        catch (Exception e) {
+			System.out.println("jshsg");
+		}
+          
+        finally
+        { 
+            System.out.println("finally block executed"); 
+        } 
+          
+        // rest program will not execute 
+        System.out.println("Outside try-finally clause"); 
+		
+		output:-
+			jshsg
+			finally block executed
+			Outside try-finally clause------------if you handle checked exception then only rest of Outside try-finally clause excute.
+
+condittion:-
+		int[] arr = new int[4]; 
+        try
+        { 
+            int i = arr[4]; 
+                  
+            // this statement will never execute 
+            // as exception is raised by above statement 
+            System.out.println("Inside try block"); 
+        } 
+          
+        finally
+        { 
+            System.out.println("finally block executed"); 
+        } 
+          
+        // rest program will not execute 
+        System.out.println("Outside try-finally clause"); 
+		
+		output:-
+		finally block executed
+		Run Time error:
+		Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 4
+			at com.Sample.main(Sample.java:31)
+			
+Exception not raised: 
+If an exception does not occur in try block then control flow will be finally block followed by rest of the program
+
+			// when exception doesn't occur in try block 
+			class GFG  
+			{ 
+				public static void main (String[] args)  
+				{ 					  
+					try
+					{ 
+						String str = "123"; 	  
+						int num = Integer.parseInt(str); 
+						  
+						// this statement will execute 
+						// as no any exception is raised by above statement 
+						System.out.println("Inside try block"); 
+					}
+					finally
+					{ 
+						System.out.println("finally block executed"); 
+					}  
+					// rest program will be executed 
+					System.out.println("Outside try-finally clause"); 
+				} 
+			} 
+			Output :
+			Inside try block
+			finally block executed
+			Outside try-finally clause
+
+
+	
+			
+MultiThreadind:-
+=================
+	Unit of process--thread.
+	defining thread:-
+		By extending Thread class
+			MyThread mt=new MyThread();
+		by imolementing Runnable interface.
+			Thread t1=new Thread(new ImpRunn());
+			t1.start();---can not call directly start why bcoz start method not present in Runnable(I)
+	by Default in evry java code one thread that is main thread.
+	Thread Priority
+		minPriority---1
+		maxPriority---10
+	Synchronization:-
+		Synchronization is a process of handling resource accessibility by multiple thread requests.
+	Interthread Communication.
+		
+	Deamon thread
+		A Daemon thread is a background service thread which runs as a low priority thread and performs background operations like garbage collection. 
+		DeamonTh d = new DeamonTh();
+		d.setDaemon(true);
+		d.start();
+
+--two equavalent obj have hashCode must be same
+if two obj are equal by .equlas() method then there hashCode must be equal that is two equavalent obj shloud have same hashCode.
+if r1.equals(r2) is true r1.hashcode()==r2.hashCode() is always true.
+
+obj class .equals nd hshCode() fallows aboe contract hence whenever we are overriding .equals() compulsory we should override hashCode()
+to satisfy above contract(that is two equavalant obj should have same hashCode)
+
+
+
+
+1.1. Contract between hashCode() and equals()
+It is generally necessary to override the hashCode() method whenever equals() method is overridden, so as to maintain the general contract for the hashCode() method, which states that equal objects must have equal hash codes.
+
+Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified.
+This integer need not remain consistent from one execution of an application to another execution of the same application.
+If two objects are equal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce the same integer result.
+It is not required that if two objects are unequal according to the equals(java.lang.Object) method, then calling the hashCode method on each of the two objects must produce distinct integer results.
+However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hash tables.
+
+2. Override the default behavior of hashCode() and equals()
+Everything works fine until you do not override any of these methods in your classes. But, sometimes the application needs to change the default behavior of some objects. Lets understand why we need to override equals and hashcode methods.
+
+2.1. Default Behavior
+Lets take an example where your application has Employee object. Lets create a minimal possible structure of Employee class:
+
+Employee.java
+public class Employee
+{
+    private Integer id;
+    private String firstname;
+    private String lastName;
+    private String department;
+ 
+    //Setters and Getters
+}
+Above Employee class has some very basic attributes and their accessor methods. Now consider a simple situation where you need to compare two employee objects.
+
+EqualsTest.java
+public class EqualsTest {
+    public static void main(String[] args) {
+        Employee e1 = new Employee();
+        Employee e2 = new Employee();
+ 
+        e1.setId(100);
+        e2.setId(100);
+ 
+        System.out.println(e1.equals(e2));  //false
+    }
+}
+No prize for guessing. Above method will print "false". But, is it really correct after knowing that both objects represent the same employee. In a real-time application, this should return true.
+
+2.2. Should we override only equals() method?
+To achieve correct application behavior, we need to override equals() method as below:
+
+equals() method is overridden
+public boolean equals(Object o) {
+    if(o == null)
+    {
+        return false;
+    }
+    if (o == this)
+    {
+        return true;
+    }
+    if (getClass() != o.getClass())
+    {
+        return false;
+    }
+     
+    Employee e = (Employee) o;
+    return (this.getId() == e.getId());
+}
+Add this method to your Employee class, and EqualsTest will start returning "true".
+
+So are we done? Not yet. Lets test again above modified Employee class in different way.
+
+EqualsTest.java
+import java.util.HashSet;
+import java.util.Set;
+ 
+public class EqualsTest
+{
+    public static void main(String[] args)
+    {
+        Employee e1 = new Employee();
+        Employee e2 = new Employee();
+ 
+        e1.setId(100);
+        e2.setId(100);
+ 
+        //Prints 'true'
+        System.out.println(e1.equals(e2));
+ 
+        Set<Employee> employees = new HashSet<Employee>();
+        employees.add(e1);
+        employees.add(e2);
+         
+        System.out.println(employees);  //Prints two objects
+    }
+}
+
+•	Title (Title of the appointment)
+•	Description
+•	Date
+•	Start time
+•	End time
+•	Duration (calculated from above)
+•	No-of attendees
+•	List of attendees
+•	Information from templates as a table or so
+•	Notes section
+•	May be some images / attachments
